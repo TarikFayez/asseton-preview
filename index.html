@@ -166,13 +166,6 @@ section{padding:120px 0;scroll-margin-top:74px}
 .svc:hover h3{color:var(--signal)}
 .svc p{color:var(--muted-dark);font-size:.98rem;max-width:560px}
 
-/* Service photo preview (desktop, follows cursor) */
-.peek{position:fixed;left:0;top:0;z-index:40;width:300px;aspect-ratio:4/3;pointer-events:none;overflow:hidden;opacity:0;transform:translate3d(-999px,0,0) scale(.85);transition:opacity .25s,scale .25s;border:1px solid rgba(255,255,255,.2);box-shadow:0 24px 60px rgba(0,0,0,.45)}
-.peek img{width:100%;height:100%;object-fit:cover}
-.peek.on{opacity:1}
-.peek::after{content:"";position:absolute;left:10px;top:10px;width:14px;height:14px;border-top:2px solid var(--signal);border-left:2px solid var(--signal)}
-@media (hover:none),(max-width:1024px){.peek{display:none}}
-
 /* Services B (onderhoud): light band, vertical columns */
 .svc-b{padding:112px 0}
 .svcb-lead{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:clamp(1.8rem,3.4vw,2.9rem);line-height:1.08;letter-spacing:-.035em;color:var(--ink);max-width:920px;margin-bottom:64px}
@@ -529,12 +522,12 @@ footer{background:#08131B;color:#8FA3B3;padding:80px 0 0;font-size:.92rem;overfl
     </div>
     <p class="group-label reveal">Wij bieden onder andere:</p>
     <div class="svc-list reveal">
-      <div class="svc" data-peek="images/peek-installatietechniek.jpg"><span class="n">01</span><h3>Installatietechniek</h3><p>Wij verzorgen installaties van elke schaal, van woningen tot kantoren en loodsen. Of het nu gaat om kleine installaties of grote projecten, wij leveren altijd vakmanschap.</p></div>
-      <div class="svc" data-peek="images/peek-elektrotechniek.jpg"><span class="n">02</span><h3>Elektrotechniek</h3><p>Wij specialiseren ons in de installatie van elektrische systemen voor zowel woningen als bedrijven. Door het opstellen van een gedetailleerd installatieplan in samenspraak met u vermijden we mogelijke knelpunten tijdens de uitvoering.</p></div>
-      <div class="svc" data-peek="images/peek-verlichting.jpg"><span class="n">03</span><h3>Verlichtingsinstallaties</h3><p>Van binnen- tot buitenverlichting, wij zorgen voor een efficiënte en duurzame verlichtingsoplossing die voldoet aan uw wensen.</p></div>
-      <div class="svc" data-peek="images/peek-intercom.jpg"><span class="n">04</span><h3>Intercom installatie</h3><p>Wij hebben ruime ervaring in het projectmatig installeren en vervangen van intercom installaties, waarbij we zorgen voor een naadloze en betrouwbare werking.</p></div>
-      <div class="svc" data-peek="images/peek-storingen.jpg"><span class="n">05</span><h3>Storingen en onderhoud</h3><p>Onze specialisten lossen storingen snel en vakkundig op, en voeren preventief onderhoud uit om uw installaties in topconditie te houden.</p></div>
-      <div class="svc" data-peek="images/peek-advies.jpg"><span class="n">06</span><h3>Advies en inspecties</h3><p>Wij bieden gedegen advies over de veiligheid en efficiëntie van uw installaties, begeleiden inspecties en zorgen voor het tijdig herstellen van eventuele gebreken.</p></div>
+      <div class="svc"><span class="n">01</span><h3>Installatietechniek</h3><p>Wij verzorgen installaties van elke schaal, van woningen tot kantoren en loodsen. Of het nu gaat om kleine installaties of grote projecten, wij leveren altijd vakmanschap.</p></div>
+      <div class="svc"><span class="n">02</span><h3>Elektrotechniek</h3><p>Wij specialiseren ons in de installatie van elektrische systemen voor zowel woningen als bedrijven. Door het opstellen van een gedetailleerd installatieplan in samenspraak met u vermijden we mogelijke knelpunten tijdens de uitvoering.</p></div>
+      <div class="svc"><span class="n">03</span><h3>Verlichtingsinstallaties</h3><p>Van binnen- tot buitenverlichting, wij zorgen voor een efficiënte en duurzame verlichtingsoplossing die voldoet aan uw wensen.</p></div>
+      <div class="svc"><span class="n">04</span><h3>Intercom installatie</h3><p>Wij hebben ruime ervaring in het projectmatig installeren en vervangen van intercom installaties, waarbij we zorgen voor een naadloze en betrouwbare werking.</p></div>
+      <div class="svc"><span class="n">05</span><h3>Storingen en onderhoud</h3><p>Onze specialisten lossen storingen snel en vakkundig op, en voeren preventief onderhoud uit om uw installaties in topconditie te houden.</p></div>
+      <div class="svc"><span class="n">06</span><h3>Advies en inspecties</h3><p>Wij bieden gedegen advies over de veiligheid en efficiëntie van uw installaties, begeleiden inspecties en zorgen voor het tijdig herstellen van eventuele gebreken.</p></div>
     </div>
   </div>
 </section>
@@ -705,7 +698,6 @@ footer{background:#08131B;color:#8FA3B3;padding:80px 0 0;font-size:.92rem;overfl
   </div>
 </footer>
 
-<div class="peek" id="peek" aria-hidden="true"><img alt="" id="peekImg"></div>
 
 <!-- STORING MELDEN (always visible) -->
 <div class="sos" id="sos">
@@ -843,28 +835,6 @@ const setPower = () => {
 };
 addEventListener('scroll', () => { if (!plTick) { plTick = true; requestAnimationFrame(setPower); } }, { passive: true });
 setPower();
-
-// Service photo preview follows the cursor (fine pointers only)
-if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
-  const peek = document.getElementById('peek'), peekImg = document.getElementById('peekImg');
-  let x = 0, y = 0, px = 0, py = 0, raf = null;
-  const loop = () => {
-    px += (x - px) * .16; py += (y - py) * .16;
-    peek.style.transform = `translate3d(${px + 28}px, ${py - 110}px, 0) rotate(${Math.max(-6, Math.min(6, (x - px) * .06))}deg)`;
-    raf = peek.classList.contains('on') || Math.abs(x - px) > .5 ? requestAnimationFrame(loop) : null;
-  };
-  document.querySelectorAll('.svc[data-peek]').forEach(row => {
-    new Image().src = row.dataset.peek;
-    row.addEventListener('mouseenter', e => {
-      peekImg.src = row.dataset.peek;
-      if (!peek.classList.contains('on')) { px = x = e.clientX; py = y = e.clientY; }
-      peek.classList.add('on');
-      if (!raf) raf = requestAnimationFrame(loop);
-    });
-    row.addEventListener('mousemove', e => { x = e.clientX; y = e.clientY; });
-    row.addEventListener('mouseleave', () => peek.classList.remove('on'));
-  });
-}
 
 // Reveal on scroll
 const io = 'IntersectionObserver' in window ? new IntersectionObserver(entries => {
