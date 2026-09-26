@@ -47,24 +47,24 @@
   --bg:#070E14;         /* base dark (cool): body + Intro, Onderhoud, Over ons, Contact */
   --bg-raise:#0E1922;   /* raised on cool: slogan panel, form panel, SOS panel, nav sheet */
   --field:#0A131B;      /* form field fill */
-  --umber:#1A140E;      /* second dark (warm): Diensten, Projecten, Werken bij */
-  --umber-raise:#241D15;/* raised on warm: project chips */
-  --pv-stage:#0B0906;   /* project image stage */
+  --umber:#112433;      /* second dark (navy): Diensten, Projecten, Werken bij */
+  --umber-raise:#18304A;/* raised on navy band: project chips */
+  --pv-stage:#050A0F;   /* project image stage */
   --foot:#0D1B26;       /* footer: brand ink, bookends the header and lifts off the Contact black */
   /* text on cool */
   --t:#F3F5F7; --tb:#C6D1DA; --tm:#9FB1C0;
   /* text on warm */
-  --wt:#F6F1E8; --wb:#D8CFC2; --wm:#B8AC9A;
+  --wt:#F3F5F7; --wb:#C6D1DA; --wm:#9FB1C0;
   /* accent + lines */
   --signal:#F4B400; --signal-hi:#FFC72C;
   --rule:rgba(255,255,255,.12); --rule-strong:rgba(255,255,255,.28);
-  --rule-warm:rgba(255,220,150,.13);
+  --rule-warm:rgba(255,255,255,.12);
   --field-border:#5C6E7E;
   --led-off:#3A4650;
   --sos-red:#E3261B;
   --sos-call:#C8190F; --sos-call-hover:#A8140C;
   --wordmark:#2A3B49;
-  --lamp:radial-gradient(120% 70% at 0 0,rgba(244,180,0,.09),transparent 55%);
+  --lamp:linear-gradient(transparent,transparent);
   --wrap:1240px;
   --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
   --ease:cubic-bezier(.2,.7,.2,1);
@@ -228,7 +228,7 @@ section{position:relative;padding:112px 0;scroll-margin-top:74px}
 .pv-img.was-active{visibility:visible;z-index:1}
 .pv-img.is-active{visibility:visible;z-index:2;animation:pvWipe 1s var(--ease) both}
 .pv-img.is-active img{animation:pvZoom 9s linear both}
-.pv-stage::after{content:"";position:absolute;inset:0;z-index:3;background:linear-gradient(0deg,rgba(11,9,6,.75) 0%,rgba(11,9,6,0) 38%),linear-gradient(180deg,rgba(11,9,6,.45) 0%,rgba(11,9,6,0) 22%);pointer-events:none}
+.pv-stage::after{content:"";position:absolute;inset:0;z-index:3;background:linear-gradient(0deg,rgba(5,10,15,.75) 0%,rgba(5,10,15,0) 38%),linear-gradient(180deg,rgba(5,10,15,.45) 0%,rgba(5,10,15,0) 22%);pointer-events:none}
 @keyframes pvWipe{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
 @keyframes pvZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
 .pv-mark{position:absolute;z-index:4;width:22px;height:22px;border:0 solid var(--signal)}
@@ -237,7 +237,7 @@ section{position:relative;padding:112px 0;scroll-margin-top:74px}
 .pv-mark.bl{bottom:18px;left:18px;border-bottom-width:2px;border-left-width:2px}
 .pv-mark.br{bottom:18px;right:18px;border-bottom-width:2px;border-right-width:2px}
 .pv-big{display:none} /* outline numeral retired (read as a glitch, duplicated the counter); element + JS kept */
-.pv-count{position:absolute;z-index:4;top:16px;right:52px;padding:4px 8px;border-radius:2px;background:rgba(11,9,6,.8);font-family:var(--mono);font-size:.78rem;line-height:1.5;letter-spacing:.08em;color:#fff}
+.pv-count{position:absolute;z-index:4;top:16px;right:52px;padding:4px 8px;border-radius:2px;background:rgba(5,10,15,.8);font-family:var(--mono);font-size:.78rem;line-height:1.5;letter-spacing:.08em;color:#fff}
 .pv-count b{color:var(--signal);font-weight:600}
 .pv-tab{position:relative;display:grid;grid-template-columns:24px minmax(0,1fr);align-items:center;width:100%;padding:22px 0 24px;background:none;border:0;border-bottom:1px solid var(--rule-warm);border-radius:0;color:var(--wm);font:inherit;text-align:left;cursor:pointer;transition:color .3s,border-color .3s,background .3s}
 .pv-tab::before{content:"";width:7px;height:7px;border-radius:1px;background:var(--led-off);transition:background .3s,box-shadow .3s}
@@ -400,7 +400,7 @@ footer{background:var(--foot);color:var(--tm);padding:72px 0 clamp(12px,1.5vw,24
 @media (max-width:960px){
   .pv{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;grid-template-areas:"tabs" "stage" "panels";row-gap:0}
   .pv-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;border-top:0;margin-bottom:12px}
-  .pv-tab{grid-template-columns:18px minmax(0,1fr);align-items:center;min-height:52px;padding:0 14px;background:var(--umber-raise);border:1px solid rgba(255,220,150,.16);border-radius:3px;overflow:hidden}
+  .pv-tab{grid-template-columns:18px minmax(0,1fr);align-items:center;min-height:52px;padding:0 14px;background:var(--umber-raise);border:1px solid rgba(255,255,255,.16);border-radius:3px;overflow:hidden}
   .pv-tab:hover{color:var(--wb)}
   .pv-tab[aria-selected="true"]{color:var(--wt);border-color:var(--signal);background:linear-gradient(rgba(244,180,0,.06),rgba(244,180,0,.06)),var(--umber-raise)}
   .pv-tab .t{font-size:1.05rem;letter-spacing:-.01em}
