@@ -4,6 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
+<script>
+/* Always open at the hero: drop any #fragment (e.g. a stale #contact) before the browser scrolls to it */
+(function(){try{if('scrollRestoration' in history)history.scrollRestoration='manual';if(location.hash)history.replaceState(null,'',location.pathname+location.search);}catch(e){}})();
+</script>
+
 <title>Asseton - Elk project doet er toe!</title>
 <meta name="description" content="Asseton is een allround installatiebedrijf met een breed aanbod aan diensten, van projectmatige installaties tot het beheren en onderhouden van bedrijfspanden.">
 <link rel="canonical" href="https://asseton.nl/">
@@ -1341,13 +1346,24 @@ if (form) form.addEventListener('submit', e => {
 });
 })();
 
-// ---- Start at the top: no hash jump on reload or restored tabs; in-page links scroll without writing a #hash
-if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+// ---- Start at the hero: safety net after load / bfcache restore, unless the visitor already interacted
 (() => {
-  const navEntry = performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
-  const fresh = !navEntry || navEntry.type === 'navigate';
-  if (location.hash && !fresh) history.replaceState(null, '', location.pathname + location.search);
-  if (!location.hash) scrollTo(0, 0);
+  let touched = false;
+  ['touchstart', 'wheel', 'keydown', 'pointerdown'].forEach(ev => addEventListener(ev, () => { touched = true; }, { once: true, passive: true, capture: true }));
+  const toTop = () => {
+    if (touched || scrollY === 0) return;
+    const root = document.documentElement, prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto'; scrollTo(0, 0); root.style.scrollBehavior = prev;
+  };
+  toTop();
+  addEventListener('load', () => { toTop(); setTimeout(toTop, 0); });
+  addEventListener('pageshow', e => { if (e.persisted) { touched = false; toTop(); } });
+  // a #fragment arriving from outside (address bar / external link) never jumps the page: strip it, stay at the hero
+  addEventListener('hashchange', () => {
+    history.replaceState(null, '', location.pathname + location.search);
+    const root = document.documentElement, prev = root.style.scrollBehavior;
+    root.style.scrollBehavior = 'auto'; scrollTo(0, 0); root.style.scrollBehavior = prev;
+  });
 })();
 document.addEventListener('click', e => {
   const a = e.target.closest ? e.target.closest('a[href^="#"]') : null;
