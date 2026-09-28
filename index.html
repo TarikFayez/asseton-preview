@@ -194,13 +194,6 @@ section{position:relative;padding:112px 0;scroll-margin-top:74px}
 .h2-solo{margin-bottom:40px}
 
 /* 1 · Intro: client statement, one sentence per line (>=768) */
-.intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:72px}
-.statement{grid-column:1/-1;font-size:min(3.85rem,calc((100vw - 64px)/19.4));line-height:1.04;letter-spacing:-.03em;color:var(--t);margin-bottom:48px}
-.st-line{display:block;white-space:nowrap}
-.st-line+.st-line{margin-top:.06em}
-.st-br{display:none}
-.intro-lead{position:relative;grid-column:2;padding-top:24px;border-top:1px solid var(--rule-strong);font-size:1.08rem;line-height:1.7;color:var(--tb);max-width:520px}
-.intro-lead::before{content:"";position:absolute;left:0;top:-2px;width:32px;height:3px;background:var(--signal)}
 
 /* 2+3 · Diensten: two parallel groups (Techniek & beheer, Bouwkundig onderhoud).
    #onderhoud is the second half of Diensten: no section tag, shorter top padding */
@@ -223,15 +216,6 @@ section{position:relative;padding:112px 0;scroll-margin-top:74px}
 
 @media (min-width:861px){
   .svc-btn{pointer-events:none;cursor:default}
-  .svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 64px;border-top:0}
-  .svc-grid .svc{border-bottom:0;border-top:1px solid var(--rule-strong);padding:26px 0 32px}
-  .svc-grid .svc:nth-last-child(-n+2){padding-bottom:0} /* last row: the section padding alone closes the band */
-  .svc-grid .svc-btn{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"ico n" "t t";align-items:center}
-  .svc-grid .svc-btn .ico{display:block;grid-area:ico;width:28px;height:28px;color:var(--signal)}
-  .svc-grid .svc-btn .n{grid-area:n;color:var(--tm)}
-  .warm .svc-grid .svc-btn .n{color:var(--wm)}
-  .svc-grid .svc-btn .t{grid-area:t;margin-top:16px}
-  .svc-grid .svc-h{font-size:1.4rem;margin-bottom:10px}
 }
 @media (min-width:861px) and (hover:hover){
   .svc:hover::before{width:100%}
@@ -284,8 +268,6 @@ section{position:relative;padding:112px 0;scroll-margin-top:74px}
 @keyframes pvFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
 /* 5 · Over ons: slogan panel with an orange top edge and one diagonal orange band bleeding off the bottom-right corner */
-.about{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
-.about-copy p{font-size:1.05rem;line-height:1.7;max-width:520px}
 .slogan-panel{position:relative;margin:0;padding:60px 48px 76px;border-top:3px solid var(--signal);background:linear-gradient(148deg,transparent calc(100% - 66px),var(--signal) calc(100% - 66px) calc(100% - 46px),transparent calc(100% - 46px)),var(--bg-raise);overflow:hidden}
 .slogan-panel .big{position:relative;display:inline-block;font-family:'Kaushan Script','Segoe Script','Brush Script MT',cursive;font-size:clamp(2.1rem,3.4vw,2.9rem);font-weight:400;line-height:1.15;letter-spacing:0;color:#fff;margin-bottom:46px;white-space:nowrap}
 .slogan-panel figcaption{color:var(--t);font-size:1.12rem;line-height:1.65}
@@ -412,7 +394,6 @@ footer{background:linear-gradient(180deg,rgba(242,113,28,.22) 0,rgba(242,113,28,
 
 /* Shared editorial split (>=1025px): every right-hand column starts on the same line */
 @media (min-width:1025px){
-  .svc-grid{gap:0 72px}
   .pv{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:72px}
   .foot{max-width:none;column-gap:72px}
 }
@@ -429,7 +410,7 @@ footer{background:linear-gradient(180deg,rgba(242,113,28,.22) 0,rgba(242,113,28,
 @media (max-width:1024px){
   .head2{grid-template-columns:1fr;gap:24px;margin-bottom:40px}
   .group{grid-template-columns:1fr;gap:10px}
-  .about,.contact{grid-template-columns:1fr;gap:48px}
+  .contact{grid-template-columns:1fr;gap:48px}
   .slogan-panel .big{font-size:clamp(2rem,6vw,3.4rem)}
   .cline{grid-template-columns:minmax(0,1fr);gap:2px;align-content:center}
 }
@@ -456,8 +437,6 @@ footer{background:linear-gradient(180deg,rgba(242,113,28,.22) 0,rgba(242,113,28,
   .nav-links a.nav-cta{margin-top:20px;min-height:54px;justify-content:space-between;padding:16px 22px;font-size:.84rem}
   .nav-cta svg{display:block}
   .nav-toggle{display:grid;place-items:center;width:44px;height:44px;margin-right:-9px}
-  .intro{grid-template-columns:1fr}
-  .intro-lead{grid-column:1}
 
   .svc-list{display:block}
   .svc{padding:0}
@@ -476,10 +455,6 @@ footer{background:linear-gradient(180deg,rgba(242,113,28,.22) 0,rgba(242,113,28,
 /* Statement below 768: each sentence is its own block (one line each would need <=18px type);
    the long sentence breaks on purpose before 'dienstverlening.' and the sentence gap is clearly wider than its leading */
 @media (max-width:767px){
-  .statement{font-size:min(2.6rem,calc((100vw - 32px)/10.6))}
-  .st-line{white-space:normal}
-  .st-line+.st-line{margin-top:.42em}
-  .st-br{display:inline}
 }
 @media (max-width:600px){
   .wrap{padding:0 16px}
@@ -505,9 +480,8 @@ footer{background:linear-gradient(180deg,rgba(242,113,28,.22) 0,rgba(242,113,28,
   .sec-top{margin-bottom:28px}
   .head2 h2,.h2-solo,.contact-info h2{font-size:1.9rem}
   .h2-solo{margin-bottom:28px}
-  .head2 p,.about-copy p,.contact-info>p{font-size:1.02rem}
+  .head2 p,.about2-p,.contact-info>p{font-size:1.02rem}
   .group p{font-size:.98rem}
-  #diensten .head2{margin-bottom:32px}
   .group{gap:8px;margin-bottom:20px}
   .group-t{font-size:1.5rem}
   #onderhoud{padding-top:56px}
@@ -547,6 +521,115 @@ footer{background:linear-gradient(180deg,rgba(242,113,28,.22) 0,rgba(242,113,28,
   .foot li.txt{min-height:44px;padding:11px 0}
   .foot a{display:inline-flex;align-items:center;min-height:44px}
 }
+
+/* ================= v5 · one composition per section ================= */
+:root{--swoosh:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 48' preserveAspectRatio='none'%3E%3Cpath fill='%23F2711C' d='M6%2038%2015.5%2035%2025.3%2033.5%2035.3%2032.2%2045.6%2031.1%2055.9%2030.1%2066.5%2029.3%2077.2%2028.5%2088.1%2027.7%2099.1%2027.1%20110.2%2026.5%20121.4%2026.3%20132.7%2026.1%20144.1%2025.8%20155.6%2025.5%20167.1%2025.2%20178.6%2024.8%20190.2%2024.4%20201.8%2023.9%20213.3%2023.4%20224.9%2022.8%20236.4%2022.2%20247.9%2021.5%20259.3%2020.8%20270.6%2020.1%20281.9%2019.2%20293%2018.3%20304%2017.4%20314.9%2016.4%20325.7%2015.4%20336.3%2014.2%20346.8%2013.1%20357%2011.8%20367.1%2010.5%20377%209.1%20386.6%207.6%20396%206%20386.7%207.9%20377.1%209.8%20367.3%2011.6%20357.3%2013.4%20347.1%2015.2%20336.7%2016.9%20326.1%2018.6%20315.4%2020.3%20304.5%2021.9%20293.6%2023.5%20282.4%2025%20271.2%2026.5%20259.9%2028%20248.6%2029.4%20237.1%2030.8%20225.6%2032.1%20214.1%2033.4%20202.6%2034.7%20191%2035.9%20179.4%2037.1%20167.9%2038.2%20156.4%2039.4%20145%2040.5%20133.6%2041.5%20122.2%2042.5%20111%2043.5%2099.8%2044%2088.8%2044.2%2077.9%2044.4%2067.1%2044.3%2056.4%2044.1%2046%2043.8%2035.7%2043.2%2025.6%2042.3%2015.7%2041.1Z'/%3E%3C/svg%3E")}
+/* 1 · Manifest: centred, the news big, the reassurance smaller */
+.manifest{padding:136px 0 128px;text-align:center}
+.manifest-in{max-width:1000px}
+.manifest-h{display:flex;flex-direction:column;align-items:center;margin:0 auto}
+.m-big{position:relative;display:block;font-size:clamp(2.9rem,7.4vw,6.4rem);line-height:1;letter-spacing:-.035em;color:var(--t);padding-bottom:.3em;margin-bottom:.34em}
+.m-big::after{content:"";position:absolute;left:16%;right:16%;bottom:0;height:.17em;background:var(--swoosh) center/100% 100% no-repeat}
+.m-sub{display:block;font-size:clamp(1.4rem,2.7vw,2.3rem);line-height:1.22;letter-spacing:-.02em;font-weight:600;color:var(--tb)}
+.manifest-p{max-width:560px;margin:52px auto 0;font-size:1.08rem;line-height:1.75;color:var(--tm)}
+
+/* 2 · Diensten: sticky intro left, services scroll past on the right */
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:96px;align-items:start}
+.split-side{position:sticky;top:112px}
+.split-side .h2-solo{margin-bottom:24px}
+.side-p{font-size:1.02rem;line-height:1.7;max-width:460px}
+.side-group{margin-top:40px;padding-top:26px;border-top:1px solid var(--rule)}
+.side-group .group-t{font-size:1.4rem;margin-bottom:10px}
+.side-group p{font-size:.98rem;line-height:1.65;max-width:440px}
+.side-link{display:inline-flex;align-items:center;gap:12px;margin-top:36px;padding:12px 0;font-family:var(--display);font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--signal)}
+.side-link svg{width:18px;height:18px;transition:transform .3s var(--ease)}
+.side-link:hover svg{transform:translateX(5px)}
+.side-link:focus-visible{outline:2px solid var(--signal);outline-offset:4px}
+@media (min-width:861px){
+  .svc-rows{border-top:1px solid var(--rule-strong)}
+  .svc-rows .svc{padding:30px 0 32px;border-bottom:1px solid var(--rule)}
+  .svc-rows .svc-btn{display:grid;grid-template-columns:60px minmax(0,1fr) auto;grid-template-areas:"ico t n";align-items:center}
+  .svc-rows .svc-btn .ico{display:block;grid-area:ico;width:30px;height:30px;color:var(--signal)}
+  .svc-rows .svc-btn .t{grid-area:t}
+  .svc-rows .svc-btn .n{grid-area:n;color:var(--wm)}
+  .svc-rows .svc-h{font-size:1.5rem;margin-bottom:8px}
+  .svc-rows .svc-body{padding-left:60px}
+  .svc-rows .pm{display:none}
+}
+
+/* 3 · Bouwkundig onderhoud: stacked head, four solid cards */
+.ond-head{max-width:720px;margin-bottom:52px}
+.ond-t{font-size:clamp(2.1rem,4.4vw,3.6rem);line-height:1.02;margin-bottom:18px}
+.ond-head p{font-size:1.05rem;line-height:1.7;color:var(--tb)}
+@media (min-width:861px){
+  .svc-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;border-top:0}
+  .svc-cards .svc{display:flex;flex-direction:column;background:var(--bg-raise);border:1px solid var(--rule);padding:28px 26px 32px}
+  .svc-cards .svc::before{height:3px;top:-1px}
+  .svc-cards .svc-btn{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"ico n" "t t";align-items:center}
+  .svc-cards .svc-btn .ico{display:block;grid-area:ico;width:30px;height:30px;color:var(--signal)}
+  .svc-cards .svc-btn .n{grid-area:n;color:var(--tm)}
+  .svc-cards .svc-btn .t{grid-area:t;margin-top:36px}
+  .svc-cards .svc-h{font-size:1.25rem;margin-bottom:10px}
+  .svc-cards .svc-body p{font-size:.95rem}
+  .svc-cards .pm{display:none}
+}
+@media (min-width:861px) and (max-width:1100px){.svc-cards{grid-template-columns:1fr 1fr}}
+
+/* 5 · Over ons: full-bleed photo left, copy right */
+.about2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:0;min-height:780px}
+.about2-media{position:relative;overflow:hidden;background:var(--ink)}
+.about2-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%;filter:saturate(0) contrast(1.08)}
+.about2-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(21,22,23,0) 60%,var(--bg) 100%)}
+.about2-copy{align-self:center;padding:112px max(32px,calc((100vw - var(--wrap))/2 + 32px)) 112px 80px}
+.about2-copy .h2-solo{margin-bottom:24px}
+.about2-p{font-size:1.05rem;line-height:1.7;max-width:540px}
+.about2-copy .slogan-panel{margin-top:44px}
+
+/* 6 · Werken bij: one framed panel with the box-lid band */
+.jobs-panel{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;padding:64px 64px 56px;background:var(--bg);border:1px solid var(--rule);overflow:hidden}
+.jobs-panel::after{content:"";position:absolute;top:0;right:0;width:150px;height:150px;background:linear-gradient(225deg,transparent 0 20%,var(--signal) 20% 29%,transparent 29%);pointer-events:none}
+.jobs-copy .h2-solo{margin-bottom:24px}
+.jobs-copy p{font-size:1.02rem;line-height:1.7}
+.jobs-side{padding-top:52px}
+.jobs-side .jobs-note{margin-top:28px;font-size:.98rem}
+
+/* 7 · Contact: centred head, details + form below */
+#contact .sec-top{justify-content:center}
+#contact .sec-top::before{transform-origin:center}
+.contact-head{max-width:780px;margin:0 auto 64px;text-align:center}
+.contact-head h2{margin-bottom:20px}
+.contact-head>p{margin:0 auto;max-width:620px}
+.contact{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)}
+
+@media (max-width:1024px){
+  .split{grid-template-columns:1fr;gap:48px}
+  .split-side{position:static}
+  .about2{grid-template-columns:1fr;min-height:0}
+  .about2-media{aspect-ratio:4/3}
+  .about2-media::after{background:linear-gradient(180deg,rgba(21,22,23,0) 60%,var(--bg) 100%)}
+  .about2-copy{padding:56px 32px 96px}
+  .jobs-panel{grid-template-columns:1fr;gap:36px;padding:48px 40px 44px}
+  .jobs-side{padding-top:0}
+  .contact-head{text-align:left;margin:0 0 48px}
+  #contact .sec-top{justify-content:flex-start}
+  #contact .sec-top::before{transform-origin:left}
+  .contact-head>p{margin:0}
+}
+@media (max-width:600px){
+  .manifest{padding:88px 0 84px}
+  .m-big{font-size:clamp(2.6rem,12vw,3.2rem)}
+  .m-sub{font-size:1.3rem}
+  .manifest-p{margin-top:36px;font-size:1rem}
+  .about2-copy{padding:40px 16px 72px}
+  .jobs-panel{padding:36px 20px 32px;gap:28px}
+  .jobs-panel::after{width:64px;height:64px}
+  .jobs-panel .job{grid-template-columns:1fr;gap:8px;padding:22px 0}
+  .jobs-panel .job-go{justify-self:start}
+  .ond-head{margin-bottom:28px}
+  .side-group{margin-top:28px}
+  .side-link{margin-top:20px}
+}
+@media (prefers-reduced-motion:reduce){.side-link svg{transition:none}}
 </style>
 </head>
 <body>
@@ -635,26 +718,27 @@ footer{background:linear-gradient(180deg,rgba(242,113,28,.22) 0,rgba(242,113,28,
 </div>
 
 <!-- 1 · INTRO -->
-<section id="asseton" class="cool">
-  <div class="wrap intro">
-    <h2 class="statement reveal"><span class="st-line">Nieuwe naam.</span> <span class="st-line">Dezelfde mensen.</span> <span class="st-line">Dezelfde vertrouwde <br class="st-br">dienstverlening.</span></h2>
-    <p class="intro-lead reveal">Onze aanpak is klantgericht, proactief en professioneel, en we garanderen hoogwaardige faciliteiten voor duurzame&nbsp;bedrijfsvoering.</p>
+<section id="asseton" class="cool manifest">
+  <div class="wrap manifest-in">
+    <h2 class="statement manifest-h reveal"><span class="st-line m-big">Nieuwe naam.</span> <span class="st-line m-sub">Dezelfde mensen.</span> <span class="st-line m-sub">Dezelfde vertrouwde dienstverlening.</span></h2>
+    <p class="manifest-p reveal">Onze aanpak is klantgericht, proactief en professioneel, en we garanderen hoogwaardige faciliteiten voor duurzame&nbsp;bedrijfsvoering.</p>
   </div>
 </section>
 
 <!-- 2 · 01 DIENSTEN -->
 <section id="diensten" class="warm">
-  <div class="wrap">
-    <div class="sec-top"><i class="led"></i><span class="n">01</span><span>Diensten</span></div>
-    <div class="head2 reveal">
-      <h2>Onze diensten</h2>
-      <p>Bij Asseton streven we naar perfectie in alles wat we doen, van het aanleggen van installaties tot het oplossen van storingen. Ons team van professionals staat dagelijks klaar om zowel dagelijks als planmatig onderhoud te verrichten, altijd met oog voor detail en&nbsp;klanttevredenheid.</p>
-    </div>
-    <div class="group reveal">
-      <h3 class="group-t">Techniek &amp; beheer</h3>
-      <p>Asseton biedt professioneel onderhoud en beheer van technische installaties voor&nbsp;bedrijven.</p>
-    </div>
-    <div class="svc-list svc-grid reveal">
+  <div class="wrap split">
+    <aside class="split-side reveal">
+      <div class="sec-top"><i class="led"></i><span class="n">01</span><span>Diensten</span></div>
+      <h2 class="h2-solo">Onze diensten</h2>
+      <p class="side-p">Bij Asseton streven we naar perfectie in alles wat we doen, van het aanleggen van installaties tot het oplossen van storingen. Ons team van professionals staat dagelijks klaar om zowel dagelijks als planmatig onderhoud te verrichten, altijd met oog voor detail en&nbsp;klanttevredenheid.</p>
+      <div class="side-group">
+        <h3 class="group-t">Techniek &amp; beheer</h3>
+        <p>Asseton biedt professioneel onderhoud en beheer van technische installaties voor&nbsp;bedrijven.</p>
+      </div>
+      <a class="side-link" href="#contact">Neem contact op<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </aside>
+    <div class="svc-list svc-rows reveal">
       <article class="svc">
         <h4 class="svc-h"><button class="svc-btn" type="button" aria-expanded="true" aria-controls="svc-1"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-plug"/></svg><span class="n">01</span> <span class="t">Installatietechniek</span><span class="pm" aria-hidden="true"></span></button></h4>
         <div class="svc-body" id="svc-1"><p>Wij verzorgen installaties van elke schaal, van woningen tot kantoren en loodsen. Of het nu gaat om kleine installaties of grote projecten, wij leveren altijd&nbsp;vakmanschap.</p></div>
@@ -686,11 +770,11 @@ footer{background:linear-gradient(180deg,rgba(242,113,28,.22) 0,rgba(242,113,28,
 <!-- 3 · DIENSTEN (vervolg): BOUWKUNDIG ONDERHOUD, no section tag -->
 <section id="onderhoud" class="cool">
   <div class="wrap">
-    <div class="group reveal">
-      <h3 class="group-t">Bouwkundig onderhoud</h3>
+    <div class="ond-head reveal">
+      <h3 class="group-t ond-t">Bouwkundig onderhoud</h3>
       <p>Met Asseton bieden wij een compleet pakket aan bouwkundig onderhoud. Onze allround vakmannen reageren snel op klachten van bewoners en voeren het benodigde onderhoud efficiënt&nbsp;uit.</p>
     </div>
-    <div class="svc-list svc-grid reveal">
+    <div class="svc-list svc-cards reveal">
       <article class="svc">
         <h4 class="svc-h"><button class="svc-btn" type="button" aria-expanded="true" aria-controls="svc-7"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-hammer"/></svg><span class="n">07</span> <span class="t">Dagelijks onderhoud</span><span class="pm" aria-hidden="true"></span></button></h4>
         <div class="svc-body" id="svc-7"><p>Onze timmermannen staan klaar om snel in te springen bij reparaties, zoals het verhelpen van lekkages en het herstellen van houtrot, deuren en&nbsp;kozijnen.</p></div>
@@ -743,31 +827,32 @@ footer{background:linear-gradient(180deg,rgba(242,113,28,.22) 0,rgba(242,113,28,
 </section>
 
 <!-- 5 · 03 OVER ONS -->
-<section id="over-ons" class="cool">
-  <div class="wrap">
+<section id="over-ons" class="cool about2">
+  <div class="about2-media"><img src="images/over-ons-atrium.jpg" width="1050" height="1400" loading="lazy" alt="Monteur op een hoogwerker bij het vernieuwen van plafondverlichting in een kantoorhal"></div>
+  <div class="about2-copy">
     <div class="sec-top"><i class="led"></i><span class="n">03</span><span>Over ons</span></div>
-    <div class="about">
-      <div class="about-copy reveal">
-        <h2 class="h2-solo">Wij staan voor kwaliteit</h2>
-        <p>Ons dynamische en ervaren team staat garant voor vakkennis en een klantgerichte aanpak. We werken met korte lijnen, zodat problemen direct worden aangepakt. Door onze proactieve houding zijn wij niet alleen uitvoerders, maar voelen wij ons medeverantwoordelijk voor uw vraagstukken. Dankzij onze expertise in installatietechniek en gebouwgebonden installaties, zijn wij de betrouwbare partner voor al uw&nbsp;installatiebehoeften.</p>
-      </div>
-      <figure class="slogan-panel reveal">
+    <div class="reveal">
+      <h2 class="h2-solo">Wij staan voor kwaliteit</h2>
+      <p class="about2-p">Ons dynamische en ervaren team staat garant voor vakkennis en een klantgerichte aanpak. We werken met korte lijnen, zodat problemen direct worden aangepakt. Door onze proactieve houding zijn wij niet alleen uitvoerders, maar voelen wij ons medeverantwoordelijk voor uw vraagstukken. Dankzij onze expertise in installatietechniek en gebouwgebonden installaties, zijn wij de betrouwbare partner voor al uw&nbsp;installatiebehoeften.</p>
+    </div>
+    <figure class="slogan-panel reveal">
         <blockquote class="big">Elk project doet er toe!</blockquote>
         <figcaption>Wij geloven in onze slogan “Elk project doet er toe”, wat betekent dat we elk project, groot of klein, met dezelfde toewijding en aandacht behandelen. Wij zijn ervan overtuigd dat zelfs de kleinste klus een significante impact kan hebben op de tevredenheid van onze klanten en de kwaliteit van hun&nbsp;omgeving.</figcaption>
       </figure>
-    </div>
   </div>
 </section>
 
 <!-- 6 · 04 WERKEN BIJ -->
 <section id="werken-bij" class="warm">
   <div class="wrap">
-    <div class="sec-top"><i class="led"></i><span class="n">04</span><span>Werken bij</span></div>
-    <div class="head2 reveal">
-      <h2>Kom ons team versterken</h2>
-      <p>Bij Asseton hechten we niet alleen waarde aan de projecten die we uitvoeren, maar ook aan de mensen die voor ons werken. We zijn een hecht en gezellig team waar samenwerking en plezier in het werk centraal staan. Bovendien bieden we volop mogelijkheden voor persoonlijke en professionele ontwikkeling, zodat je jouw vaardigheden kunt uitbreiden en kunt doorgroeien binnen ons&nbsp;bedrijf.</p>
-    </div>
-    <div class="job-list reveal">
+    <div class="jobs-panel reveal">
+      <div class="jobs-copy">
+        <div class="sec-top"><i class="led"></i><span class="n">04</span><span>Werken bij</span></div>
+        <h2 class="h2-solo">Kom ons team versterken</h2>
+        <p>Bij Asseton hechten we niet alleen waarde aan de projecten die we uitvoeren, maar ook aan de mensen die voor ons werken. We zijn een hecht en gezellig team waar samenwerking en plezier in het werk centraal staan. Bovendien bieden we volop mogelijkheden voor persoonlijke en professionele ontwikkeling, zodat je jouw vaardigheden kunt uitbreiden en kunt doorgroeien binnen ons&nbsp;bedrijf.</p>
+      </div>
+      <div class="jobs-side">
+        <div class="job-list">
       <a class="job" href="mailto:info@asseton.nl?subject=Sollicitatie%20Werkvoorbereider">
         <h3>Werkvoorbereider</h3>
         <span class="job-go">Solliciteer<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
@@ -777,7 +862,9 @@ footer{background:linear-gradient(180deg,rgba(242,113,28,.22) 0,rgba(242,113,28,
         <span class="job-go">Solliciteer<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
     </div>
-    <p class="jobs-note reveal">Kom jij ons team versterken en bijdragen aan projecten die ertoe doen? Stuur dan je cv en motivatie naar <a href="mailto:info@asseton.nl">info@asseton.nl</a> of neem contact op met onze recruiter&nbsp;via <a class="nowrap" href="tel:+31850604287">085-0604287</a>.</p>
+        <p class="jobs-note">Kom jij ons team versterken en bijdragen aan projecten die ertoe doen? Stuur dan je cv en motivatie naar <a href="mailto:info@asseton.nl">info@asseton.nl</a> of neem contact op met onze recruiter&nbsp;via <a class="nowrap" href="tel:+31850604287">085-0604287</a>.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -785,10 +872,12 @@ footer{background:linear-gradient(180deg,rgba(242,113,28,.22) 0,rgba(242,113,28,
 <section id="contact" class="cool">
   <div class="wrap">
     <div class="sec-top"><i class="led"></i><span class="n">05</span><span>Contact</span></div>
+    <div class="contact-info contact-head reveal">
+      <h2>Klaar voor uw volgende project?</h2>
+      <p>Neem vandaag nog contact met ons op! Ons team staat klaar om u te ontzorgen en elk aspect van uw installatie- of onderhoudsbehoeften met de hoogste zorg en professionaliteit aan te&nbsp;pakken.</p>
+    </div>
     <div class="contact">
-      <div class="contact-info reveal">
-        <h2>Klaar voor uw volgende project?</h2>
-        <p>Neem vandaag nog contact met ons op! Ons team staat klaar om u te ontzorgen en elk aspect van uw installatie- of onderhoudsbehoeften met de hoogste zorg en professionaliteit aan te&nbsp;pakken.</p>
+      <div class="contact-lines reveal">
         <div class="clines">
           <a class="cline" href="tel:+31850604287"><small>Bel ons</small> <span>085 060 4287</span></a>
           <a class="cline" href="mailto:info@asseton.nl"><small>E-mail</small> <span>info@asseton.nl</span></a>
@@ -796,7 +885,6 @@ footer{background:linear-gradient(180deg,rgba(242,113,28,.22) 0,rgba(242,113,28,
           <div class="cline"><small>Ma-Vrij</small> <span>08:30 - 17:00</span></div>
         </div>
       </div>
-
       <form id="contactForm" class="reveal" novalidate>
         <div class="field-row">
           <div class="field"><label for="naam">Naam</label><input id="naam" name="naam" autocomplete="name" required></div>
