@@ -233,7 +233,7 @@ section{position:relative;padding:112px 0;scroll-margin-top:74px}
 .pv-stage{grid-area:stage;position:relative;height:min(calc(100vh - 290px),680px);min-height:440px;overflow:hidden;background:var(--pv-stage);cursor:pointer}
 .pv-panels{grid-area:panels;display:grid;max-width:480px}
 .pv-img{position:absolute;inset:0;margin:0;visibility:hidden}
-.pv-img img{width:100%;height:100%;object-fit:cover;filter:saturate(0) contrast(1.05)} /* graded like the hero: no blue beams/sky */
+.pv-img img{width:100%;height:100%;object-fit:cover}
 .pv-img.was-active{visibility:visible;z-index:1}
 .pv-img.is-active{visibility:visible;z-index:2;animation:pvWipe 1s var(--ease) both}
 .pv-img.is-active img{animation:pvZoom 9s linear both}
@@ -583,7 +583,7 @@ footer{background:linear-gradient(180deg,rgba(242,113,28,.22) 0,rgba(242,113,28,
 /* 5 · Over ons: full-bleed photo left, copy right */
 .about2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);padding:0;min-height:780px}
 .about2-media{position:relative;overflow:hidden;background:var(--ink)}
-.about2-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%;filter:saturate(0) contrast(1.08)}
+.about2-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%}
 .about2-media::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(21,22,23,0) 60%,var(--bg) 100%)}
 .about2-copy{align-self:center;padding:112px max(32px,calc((100vw - var(--wrap))/2 + 32px)) 112px 80px}
 .about2-copy .h2-solo{margin-bottom:24px}
