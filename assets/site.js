@@ -13,6 +13,10 @@ const sosBtn = $('#sosBtn');
 const sosPanel = $('#sosPanel');
 let contactOnScreen = false;
 let footOnScreen = false;
+// phones, subpages: the first screen is the page's hero/intro, and the pill would cover its text or buttons.
+// It slides in once the visitor scrolls (the home hero keeps room for it in its bottom padding).
+const isHome = document.body.dataset.page === 'home';
+const heroEl = isHome ? document.querySelector('main > .hero') : null;
 function sosHasFocus() {
   const a = document.activeElement;
   // a link inside the just-closed (display:none) panel does not count as focus
@@ -20,7 +24,10 @@ function sosHasFocus() {
 }
 function syncSos() {
   if (!sos || !sosPanel) return;
+  // "Storing melden" must be pressable everywhere (Tarik): it only steps aside where the page itself shows the phone number
   sos.classList.toggle('is-away', (contactOnScreen || footOnScreen) && sosPanel.hidden && !sosHasFocus());
+  // home: the full label while the pill sits on the hero (empty corner); elsewhere it tucks into the round e-stop (site.css)
+  sos.classList.toggle('is-wide', !!heroEl && heroEl.getBoundingClientRect().bottom > innerHeight - 110);
 }
 function setSos(open) {
   if (!sos || !sosBtn || !sosPanel) return;
@@ -204,80 +211,6 @@ svcLists.forEach(list => $$('.svc', list).forEach(svc => {
 applySvc();
 onMQ(mqSvc, applySvc);
 
-// ---- Projects viewer: tabs + wipe transition + autoplay while visible
-(() => {
-  const pv = $('#pv');
-  if (!pv) return;
-  const figs = $$('.pv-img', pv);
-  const tabs = $$('.pv-tab', pv);
-  const panels = $$('.pv-panel', pv);
-  const num = $('#pvNum');
-  const big = $('#pvBig');
-  if (!figs.length || figs.length !== tabs.length) return;
-  let cur = 0;
-  const show = i => {
-    if (i === cur) return;
-    figs.forEach(f => f.classList.remove('was-active'));
-    figs[cur].classList.remove('is-active');
-    figs[cur].classList.add('was-active');
-    figs[i].classList.add('is-active');
-    tabs.forEach((t, k) => { t.setAttribute('aria-selected', String(k === i)); t.tabIndex = k === i ? 0 : -1; });
-    panels.forEach((p, k) => { p.hidden = k !== i; });
-    const label = String(i + 1).padStart(2, '0');
-    if (num) num.textContent = label;
-    if (big) big.textContent = label;
-    cur = i;
-  };
-  // Autoplay stops for good once the visitor takes over (click/tap anywhere in the viewer, or keyboard focus)
-  const stopAuto = () => pv.classList.add('stopped');
-  pv.addEventListener('click', stopAuto);
-  tabs.forEach((t, i) => {
-    t.addEventListener('click', () => show(i));
-    const bar = $('.bar i', t);
-    if (bar) bar.addEventListener('animationend', () => { if (!pv.classList.contains('stopped')) show((cur + 1) % tabs.length); });
-    t.addEventListener('keydown', e => {
-      const d = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
-      let n;
-      if (e.key === 'Home') n = 0;
-      else if (e.key === 'End') n = tabs.length - 1;
-      else if (d) n = (cur + d + tabs.length) % tabs.length;
-      else return;
-      e.preventDefault();
-      show(n); tabs[n].focus();
-    });
-  });
-  const tablist = $('.pv-tabs', pv);
-  const mqVert = mm('(min-width: 961px)');
-  const syncOrient = () => { if (!tablist) return; if (mqVert.matches) tablist.setAttribute('aria-orientation', 'vertical'); else tablist.removeAttribute('aria-orientation'); };
-  syncOrient();
-  onMQ(mqVert, syncOrient);
-  const stage = $('#pvStage');
-  if (stage) stage.addEventListener('click', () => show((cur + 1) % tabs.length));
-  // Hold autoplay while the visitor is interacting: mouse hover, keyboard focus, touch (released 4s after lift)
-  const holds = new Set();
-  const syncHold = () => pv.classList.toggle('hold', holds.size > 0);
-  const isKeyFocus = el => { try { return el.matches(':focus-visible'); } catch (_) { return true; } };
-  pv.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') { holds.add('hover'); syncHold(); } });
-  pv.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') { holds.delete('hover'); syncHold(); } });
-  pv.addEventListener('focusin', e => { if (isKeyFocus(e.target)) { stopAuto(); holds.add('focus'); syncHold(); } });
-  pv.addEventListener('focusout', () => { holds.delete('focus'); syncHold(); });
-  let touchTimer = 0;
-  pv.addEventListener('pointerdown', e => {
-    if (e.pointerType === 'mouse') return;
-    clearTimeout(touchTimer);
-    holds.add('touch'); syncHold();
-  });
-  const lift = e => {
-    if (e.pointerType === 'mouse') return;
-    clearTimeout(touchTimer);
-    touchTimer = setTimeout(() => { holds.delete('touch'); syncHold(); }, 4000);
-  };
-  pv.addEventListener('pointerup', lift);
-  pv.addEventListener('pointercancel', lift);
-  // Only autoplay while on screen
-  if (hasIO) new IntersectionObserver(([e]) => pv.classList.toggle('live', e.isIntersecting), { threshold: 0.35 }).observe(pv);
-})();
-
 // ---- Word-rise headings (headings only)
 $$('.head2 h2, .h2-solo, .contact-info h2, .statement .st-line').forEach(el => {
   // words in order; an explicit <br> (e.g. the statement's phone break) is kept where it was
@@ -359,7 +292,9 @@ const onScrollFrame = () => {
   syncSos();
   tick = false;
 };
-addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(onScrollFrame); } }, { passive: true });
+const queueFrame = () => { if (!tick) { tick = true; requestAnimationFrame(onScrollFrame); } };
+addEventListener('scroll', queueFrame, { passive: true });
+addEventListener('resize', queueFrame, { passive: true });
 onScrollFrame();
 
 const year = $('#year');

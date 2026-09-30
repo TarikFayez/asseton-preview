@@ -23,9 +23,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500;600&family=Kaushan+Script&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=1">
-<link rel="stylesheet" href="assets/projecten.css?v=1">
-<noscript><style>.reveal{opacity:1;transform:none}.cmp .cmp-img{clip-path:none!important}.cmp .cmp-seam{opacity:1!important;transform:none!important}.cmp-bar,.cmp-zoom{display:none!important}.cmp-pane,.more-img{cursor:default}</style></noscript>
+<link rel="stylesheet" href="assets/site.css?v=4">
+<link rel="stylesheet" href="assets/projecten.css?v=4">
+<noscript><style>.reveal{opacity:1;transform:none}.cmp .cmp-img{clip-path:none!important}.cmp .cmp-seam{opacity:1!important;transform:none!important}.cmp-bar,.cmp-zoom,.mp-filter,.mp-toggle,.pj-toggle{display:none!important}.cmp-pane,.mp-img,.vt-shot{cursor:default}</style></noscript>
 </head>
 <body data-page="projecten">
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
@@ -84,43 +84,52 @@
 
 <main id="top">
 
-<!-- 1 · 01 PROJECTEN: compact page intro (no video, no banner) + index of the four before/after projects -->
-<section id="projecten" class="pj-intro">
-  <div class="wrap">
-    <div class="sec-top"><i class="led"></i><span class="n">01</span><span>Projecten</span></div>
-    <div class="pj-top reveal">
-      <h1 class="h2-solo pj-h1">Onze projecten</h1>
+<!-- 1 · 01 PROJECTEN: photographic hero in colour. Four project photos cross-fade slowly (static under reduced motion);
+     the index along the bottom lights the project on screen, its orange line runs while that photo shows.
+     Hovering the index, keyboard focus in the hero or the toggle pause it. -->
+<section id="projecten" class="pj-hero" data-hero>
+  <div class="pj-media" aria-hidden="true">
+    <div class="pj-slide pj-slide--tall is-on" data-ix="3" style="--op:50% 70%;--op-m:40% 50%"><img src="images/projecten/verlichting-nacht.jpg" width="968" height="1500" fetchpriority="high" decoding="async" alt=""></div>
+    <div class="pj-slide" data-ix="0" style="--op:50% 58%;--op-m:47% 50%"><img src="images/projecten/dakopbouw-tijdens.jpg" width="1500" height="844" loading="lazy" decoding="async" alt=""></div>
+    <div class="pj-slide" data-ix="1" style="--op:56% 50%;--op-m:61% 50%"><img src="images/projecten/ventilatoren-kraan.jpg" width="1500" height="844" loading="lazy" decoding="async" alt=""></div>
+    <div class="pj-slide" data-ix="2" style="--op:50% 50%;--op-m:78% 50%"><img src="images/projecten/galerij-na.jpg" width="1408" height="900" loading="lazy" decoding="async" alt=""></div>
+  </div>
+  <div class="pj-shade" aria-hidden="true"></div>
+  <div class="wrap pj-hero-in">
+    <div class="pj-copy reveal">
+      <div class="sec-top"><i class="led"></i><span class="n">01</span><span>Projecten</span></div>
+      <h1 class="h2-solo pj-h1">Onze<br>projecten</h1>
       <p class="pj-lead">Wij geloven in onze slogan “Elk project doet er toe”, wat betekent dat we elk project, groot of klein, met dezelfde toewijding en aandacht&nbsp;behandelen.</p>
     </div>
-    <nav class="pj-index reveal" aria-label="Op deze pagina">
-      <div class="pj-index-head">
-        <a class="pj-index-h label" href="#voor-en-na">Voor &amp; na</a>
-        <a class="side-link pj-more label" href="#meer-projecten">Meer projecten<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </div>
-      <ol class="pj-ix">
-        <li><a href="#dakopbouw"><span class="pj-ix-img"><img src="images/projecten/dakopbouw-na.jpg" width="1376" height="900" decoding="async" alt="" style="object-position:56% 60%"></span><span class="pj-ix-meta"><span class="pj-ix-n">01</span><span class="pj-ix-tag label">Dakopbouw</span></span><span class="pj-ix-t">Schilderwerk</span></a></li>
-        <li><a href="#galerij"><span class="pj-ix-img"><img src="images/projecten/galerij-na.jpg" width="1408" height="900" decoding="async" alt="" style="object-position:45% 50%"></span><span class="pj-ix-meta"><span class="pj-ix-n">02</span><span class="pj-ix-tag label">Galerij</span></span><span class="pj-ix-t">Schilderwerk</span></a></li>
-        <li><a href="#voordeur"><span class="pj-ix-img"><img src="images/projecten/voordeur-na.jpg" width="844" height="1500" decoding="async" alt="" style="object-position:50% 55%"></span><span class="pj-ix-meta"><span class="pj-ix-n">03</span></span><span class="pj-ix-t">Vervangen voordeur</span></a></li>
-        <li><a href="#houtrot"><span class="pj-ix-img"><img src="images/projecten/houtrot-na.jpg" width="844" height="1500" decoding="async" alt="" style="object-position:50% 25%"></span><span class="pj-ix-meta"><span class="pj-ix-n">04</span></span><span class="pj-ix-t">Herstel van houtrot</span></a></li>
+    <nav class="pjx" aria-label="Op deze pagina">
+      <ol class="pjx-list">
+        <li data-ix="0"><a href="#dakopbouw"><span class="pjx-bar" aria-hidden="true"></span><span class="pjx-meta"><i class="pjx-led" aria-hidden="true"></i><span class="pjx-n">01</span><span class="pjx-tag label">Dakopbouw</span></span><span class="pjx-t">Schilderwerk</span></a></li>
+        <li data-ix="1"><a href="#dakventilatoren"><span class="pjx-bar" aria-hidden="true"></span><span class="pjx-meta"><i class="pjx-led" aria-hidden="true"></i><span class="pjx-n">02</span><span class="pjx-tag label">Techniek</span></span><span class="pjx-t">Vervangen van 81 stuks dak ventilatoren</span></a></li>
+        <li data-ix="2"><a href="#galerij"><span class="pjx-bar" aria-hidden="true"></span><span class="pjx-meta"><i class="pjx-led" aria-hidden="true"></i><span class="pjx-n">03</span><span class="pjx-tag label">Galerij</span></span><span class="pjx-t">Schilderwerk</span></a></li>
+        <li data-ix="3" class="is-on"><a href="#meer-projecten"><span class="pjx-bar" aria-hidden="true"></span><span class="pjx-meta"><i class="pjx-led" aria-hidden="true"></i><span class="pjx-n">04–10</span></span><span class="pjx-t">Meer projecten<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></li>
       </ol>
     </nav>
   </div>
+  <button class="hero-toggle pj-toggle" id="pjToggle" type="button" aria-label="Foto’s pauzeren" hidden>
+    <svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+    <svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.9l10-6.5a1 1 0 0 0 0-1.7l-10-6.5A1 1 0 0 0 8 5.5z"/></svg>
+  </button>
 </section>
 
-<!-- 2 · 02 VOOR & NA: four case studies, each with its own composition.
+<!-- 2 · 02 UITGELICHT: the three highlighted projects get the big space, each with its own composition.
      Compare frame: VOOR / NA side by side (or stacked), click or pick a side to enlarge it, click again for full screen. -->
-<section id="voor-en-na" class="cool">
+<section id="uitgelicht" class="cool">
   <div class="wrap">
-    <div class="sec-top"><i class="led"></i><span class="n">02</span><span>Bouwkundig onderhoud</span></div>
+    <div class="sec-top"><i class="led"></i><span class="n">02</span><span>Uitgelicht</span></div>
     <div class="head2 reveal">
-      <h2>Voor &amp; na</h2>
-      <p>Met Asseton bieden wij een compleet pakket aan bouwkundig onderhoud. Onze allround vakmannen reageren snel op klachten van bewoners en voeren het benodigde onderhoud efficiënt&nbsp;uit.</p>
+      <h2>Recente projecten</h2>
+      <p>Wij bieden een breed aanbod aan van projectmatige installaties tot het beheren en onderhouden van&nbsp;bedrijfspanden.</p>
     </div>
 
     <!-- 01 · featured: full-width frame (Voor · Tijdens · Na), text above -->
     <article class="case case--feature" id="dakopbouw" data-lb-set data-lb-title="Schilderwerk" data-lb-tag="Dakopbouw" aria-labelledby="case1-t case1-tag">
       <div class="case-head reveal">
-        <div class="case-meta"><span class="case-n">01</span><span class="case-of">/ 04</span><span class="case-tag label" id="case1-tag">Dakopbouw</span></div>
+        <div class="case-meta"><span class="case-n">01</span><span class="case-of">/ 03</span><span class="case-tag label" id="case1-tag">Dakopbouw</span><span class="case-type label">Voor &amp; na</span></div>
         <h3 class="case-t" id="case1-t">Schilderwerk</h3>
         <div class="case-body">
           <p class="case-p">Onze experts repareren en vernieuwen houten dakconstructies, boeidelen en gevelbekleding, om de duurzaamheid en uitstraling van uw pand te&nbsp;behouden.</p>
@@ -158,11 +167,54 @@
       </div>
     </article>
 
-    <!-- 02 · text left, frame right: VOOR above NA (landscape pair) -->
-    <article class="case case--split" id="galerij" data-lb-set data-lb-title="Schilderwerk" data-lb-tag="Galerij" aria-labelledby="case2-t case2-tag">
+    <!-- 02 · technical case: the crane shot leads, the figure 81 carries the title;
+         below, one roof curb Voor / Na (same compare frame) and the roof with the new fans -->
+    <article class="case case--vent" id="dakventilatoren" data-lb-set data-lb-title="Vervangen van 81 stuks dak ventilatoren" aria-labelledby="case2-t">
       <div class="case-head reveal">
-        <div class="case-meta"><span class="case-n">02</span><span class="case-of">/ 04</span><span class="case-tag label" id="case2-tag">Galerij</span></div>
-        <h3 class="case-t" id="case2-t">Schilderwerk</h3>
+        <div class="case-meta"><span class="case-n">02</span><span class="case-of">/ 03</span><span class="case-type label">Techniek</span></div>
+        <h3 class="case-t vt-t" id="case2-t"><span class="vt-pre">Vervangen van</span> <span class="vt-fig">81</span> <span class="vt-post">stuks dak ventilatoren</span></h3>
+        <div class="case-body">
+          <p class="case-p">Wij verzorgen installaties van elke schaal, van woningen tot kantoren en loodsen. Of het nu gaat om kleine installaties of grote projecten, wij leveren altijd&nbsp;vakmanschap.</p>
+          <a class="case-svc" href="index.html#diensten"><span class="n">01</span><span class="label">Installatietechniek</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <button class="vt-shot vt-lead reveal" type="button" data-lb-open aria-haspopup="dialog">
+        <img src="images/projecten/ventilatoren-kraan.jpg" width="1500" height="844" loading="lazy" decoding="async" alt="Kraanwagen voor een galerijflat, met de giek tot boven het dak" data-lb style="object-position:58% 50%">
+        <span class="cmp-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+      </button>
+      <div class="cmp cmp--portrait cmp--vent reveal" data-cmp>
+        <div class="cmp-pane" data-pane="voor" style="--ar:3/4">
+          <div class="cmp-img"><img src="images/projecten/ventilatoren-oud.jpg" width="1125" height="1500" loading="lazy" decoding="async" alt="Open dakopstand na het verwijderen van de oude ventilator" data-lb data-lb-label="Voor" style="object-position:45% 60%"></div>
+          <span class="cmp-chip label">Voor</span>
+          <span class="cmp-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+        <div class="cmp-pane" data-pane="na" style="--ar:3/4">
+          <div class="cmp-img"><img src="images/projecten/ventilatoren-nieuw.jpg" width="1125" height="1500" loading="lazy" decoding="async" alt="Nieuwe dakventilator, van bovenaf gezien" data-lb data-lb-label="Na" style="object-position:50% 42%"></div>
+          <span class="cmp-chip is-na label">Na</span>
+          <span class="cmp-seam" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          <span class="cmp-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+        </div>
+      </div>
+      <div class="cmp-bar">
+        <div class="cmp-seg" role="radiogroup" aria-labelledby="lbWeergave case2-t">
+          <button class="label" type="button" role="radio" aria-checked="false" tabindex="-1" data-view="voor">Voor</button>
+          <button class="label" type="button" role="radio" aria-checked="false" tabindex="-1" data-view="na">Na</button>
+          <button class="label" type="button" role="radio" aria-checked="true" tabindex="0" data-view="alle">Beide</button>
+        </div>
+        <button class="cmp-full" type="button" aria-haspopup="dialog" aria-labelledby="case2-full case2-t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span class="label" id="case2-full">Volledig scherm</span></button>
+      </div>
+      <button class="vt-shot vt-roof reveal" type="button" data-lb-open aria-haspopup="dialog">
+        <img src="images/projecten/ventilatoren-dak.jpg" width="844" height="1500" loading="lazy" decoding="async" alt="Plat dak van de flat met een rij witte dakventilatoren" data-lb style="object-position:50% 54%">
+        <span class="cmp-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
+      </button>
+      <span hidden data-lb data-lb-src="images/projecten/ventilatoren-detail.jpg" data-lb-w="1125" data-lb-h="1500" data-lb-alt="Detail van een nieuwe dakventilator"></span>
+    </article>
+
+    <!-- 03 · text left, frame right: VOOR above NA (landscape pair) -->
+    <article class="case case--split" id="galerij" data-lb-set data-lb-title="Schilderwerk" data-lb-tag="Galerij" aria-labelledby="case3-t case3-tag">
+      <div class="case-head reveal">
+        <div class="case-meta"><span class="case-n">03</span><span class="case-of">/ 03</span><span class="case-tag label" id="case3-tag">Galerij</span><span class="case-type label">Voor &amp; na</span></div>
+        <h3 class="case-t" id="case3-t">Schilderwerk</h3>
         <div class="case-body">
           <p class="case-p">Van kleine renovaties zoals schilderwerk en het vervangen van vloeren tot complete aanpassingen van keukens en badkamers – wij zorgen voor een snelle en hoogwaardige&nbsp;uitvoering.</p>
           <a class="case-svc" href="index.html#onderhoud"><span class="n">09</span><span class="label">Mutaties &amp; renovaties</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
@@ -182,142 +234,159 @@
         </div>
       </div>
       <div class="cmp-bar">
-        <div class="cmp-seg" role="radiogroup" aria-labelledby="lbWeergave case2-t case2-tag">
+        <div class="cmp-seg" role="radiogroup" aria-labelledby="lbWeergave case3-t case3-tag">
           <button class="label" type="button" role="radio" aria-checked="false" tabindex="-1" data-view="voor">Voor</button>
           <button class="label" type="button" role="radio" aria-checked="false" tabindex="-1" data-view="na">Na</button>
           <button class="label" type="button" role="radio" aria-checked="true" tabindex="0" data-view="alle">Beide</button>
         </div>
-        <button class="cmp-full" type="button" aria-haspopup="dialog" aria-labelledby="case2-full case2-t case2-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span class="label" id="case2-full">Volledig scherm</span></button>
+        <button class="cmp-full" type="button" aria-haspopup="dialog" aria-labelledby="case3-full case3-t case3-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span class="label" id="case3-full">Volledig scherm</span></button>
       </div>
     </article>
-
-    <!-- 03 · frame left (portrait pair side by side), text right -->
-    <article class="case case--split case--rev" id="voordeur" data-lb-set data-lb-title="Vervangen voordeur" aria-labelledby="case3-t">
-      <div class="case-head reveal">
-        <div class="case-meta"><span class="case-n">03</span><span class="case-of">/ 04</span></div>
-        <h3 class="case-t" id="case3-t">Vervangen voordeur</h3>
-        <div class="case-body">
-          <p class="case-p">Onze timmermannen staan klaar om snel in te springen bij reparaties, zoals het verhelpen van lekkages en het herstellen van houtrot, deuren en&nbsp;kozijnen.</p>
-          <a class="case-svc" href="index.html#onderhoud"><span class="n">07</span><span class="label">Dagelijks onderhoud</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </div>
-      <div class="cmp cmp--portrait reveal" data-cmp>
-        <div class="cmp-pane" data-pane="voor" style="--ar:844/1500">
-          <div class="cmp-img"><img src="images/projecten/voordeur-voor.jpg" width="844" height="1500" loading="lazy" decoding="async" alt="Oude beige voordeur in een beschadigd kozijn" data-lb data-lb-label="Voor" style="object-position:50% 50%"></div>
-          <span class="cmp-chip label">Voor</span>
-          <span class="cmp-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
-        </div>
-        <div class="cmp-pane" data-pane="na" style="--ar:844/1500">
-          <div class="cmp-img"><img src="images/projecten/voordeur-na.jpg" width="844" height="1500" loading="lazy" decoding="async" alt="Nieuwe paarse voordeur" data-lb data-lb-label="Na" style="object-position:50% 50%"></div>
-          <span class="cmp-chip is-na label">Na</span>
-          <span class="cmp-seam" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          <span class="cmp-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
-        </div>
-      </div>
-      <div class="cmp-bar">
-        <div class="cmp-seg" role="radiogroup" aria-labelledby="lbWeergave case3-t">
-          <button class="label" type="button" role="radio" aria-checked="false" tabindex="-1" data-view="voor">Voor</button>
-          <button class="label" type="button" role="radio" aria-checked="false" tabindex="-1" data-view="na">Na</button>
-          <button class="label" type="button" role="radio" aria-checked="true" tabindex="0" data-view="alle">Beide</button>
-        </div>
-        <button class="cmp-full" type="button" aria-haspopup="dialog" aria-labelledby="case3-full case3-t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span class="label" id="case3-full">Volledig scherm</span></button>
-      </div>
-    </article>
-
-    <!-- 04 · narrow text left, wide frame right: each photo gets a width in proportion to its own shape -->
-    <article class="case case--split case--wide" id="houtrot" data-lb-set data-lb-title="Herstel van houtrot" aria-labelledby="case4-t">
-      <div class="case-head reveal">
-        <div class="case-meta"><span class="case-n">04</span><span class="case-of">/ 04</span></div>
-        <h3 class="case-t" id="case4-t">Herstel van houtrot</h3>
-        <div class="case-body">
-          <p class="case-p">Wij inspecteren en herstellen houtrot in kozijnen, ramen en deuren, zodat uw pand in goede staat&nbsp;blijft.</p>
-          <a class="case-svc" href="index.html#onderhoud"><span class="n">08</span><span class="label">Houtrotherstel</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-        </div>
-      </div>
-      <div class="cmp cmp--mixed reveal" data-cmp>
-        <div class="cmp-pane" data-pane="voor" style="--g:1.78;--ar:16/9">
-          <div class="cmp-img"><img src="images/projecten/houtrot-voor.jpg" width="1500" height="844" loading="lazy" decoding="async" alt="Gescheurde, verweerde houten afdekplank" data-lb data-lb-label="Voor" style="object-position:62% 55%"></div>
-          <span class="cmp-chip label">Voor</span>
-          <span class="cmp-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
-        </div>
-        <div class="cmp-pane" data-pane="na" style="--g:.72;--ar:4/3">
-          <div class="cmp-img"><img src="images/projecten/houtrot-na.jpg" width="844" height="1500" loading="lazy" decoding="async" alt="Afdekplank, glad en glanzend geschilderd" data-lb data-lb-label="Na" style="object-position:45% 25%"></div>
-          <span class="cmp-chip is-na label">Na</span>
-          <span class="cmp-seam" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          <span class="cmp-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></span>
-        </div>
-      </div>
-      <div class="cmp-bar">
-        <div class="cmp-seg" role="radiogroup" aria-labelledby="lbWeergave case4-t">
-          <button class="label" type="button" role="radio" aria-checked="false" tabindex="-1" data-view="voor">Voor</button>
-          <button class="label" type="button" role="radio" aria-checked="false" tabindex="-1" data-view="na">Na</button>
-          <button class="label" type="button" role="radio" aria-checked="true" tabindex="0" data-view="alle">Beide</button>
-        </div>
-        <button class="cmp-full" type="button" aria-haspopup="dialog" aria-labelledby="case4-full case4-t"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg><span class="label" id="case4-full">Volledig scherm</span></button>
-      </div>
-    </article>
-    <span id="lbWeergave" hidden>Weergave</span>
+    <span class="label" id="lbWeergave" hidden>Weergave</span>
   </div>
 </section>
 
-<!-- 3 · 03 MEER PROJECTEN: the four old-site installation projects (old-site photos), compact 4-up -->
+<!-- 3 · 03 MEER PROJECTEN: the other seven projects as an editorial index (rules, numbers, small photos), filterable by type.
+     Voor & na items show a small split; every photo button opens that project's photos in the lightbox. -->
 <section id="meer-projecten" class="warm">
   <div class="wrap">
-    <div class="sec-top"><i class="led"></i><span class="n">03</span><span>Installatietechniek</span></div>
-    <h2 class="h2-solo reveal">Meer projecten</h2>
-    <div class="more">
-      <article class="more-item reveal" data-lb-set data-lb-title="Verlichtingsprojecten">
-        <button class="more-img" type="button" aria-haspopup="dialog" aria-label="Foto’s van Verlichtingsprojecten bekijken (2)">
-          <img src="images/projecten/verlichting-hoogwerker.jpg" width="1500" height="1125" loading="lazy" decoding="async" alt="Schaarhoogwerker onder de lichtlijnen in de loods" data-lb style="object-position:50% 50%">
-          <span class="more-count" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7.5" y="7.5" width="13" height="13" rx="1.5"/><path d="M16.5 4.5V4a.5.5 0 0 0-.5-.5H4a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h.5"/></svg>2</span>
+    <div class="sec-top"><i class="led"></i><span class="n">03</span><span>Techniek &amp; onderhoud</span></div>
+    <div class="mp-head">
+      <h2 class="h2-solo reveal">Meer projecten</h2>
+      <div class="mp-filter reveal" role="group" aria-label="Projecten filteren">
+        <button class="label" type="button" aria-pressed="true" data-filter="alle">Alle<span class="mp-c">7</span></button>
+        <button class="label" type="button" aria-pressed="false" data-filter="techniek">Techniek<span class="mp-c">5</span></button>
+        <button class="label" type="button" aria-pressed="false" data-filter="voor-na">Voor &amp; na<span class="mp-c">2</span></button>
+      </div>
+    </div>
+    <p class="pj-vh" id="mpStatus" aria-live="polite" aria-atomic="true"></p>
+
+    <div class="mp-list">
+      <article class="mp-item reveal" id="voordeur" data-type="voor-na" data-lb-set data-lb-title="Vervangen voordeur" aria-labelledby="mp4-t">
+        <button class="mp-img mp-img--split" type="button" data-lb-open aria-haspopup="dialog" aria-label="Foto’s van Vervangen voordeur bekijken (2)">
+          <span class="mp-half"><img src="images/projecten/voordeur-voor.jpg" width="844" height="1500" loading="lazy" decoding="async" alt="Oude beige voordeur in een beschadigd kozijn" data-lb data-lb-label="Voor" style="object-position:62% 50%"><span class="mp-chip label">Voor</span></span>
+          <span class="mp-half"><img src="images/projecten/voordeur-na.jpg" width="844" height="1500" loading="lazy" decoding="async" alt="Nieuwe paarse voordeur" data-lb data-lb-label="Na" style="object-position:50% 50%"><span class="mp-chip is-na label">Na</span></span>
         </button>
-        <span hidden data-lb data-lb-src="images/projecten/verlichting-lichtlijn.jpg" data-lb-w="1500" data-lb-h="1125" data-lb-alt="Lichtlijnen onder het dak van de loods"></span>
-        <h3>Verlichtingsprojecten</h3>
-        <p>Bij een recent project in een loods van <strong class="fig">4500 m²</strong> hebben wij <strong class="fig">1000 meter</strong> lichtlijn gemonteerd, inclusief het opstellen van een compleet lichtplan. Daarnaast hebben we in diverse complexen meer dan <strong class="fig">1500</strong> armaturen vervangen, waardoor zowel de energie-efficiëntie als de verlichting sterk is&nbsp;verbeterd.</p>
+        <p class="mp-meta"><span class="mp-n">04</span><span class="mp-type label">Voor &amp; na</span></p>
+        <h3 class="mp-t" id="mp4-t">Vervangen voordeur</h3>
+        <div class="mp-txt">
+          <p class="mp-p" id="mp4-p">Onze timmermannen staan klaar om snel in te springen bij reparaties, zoals het verhelpen van lekkages en het herstellen van houtrot, deuren en&nbsp;kozijnen.</p>
+          <button class="mp-toggle label" type="button" aria-expanded="false" aria-controls="mp4-p" hidden><span>Lees meer</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        </div>
+        <a class="mp-svc" href="index.html#onderhoud"><span class="n">07</span><span class="label">Dagelijks onderhoud</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </article>
-      <article class="more-item reveal" data-lb-set data-lb-title="Renovatieprojecten">
-        <button class="more-img" type="button" aria-haspopup="dialog" aria-label="Foto van Renovatieprojecten bekijken">
-          <img src="images/project-renovatie-appartement.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt="Renovatieproject: luxe appartement" data-lb style="object-position:50% 62%">
+
+      <article class="mp-item reveal" id="houtrot" data-type="voor-na" data-lb-set data-lb-title="Herstel van houtrot" aria-labelledby="mp5-t">
+        <button class="mp-img mp-img--split" type="button" data-lb-open aria-haspopup="dialog" aria-label="Foto’s van Herstel van houtrot bekijken (2)">
+          <span class="mp-half"><img src="images/projecten/houtrot-voor.jpg" width="1500" height="844" loading="lazy" decoding="async" alt="Gescheurde, verweerde houten afdekplank" data-lb data-lb-label="Voor" style="object-position:58% 55%"><span class="mp-chip label">Voor</span></span>
+          <span class="mp-half"><img src="images/projecten/houtrot-na.jpg" width="844" height="1500" loading="lazy" decoding="async" alt="Afdekplank, glad en glanzend geschilderd" data-lb data-lb-label="Na" style="object-position:45% 50%"><span class="mp-chip is-na label">Na</span></span>
         </button>
-        <h3>Renovatieprojecten</h3>
-        <p>Voor een luxe appartement hebben wij, in nauwe samenwerking met de architect, de elektrische installaties compleet vernieuwd en geavanceerde domotica geïmplementeerd. Het resultaat is een perfecte balans tussen moderne technologie en elegantie, volledig afgestemd op de wensen van de&nbsp;klant.</p>
+        <p class="mp-meta"><span class="mp-n">05</span><span class="mp-type label">Voor &amp; na</span></p>
+        <h3 class="mp-t" id="mp5-t">Herstel van houtrot</h3>
+        <div class="mp-txt">
+          <p class="mp-p" id="mp5-p">Wij inspecteren en herstellen houtrot in kozijnen, ramen en deuren, zodat uw pand in goede staat&nbsp;blijft.</p>
+          <button class="mp-toggle label" type="button" aria-expanded="false" aria-controls="mp5-p" hidden><span>Lees meer</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        </div>
+        <a class="mp-svc" href="index.html#onderhoud"><span class="n">08</span><span class="label">Houtrotherstel</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </article>
-      <article class="more-item reveal" data-lb-set data-lb-title="Nieuwbouwprojecten">
-        <button class="more-img" type="button" aria-haspopup="dialog" aria-label="Foto van Nieuwbouwprojecten bekijken">
-          <img src="images/project-nieuwbouw-villa.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt="Nieuwbouwproject: zwevende villa" data-lb style="object-position:50% 38%">
+
+      <article class="mp-item reveal" id="groot-onderhoud" data-type="techniek" data-lb-set data-lb-title="Uitvoeren van jaarlijkse groot onderhoud" aria-labelledby="mp6-t">
+        <button class="mp-img" type="button" data-lb-open aria-haspopup="dialog" aria-label="Foto’s van Uitvoeren van jaarlijkse groot onderhoud bekijken (6)">
+          <img src="images/projecten/onderhoud-pomp.jpg" width="1125" height="1500" loading="lazy" decoding="async" alt="Pomp met frequentieregelaar in een technische ruimte" data-lb style="object-position:55% 42%">
+          <span class="mp-count" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7.5" y="7.5" width="13" height="13" rx="1.5"/><path d="M16.5 4.5V4a.5.5 0 0 0-.5-.5H4a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h.5"/></svg>6</span>
         </button>
-        <h3>Nieuwbouwprojecten</h3>
-        <p>Wij hebben de volledige installatie van een zwevende villa verzorgd, inclusief domotica-oplossingen die de moderne levensstijl van de klant ondersteunen. Daarnaast hebben we voor een project met <strong class="fig">10</strong> appartementen de complete elektrovoorzieningen gerealiseerd, waarbij functionaliteit en design hand in hand&nbsp;gingen.</p>
+        <span hidden data-lb data-lb-src="images/projecten/onderhoud-regelkast.jpg" data-lb-w="1125" data-lb-h="1500" data-lb-alt="Regelkast aan een luchtbehandelingskast in een technische ruimte"></span>
+        <span hidden data-lb data-lb-src="images/projecten/onderhoud-filters.jpg" data-lb-w="1125" data-lb-h="1500" data-lb-alt="Filters in een geopende luchtbehandelingskast"></span>
+        <span hidden data-lb data-lb-src="images/projecten/onderhoud-kantoor.jpg" data-lb-w="1125" data-lb-h="1500" data-lb-alt="Kantoorruimte met ventilatiekanalen en luchtroosters aan het plafond"></span>
+        <span hidden data-lb data-lb-src="images/projecten/onderhoud-motor.jpg" data-lb-w="1125" data-lb-h="1500" data-lb-alt="Ventilatormotor met aandrijfriem"></span>
+        <span hidden data-lb data-lb-src="images/projecten/onderhoud-leidingen.jpg" data-lb-w="1125" data-lb-h="1500" data-lb-alt="Leidingen en afsluiters aan een luchtbehandelingskast"></span>
+        <p class="mp-meta"><span class="mp-n">06</span><span class="mp-type label">Techniek</span></p>
+        <h3 class="mp-t" id="mp6-t">Uitvoeren van jaarlijkse groot onderhoud</h3>
+        <div class="mp-txt">
+          <p class="mp-p" id="mp6-p">Onze specialisten lossen storingen snel en vakkundig op, en voeren preventief onderhoud uit om uw installaties in topconditie te&nbsp;houden.</p>
+          <button class="mp-toggle label" type="button" aria-expanded="false" aria-controls="mp6-p" hidden><span>Lees meer</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        </div>
+        <a class="mp-svc" href="index.html#diensten"><span class="n">05</span><span class="label">Storingen &amp; onderhoud</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </article>
-      <article class="more-item reveal" data-lb-set data-lb-title="Intercominstallaties">
-        <button class="more-img" type="button" aria-haspopup="dialog" aria-label="Foto van Intercominstallaties bekijken">
-          <img src="images/project-intercom.jpg" width="1600" height="900" loading="lazy" decoding="async" alt="Intercom installatie" data-lb style="object-position:50% 50%">
+
+      <article class="mp-item reveal" id="intercom" data-type="techniek" data-lb-set data-lb-title="Vervangen intercom installatie inclusief brievenbus kast" aria-labelledby="mp7-t">
+        <button class="mp-img" type="button" data-lb-open aria-haspopup="dialog" aria-label="Foto’s van Vervangen intercom installatie inclusief brievenbus kast bekijken (4)">
+          <img src="images/projecten/intercom-paneel.jpg" width="744" height="1184" loading="lazy" decoding="async" alt="Brievenbuskast met ingebouwd intercompaneel" data-lb style="object-position:50% 30%">
+          <span class="mp-count" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7.5" y="7.5" width="13" height="13" rx="1.5"/><path d="M16.5 4.5V4a.5.5 0 0 0-.5-.5H4a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h.5"/></svg>4</span>
         </button>
-        <h3>Intercominstallaties</h3>
-        <p>Met meer dan <strong class="fig">1000</strong> succesvolle installaties van intercomtoestellen, zijn wij dé experts op het gebied van intercomsystemen. Of het nu gaat om het vervangen van bestaande systemen of het implementeren van nieuwe oplossingen, wij zorgen voor een vlekkeloze&nbsp;installatie.</p>
+        <span hidden data-lb data-lb-src="images/projecten/intercom-buitenpost.jpg" data-lb-w="1125" data-lb-h="1500" data-lb-alt="Buitenpost met camera en belknoppen boven de brievenbussen"></span>
+        <span hidden data-lb data-lb-src="images/projecten/intercom-binnenpost.jpg" data-lb-w="948" data-lb-h="864" data-lb-alt="Binnenpost met beeldscherm en hoorn aan de wand"></span>
+        <span hidden data-lb data-lb-src="images/project-intercom.jpg" data-lb-w="1600" data-lb-h="900" data-lb-alt="Geopende intercomkast met bedrading"></span>
+        <p class="mp-meta"><span class="mp-n">07</span><span class="mp-type label">Techniek</span></p>
+        <h3 class="mp-t" id="mp7-t">Vervangen intercom installatie inclusief brievenbus kast</h3>
+        <div class="mp-txt">
+          <p class="mp-p" id="mp7-p">Met meer dan <strong class="fig">1000</strong> succesvolle installaties van intercomtoestellen, zijn wij dé experts op het gebied van intercomsystemen. Of het nu gaat om het vervangen van bestaande systemen of het implementeren van nieuwe oplossingen, wij zorgen voor een vlekkeloze&nbsp;installatie.</p>
+          <button class="mp-toggle label" type="button" aria-expanded="false" aria-controls="mp7-p" hidden><span>Lees meer</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        </div>
+        <a class="mp-svc" href="index.html#diensten"><span class="n">04</span><span class="label">Intercom</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+
+      <article class="mp-item reveal" id="verlichting" data-type="techniek" data-lb-set data-lb-title="Verlichtingsprojecten" aria-labelledby="mp8-t">
+        <button class="mp-img" type="button" data-lb-open aria-haspopup="dialog" aria-label="Foto’s van Verlichtingsprojecten bekijken (2)">
+          <img src="images/projecten/verlichting-nacht.jpg" width="968" height="1500" loading="lazy" decoding="async" alt="Kantoorgebouw bij avond met verlichte gevel en tuinverlichting" data-lb style="object-position:50% 56%">
+          <span class="mp-count" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7.5" y="7.5" width="13" height="13" rx="1.5"/><path d="M16.5 4.5V4a.5.5 0 0 0-.5-.5H4a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h.5"/></svg>2</span>
+        </button>
+        <span hidden data-lb data-lb-src="images/projecten/verlichting-hoogwerker.jpg" data-lb-w="1500" data-lb-h="1125" data-lb-crop="0.14 0 1 1" data-lb-alt="Schaarhoogwerker onder de lichtlijnen in de loods"></span>
+        <p class="mp-meta"><span class="mp-n">08</span><span class="mp-type label">Techniek</span></p>
+        <h3 class="mp-t" id="mp8-t">Verlichtingsprojecten</h3>
+        <div class="mp-txt">
+          <p class="mp-p" id="mp8-p">Bij een recent project in een loods van <strong class="fig">4500 m²</strong> hebben wij <strong class="fig">1000 meter</strong> lichtlijn gemonteerd, inclusief het opstellen van een compleet lichtplan. Daarnaast hebben we in diverse complexen meer dan <strong class="fig">1500</strong> armaturen vervangen, waardoor zowel de energie-efficiëntie als de verlichting sterk is&nbsp;verbeterd.</p>
+          <button class="mp-toggle label" type="button" aria-expanded="false" aria-controls="mp8-p" hidden><span>Lees meer</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        </div>
+        <a class="mp-svc" href="index.html#diensten"><span class="n">03</span><span class="label">Verlichting</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+
+      <article class="mp-item reveal" id="renovatie" data-type="techniek" data-lb-set data-lb-title="Renovatieprojecten" aria-labelledby="mp9-t">
+        <button class="mp-img" type="button" data-lb-open aria-haspopup="dialog" aria-label="Foto van Renovatieprojecten bekijken">
+          <img src="images/project-renovatie-appartement.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt="Eethoek met hanglamp en wandverlichting in een gerenoveerd appartement" data-lb style="object-position:50% 45%">
+        </button>
+        <p class="mp-meta"><span class="mp-n">09</span><span class="mp-type label">Techniek</span></p>
+        <h3 class="mp-t" id="mp9-t">Renovatieprojecten</h3>
+        <div class="mp-txt">
+          <p class="mp-p" id="mp9-p">Voor een luxe appartement hebben wij, in nauwe samenwerking met de architect, de elektrische installaties compleet vernieuwd en geavanceerde domotica geïmplementeerd. Het resultaat is een perfecte balans tussen moderne technologie en elegantie, volledig afgestemd op de wensen van de&nbsp;klant.</p>
+          <button class="mp-toggle label" type="button" aria-expanded="false" aria-controls="mp9-p" hidden><span>Lees meer</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        </div>
+        <a class="mp-svc" href="index.html#diensten"><span class="n">02</span><span class="label">Elektrotechniek</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </article>
+
+      <article class="mp-item reveal" id="nieuwbouw" data-type="techniek" data-lb-set data-lb-title="Nieuwbouwprojecten" aria-labelledby="mp10-t">
+        <button class="mp-img" type="button" data-lb-open aria-haspopup="dialog" aria-label="Foto van Nieuwbouwprojecten bekijken">
+          <img src="images/project-nieuwbouw-villa.jpg" width="1200" height="1600" loading="lazy" decoding="async" alt="De zwevende villa, met een glazen gevel op de begane grond" data-lb style="object-position:50% 38%">
+        </button>
+        <p class="mp-meta"><span class="mp-n">10</span><span class="mp-type label">Techniek</span></p>
+        <h3 class="mp-t" id="mp10-t">Nieuwbouwprojecten</h3>
+        <div class="mp-txt">
+          <p class="mp-p" id="mp10-p">Wij hebben de volledige installatie van een zwevende villa verzorgd, inclusief domotica-oplossingen die de moderne levensstijl van de klant ondersteunen. Daarnaast hebben we voor een project met <strong class="fig">10</strong> appartementen de complete elektrovoorzieningen gerealiseerd, waarbij functionaliteit en design hand in hand&nbsp;gingen.</p>
+          <button class="mp-toggle label" type="button" aria-expanded="false" aria-controls="mp10-p" hidden><span>Lees meer</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+        </div>
+        <a class="mp-svc" href="index.html#diensten"><span class="n">02</span><span class="label">Elektrotechniek</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </article>
     </div>
   </div>
 </section>
 
-<!-- 4 · 04 CONTACT: closing call to action (details + form live on the home page) -->
-<section id="contact" class="cool pj-cta">
+<!-- 4 · CONTACT: a compact closing band (quieter than the hero; details + form live on the home page) -->
+<section id="contact" class="cool pj-close">
   <div class="wrap">
-    <div class="sec-top"><i class="led"></i><span class="n">04</span><span>Contact</span></div>
-    <div class="cta-panel reveal">
-      <h2 class="h2-solo">Klaar voor uw volgende project?</h2>
-      <div class="cta-body">
+    <div class="pj-close-in reveal">
+      <div class="pj-close-txt">
+        <h2 class="pj-close-h">Klaar voor uw volgende project?</h2>
         <p>Neem vandaag nog contact met ons op! Ons team staat klaar om u te ontzorgen en elk aspect van uw installatie- of onderhoudsbehoeften met de hoogste zorg en professionaliteit aan te&nbsp;pakken.</p>
-        <div class="cta-actions">
-          <a href="index.html#contact" class="btn btn-signal">
-            Neem contact op
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-          <a href="tel:+31850604287" class="btn btn-ghost">
-            Bel ons: 085 060 4287
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
-          </a>
-        </div>
+      </div>
+      <div class="pj-close-act">
+        <a href="index.html#contact" class="btn btn-signal">
+          Neem contact op
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="tel:+31850604287" class="btn btn-ghost">
+          Bel ons: 085 060 4287
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        </a>
       </div>
     </div>
   </div>
@@ -362,7 +431,7 @@
   <p class="lb-cap" aria-live="polite" aria-atomic="true"><span class="pj-vh" id="lbSr"></span><span class="lb-chip label" id="lbChip"></span><span class="lb-title" id="lbTitle"></span><span class="lb-tag label" id="lbTag"></span></p>
 </dialog>
 
-<script src="assets/site.js?v=1"></script>
-<script src="assets/projecten.js?v=1"></script>
+<script src="assets/site.js?v=4"></script>
+<script src="assets/projecten.js?v=4"></script>
 </body>
 </html>

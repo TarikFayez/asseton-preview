@@ -15,7 +15,7 @@
 <link rel="canonical" href="https://asseton.nl/werken-bij.html">
 <meta property="og:title" content="Werken bij - Asseton">
 <meta property="og:description" content="Asseton is een allround installatiebedrijf met een team dat garant staat voor vakkennis en een klantgerichte aanpak.">
-<meta property="og:image" content="https://asseton.nl/images/projecten/verlichting-hoogwerker.jpg">
+<meta property="og:image" content="https://asseton.nl/images/over-ons-atrium.jpg">
 <meta property="og:url" content="https://asseton.nl/werken-bij.html">
 <meta property="og:locale" content="nl_NL">
 <meta name="theme-color" content="#0E0F10">
@@ -23,8 +23,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500;600&family=Kaushan+Script&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/site.css?v=1">
-<link rel="stylesheet" href="assets/werken-bij.css?v=2">
+<link rel="stylesheet" href="assets/site.css?v=4">
+<link rel="stylesheet" href="assets/werken-bij.css?v=4">
 <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body data-page="werken-bij">
@@ -84,21 +84,28 @@
 
 <main id="top">
 
-<!-- 1 · 01 WERKEN BIJ: intro on ink with the backlit orange edge (same opening as Projecten).
-     >=1025: heading, lead and buttons beside the colour work photo (photo bleeds off the right edge), the two longer paragraphs below.
-     Phone: heading, photo, lead, buttons, then the two paragraphs. -->
-<section id="werken-bij" class="wbi">
-  <div class="wrap">
-    <div class="sec-top"><i class="led"></i><span class="n">01</span><span>Werken bij</span></div>
-    <div class="wbi-top">
-      <h1 class="statement wbi-h reveal"><span class="st-line">Kom werken aan projecten die ertoe doen!</span></h1>
-      <figure class="wbi-media">
+<!-- 1 · 01 WERKEN BIJ: full-bleed hero in colour (same opening as Home and Projecten): the work photo under a charcoal shade,
+     the heading, lead and buttons on the dark side, the site's orange corner marks focused on the monteur on the lift, backlit orange edge.
+     The photo sits on a canvas with the image's own proportions, so the marks stay on the monteur at every screen size. -->
+<section id="werken-bij" class="wbh">
+  <div class="wbh-media">
+    <div class="wbh-view">
+      <div class="wbh-canvas">
         <img src="images/projecten/verlichting-hoogwerker.jpg" width="1500" height="1125" fetchpriority="high" decoding="async" alt="Monteur op een oranje schaarlift bij de lichtlijnen onder het dak van een loods">
-        <span class="pv-mark tl" aria-hidden="true"></span><span class="pv-mark tr" aria-hidden="true"></span><span class="pv-mark bl" aria-hidden="true"></span><span class="pv-mark br" aria-hidden="true"></span>
-        <figcaption class="wbi-slogan" aria-hidden="true">Elk project doet er toe!</figcaption>
-      </figure>
-      <p class="wbi-lead reveal">Asseton is een allround installatiebedrijf met een team dat garant staat voor vakkennis en een klantgerichte aanpak. We werken met korte lijnen, zodat problemen direct worden&nbsp;aangepakt.</p>
-      <div class="wbi-actions reveal">
+      </div>
+      <div class="wbh-shade" aria-hidden="true"></div>
+      <div class="wbh-canvas wbh-marks" aria-hidden="true">
+        <span class="wbh-focus"><span class="pv-mark tl"></span><span class="pv-mark tr"></span><span class="pv-mark bl"></span><span class="pv-mark br"></span></span>
+        <p class="wbh-slogan">Elk project doet er toe!</p>
+      </div>
+    </div>
+  </div>
+  <div class="wrap wbh-in">
+    <div class="wbh-copy">
+      <div class="sec-top"><i class="led"></i><span class="n">01</span><span>Werken bij</span></div>
+      <h1 class="statement wbh-h reveal"><span class="st-line">Kom werken aan projecten die ertoe doen!</span></h1>
+      <p class="wbh-lead reveal">Asseton is een allround installatiebedrijf met een team dat garant staat voor vakkennis en een klantgerichte aanpak. We werken met korte lijnen, zodat problemen direct worden&nbsp;aangepakt.</p>
+      <div class="wbh-actions reveal">
         <a class="btn btn-signal" href="#vacatures">
           Bekijk vacatures
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
@@ -109,17 +116,18 @@
         </a>
       </div>
     </div>
-    <div class="wbi-more reveal">
-      <p>Wij geloven in onze slogan “Elk project doet er toe”, wat betekent dat we elk project, groot of klein, met dezelfde toewijding en aandacht behandelen. Wij zijn ervan overtuigd dat zelfs de kleinste klus een significante impact kan hebben op de tevredenheid van onze klanten en de kwaliteit van hun&nbsp;omgeving.</p>
-      <p>Bij Asseton hechten we niet alleen waarde aan de projecten die we uitvoeren, maar ook aan de mensen die voor ons werken. We zijn een hecht en gezellig team waar samenwerking en plezier in het werk centraal staan. Bovendien bieden we volop mogelijkheden voor persoonlijke en professionele ontwikkeling, zodat je jouw vaardigheden kunt uitbreiden en kunt doorgroeien binnen ons bedrijf. <span class="wbi-ask">Kom jij ons team versterken en bijdragen aan projecten die ertoe&nbsp;doen?</span></p>
-    </div>
   </div>
 </section>
 
-<!-- 2 · KEY FACTS: verbatim figures from the two vacancies, grouped per vacancy like labelled groups in a distribution board -->
-<section class="warm wbf" aria-label="Arbeidsvoorwaarden">
+<!-- 2 · The team + key facts (warm): the two verbatim paragraphs as an editorial spread, then the verbatim figures from the two vacancies,
+     grouped per vacancy like labelled groups in a distribution board -->
+<section class="warm wbt">
   <div class="wrap">
-    <div class="wbf-groups">
+    <div class="wbt-copy">
+      <p class="wbt-p1 reveal">Wij geloven in onze slogan “Elk project doet er toe”, wat betekent dat we elk project, groot of klein, met dezelfde toewijding en aandacht behandelen. Wij zijn ervan overtuigd dat zelfs de kleinste klus een significante impact kan hebben op de tevredenheid van onze klanten en de kwaliteit van hun&nbsp;omgeving.</p>
+      <p class="wbt-p2 reveal">Bij Asseton hechten we niet alleen waarde aan de projecten die we uitvoeren, maar ook aan de mensen die voor ons werken. We zijn een hecht en gezellig team waar samenwerking en plezier in het werk centraal staan. Bovendien bieden we volop mogelijkheden voor persoonlijke en professionele ontwikkeling, zodat je jouw vaardigheden kunt uitbreiden en kunt doorgroeien binnen ons bedrijf. <span class="wbt-ask">Kom jij ons team versterken en bijdragen aan projecten die ertoe&nbsp;doen?</span></p>
+    </div>
+    <div class="wbf-groups" role="group" aria-label="Arbeidsvoorwaarden">
       <div class="wbf-group reveal">
         <p class="wbf-h label"><i class="led"></i>Beide vacatures</p>
         <ul class="wbf-list">
@@ -330,7 +338,7 @@
   </div>
 </footer>
 
-<script src="assets/site.js?v=1"></script>
-<script src="assets/werken-bij.js?v=2"></script>
+<script src="assets/site.js?v=4"></script>
+<script src="assets/werken-bij.js?v=4"></script>
 </body>
 </html>

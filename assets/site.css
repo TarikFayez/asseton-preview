@@ -8,8 +8,8 @@
   --bg:#151617;           /* base black: body + .cool sections (Intro, Onderhoud, Over ons, Contact) */
   --bg-raise:#1F2022;     /* raised on base: slogan panel, form, SOS pill + panel, mobile nav sheet */
   --umber:#27282B;        /* second dark: .warm sections (Diensten, Projecten, Werken bij) */
-  --umber-raise:#323336;  /* raised on second dark: project chips <=960 */
-  --field:#111213;        /* input fill */
+  --umber-raise:#323336;  /* raised on second dark: pressed filter chip (projecten.css) */
+  --field:#111213;       /* input fill */
   --pv-stage:#0E0F10;     /* project image stage */
   /* text (same on both darks) */
   --t:#F4F3F5; --tb:#CDCDD2; --tm:#ABACB2;
@@ -186,50 +186,12 @@ section{position:relative;padding:112px 0;scroll-margin-top:74px}
   .svc:hover .svc-h{color:var(--signal)}
 }
 
-/* 4 · Projecten: viewer */
-.pv{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);grid-template-rows:auto 1fr;grid-template-areas:"stage tabs" "stage panels";column-gap:56px;row-gap:36px;align-items:start}
-.pv-tabs{grid-area:tabs;border-top:1px solid var(--rule-strong)}
-.pv-stage{grid-area:stage;position:relative;height:min(calc(100vh - 290px),680px);min-height:440px;overflow:hidden;background:var(--pv-stage);cursor:pointer}
-.pv-panels{grid-area:panels;display:grid;max-width:480px}
-.pv-img{position:absolute;inset:0;margin:0;visibility:hidden}
-.pv-img img{width:100%;height:100%;object-fit:cover}
-.pv-img.was-active{visibility:visible;z-index:1}
-.pv-img.is-active{visibility:visible;z-index:2;animation:pvWipe 1s var(--ease) both}
-.pv-img.is-active img{animation:pvZoom 9s linear both}
-.pv-stage::after{content:"";position:absolute;inset:0;z-index:3;background:linear-gradient(0deg,rgba(14,15,16,.75) 0%,rgba(14,15,16,0) 38%),linear-gradient(180deg,rgba(14,15,16,.45) 0%,rgba(14,15,16,0) 22%);pointer-events:none}
-@keyframes pvWipe{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
-@keyframes pvZoom{from{transform:scale(1.12)}to{transform:scale(1)}}
+/* Corner marks: orange brackets framing a photo (shared; the Werken bij intro photo uses them) */
 .pv-mark{position:absolute;z-index:4;width:22px;height:22px;border:0 solid var(--signal)}
 .pv-mark.tl{top:18px;left:18px;border-top-width:2px;border-left-width:2px}
 .pv-mark.tr{top:18px;right:18px;border-top-width:2px;border-right-width:2px}
 .pv-mark.bl{bottom:18px;left:18px;border-bottom-width:2px;border-left-width:2px}
 .pv-mark.br{bottom:18px;right:18px;border-bottom-width:2px;border-right-width:2px}
-.pv-big{display:none} /* outline numeral retired; element + JS kept */
-.pv-count{position:absolute;z-index:4;top:16px;right:52px;padding:4px 8px;border-radius:2px;background:rgba(14,15,16,.9);font:700 .75rem/1.5 var(--display);letter-spacing:.1em;font-variant-numeric:tabular-nums;color:#fff}
-.pv-count b{color:var(--signal);font-weight:700}
-.pv-tab{position:relative;display:grid;grid-template-columns:24px minmax(0,1fr);align-items:center;width:100%;padding:22px 0 24px;background:none;border:0;border-bottom:1px solid var(--rule);border-radius:0;color:var(--wm);font:inherit;text-align:left;cursor:pointer;transition:color .3s,border-color .3s,background .3s}
-.pv-tab::before{content:"";width:7px;height:7px;background:var(--led-off);transition:background .3s,box-shadow .3s}
-.pv-tab .t{font:700 clamp(1.35rem,2vw,1.8rem)/1.05 var(--display);letter-spacing:-.03em}
-.pv-tab:hover{color:var(--wb)}
-.pv-tab[aria-selected="true"]{color:var(--wt)}
-.pv-tab[aria-selected="true"]::before{background:var(--signal);box-shadow:0 0 4px var(--glow)}
-.pv-tab:focus-visible{outline:2px solid var(--signal);outline-offset:4px}
-.pv-tab .bar{position:absolute;left:0;right:0;bottom:-1px;height:2px;overflow:hidden}
-.pv-tab .bar i{display:block;height:100%;width:100%;background:var(--signal);transform:scaleX(0);transform-origin:left}
-.pv-tab[aria-selected="true"] .bar i{transform:scaleX(1)}
-.pv.live .pv-tab[aria-selected="true"] .bar i{animation:pvProg 7s linear forwards}
-.pv.hold .pv-tab[aria-selected="true"] .bar i{animation-play-state:paused}
-.pv.stopped .pv-tab[aria-selected="true"] .bar i{animation:none}
-@keyframes pvProg{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-/* all panels share one grid cell, so the tallest sets the height and autoplay never shifts the page */
-.pv-panel{grid-area:1/1}
-.pv-panel[hidden]{display:block;visibility:hidden}
-.pv-panel:not([hidden]){animation:pvFade .6s var(--ease) both}
-.pv-panel:focus-visible{outline:2px solid var(--signal);outline-offset:6px}
-.pv-panel h3{font-size:1.35rem;letter-spacing:-.02em;margin-bottom:12px}
-.pv-panel p{color:var(--wb);font-size:1.02rem;line-height:1.7}
-.pv-panel .fig{color:var(--wt);font:700 .95em var(--display);font-variant-numeric:tabular-nums;white-space:nowrap;text-decoration-line:underline;text-decoration-color:var(--signal);text-decoration-thickness:2px;text-underline-offset:4px;text-decoration-skip-ink:none}
-@keyframes pvFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 
 /* 5 · Over ons: slogan panel with an orange top edge and one diagonal orange band bleeding off the bottom-right corner */
 .slogan-panel{position:relative;margin:0;padding:60px 48px 76px;border-top:3px solid var(--signal);background:linear-gradient(148deg,transparent calc(100% - 66px),var(--signal) calc(100% - 66px) calc(100% - 46px),transparent calc(100% - 46px)),var(--bg-raise);overflow:hidden}
@@ -309,9 +271,26 @@ form .btn{width:100%;min-height:54px;justify-content:space-between;margin-top:8p
 .sos-form:hover{border-color:var(--signal)}
 .sos-form svg{width:16px;height:16px}
 .sos-call:focus-visible,.sos-form:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
+/* 601-1719px: the 238px pill is wider than the page gutter and would sit on the text column, so it tucks into the
+   round e-stop (78px, fits the gutter from ~1400px). The label slides out on hover, on keyboard focus, while the panel
+   is open and over the home hero (.is-wide, site.js). It stays in the accessibility tree (no display:none). */
+.sos-label{max-width:220px;white-space:nowrap}
+@media (min-width:601px) and (max-width:1719px){
+  .sos-btn{transition:transform .15s,box-shadow .15s,padding .35s var(--ease),gap .35s var(--ease)}
+  .sos-label{overflow:hidden;transition:max-width .35s var(--ease),opacity .25s ease}
+  .sos-label>*{max-width:inherit;overflow:hidden}
+  .sos:not(.is-wide) .sos-btn:not(:hover):not(:focus-visible):not([aria-expanded="true"]){padding:8px;gap:0}
+  .sos:not(.is-wide) .sos-btn:not(:hover):not(:focus-visible):not([aria-expanded="true"]) .sos-label{max-width:0;opacity:0}
+}
 
-/* Footer: backlit orange top edge; big mark powers on */
-footer{background:linear-gradient(180deg,rgba(242,113,28,.22) 0,rgba(242,113,28,.07) 6px,rgba(242,113,28,0) 20px),var(--foot);color:var(--tm);padding:72px 0 clamp(12px,1.5vw,24px);font-size:.92rem;overflow:hidden;border-top:1px solid var(--signal)}
+/* Footer: backlit orange top edge; a compact brand column (logo + tagline, powers on in view) beside Menu and Contact,
+   the legal line underneath. The page's big moment is its hero at the top, so the footer stays a footer.
+   Same markup on every page: the brand block is last in the DOM and placed first by grid areas. */
+footer{background:linear-gradient(180deg,rgba(242,113,28,.22) 0,rgba(242,113,28,.07) 6px,rgba(242,113,28,0) 20px),var(--foot);color:var(--tm);padding:72px 0 16px;font-size:.92rem;overflow:hidden;border-top:1px solid var(--signal)}
+footer>.wrap{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"brand" "foot" "bottom"}
+.foot-brand{grid-area:brand}
+.foot{grid-area:foot}
+.foot-bottom{grid-area:bottom}
 .foot{display:grid;grid-template-columns:1fr 1fr;max-width:720px;gap:40px;padding-bottom:48px}
 .foot-h{color:var(--t);margin-bottom:18px}
 .foot ul{list-style:none;display:grid;gap:10px}
@@ -319,14 +298,20 @@ footer{background:linear-gradient(180deg,rgba(242,113,28,.22) 0,rgba(242,113,28,
 .foot a:hover{color:#fff}
 .foot a:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
 .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:22px 0;border-top:1px solid rgba(255,255,255,.08);letter-spacing:.14em;color:var(--tm)}
-.foot-brand{container-type:inline-size}
-/* dim deboss (notebook) until it scrolls into view, then lit: steel ASSET, orange power-O + N */
-.foot-mark{display:block;width:100%;margin:12px 0 0;line-height:0;--mk-a:#272728;--mk-o:#333334;--mk-knock:var(--foot);transition:--mk-a .8s var(--ease),--mk-o .8s var(--ease)}
+/* logo lockup at footer size (the tagline is locked to the mark's width through container units) */
+.foot-brand{container-type:inline-size;width:min(100%,264px);margin-bottom:44px}
+/* dim deboss until it scrolls into view, then lit: steel ASSET, orange power-O + N */
+.foot-mark{display:block;width:100%;margin:0;line-height:0;--mk-a:#272728;--mk-o:#333334;--mk-knock:var(--foot);transition:--mk-a .8s var(--ease),--mk-o .8s var(--ease)}
 .foot-mark .mark{width:100%;height:auto}
 .foot-mark.on{--mk-a:#CDCDCF;--mk-o:var(--signal)}
 .foot-mark:focus-visible{outline:2px solid var(--signal);outline-offset:4px}
-.foot-tag{display:flex;justify-content:space-between;align-items:center;margin:2.4cqw 0 40px;font:600 3.3cqw/1 var(--display);letter-spacing:.28em;text-transform:uppercase;color:var(--tag)}
-.foot-tag span:last-child{margin-right:-.28em}
+.foot-tag{display:flex;justify-content:space-between;align-items:center;margin:3.4cqw 0 0;font:600 3.9cqw/1 var(--display);letter-spacing:.2em;text-transform:uppercase;color:var(--tag)}
+.foot-tag span:last-child{margin-right:-.2em}
+@media (min-width:861px){
+  footer>.wrap{grid-template-columns:minmax(0,5fr) minmax(0,7fr);grid-template-areas:"brand foot" "bottom bottom";column-gap:72px;align-items:start}
+  .foot-brand{width:min(100%,300px);margin:6px 0 0}
+  .foot{max-width:none}
+}
 
 /* Word-rise headings (padding + negative margin: room for Montserrat's descenders and side overhangs) */
 .w{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .06em .14em;margin:0 -.06em -.14em}
@@ -344,11 +329,9 @@ footer{background:linear-gradient(180deg,rgba(242,113,28,.22) 0,rgba(242,113,28,
   .w>span{transform:none;transition:none}
   .power-o.boot path{animation:none;stroke-dashoffset:0}
   .sec-top::before,.sec-top .led{transition:none}
-  .svc::before,.pm::before,.pm::after,.pv-tab,.pv-tab::before{transition:none}
-  .pv-img.is-active,.pv-img.is-active img,.pv-panel:not([hidden]){animation:none}
-  .pv.live .pv-tab[aria-selected="true"] .bar i{animation:none}
+  .svc::before,.pm::before,.pm::after{transition:none}
   .foot-mark{transition:none}
-  .sos,.sos-btn{transition:none}
+  .sos,.sos-btn,.sos-label{transition:none}
   .sos-estop::before,.sos-panel,.nav-scrim{animation:none}
 }
 
@@ -358,7 +341,6 @@ footer{background:linear-gradient(180deg,rgba(242,113,28,.22) 0,rgba(242,113,28,
 
 /* Shared editorial split (>=1025px): every right-hand column starts on the same line */
 @media (min-width:1025px){
-  .pv{grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:72px}
   .foot{max-width:none;column-gap:72px}
 }
 
@@ -377,19 +359,6 @@ footer{background:linear-gradient(180deg,rgba(242,113,28,.22) 0,rgba(242,113,28,
   .contact{grid-template-columns:1fr;gap:48px}
   .slogan-panel .big{font-size:clamp(2rem,6vw,3.4rem)}
   .cline{grid-template-columns:minmax(0,1fr);gap:2px;align-content:center}
-}
-@media (max-width:960px){
-  .pv{grid-template-columns:minmax(0,1fr);grid-template-rows:auto;grid-template-areas:"tabs" "stage" "panels";row-gap:0}
-  .pv-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;border-top:0;margin-bottom:12px}
-  .pv-tab{grid-template-columns:18px minmax(0,1fr);align-items:center;min-height:52px;padding:0 14px;background:var(--umber-raise);border:1px solid rgba(255,255,255,.28);border-radius:2px;overflow:hidden}
-  .pv-tab::before{background:rgba(255,255,255,.32)}
-  .pv-tab:hover{color:var(--wb)}
-  .pv-tab[aria-selected="true"]{color:var(--wt);border-color:var(--signal)}
-  .pv-tab .t{font-size:1rem;letter-spacing:-.01em}
-  .pv-tab .bar{bottom:0}
-  .pv-tab:focus-visible{outline-offset:2px}
-  .pv-stage{height:auto;min-height:0;aspect-ratio:4/3}
-  .pv-panels{margin-top:20px;max-width:640px}
 }
 @media (max-width:860px){
   html{scroll-padding-top:84px}
@@ -453,7 +422,6 @@ footer{background:linear-gradient(180deg,rgba(242,113,28,.22) 0,rgba(242,113,28,
   .group-t{font-size:1.5rem}
   #onderhoud{padding-top:56px}
 
-  .pv-count{top:10px;right:38px}
   .pv-mark{width:16px;height:16px}
   .pv-mark.tl,.pv-mark.tr{top:12px}.pv-mark.bl,.pv-mark.br{bottom:12px}
   .pv-mark.tl,.pv-mark.bl{left:12px}.pv-mark.tr,.pv-mark.br{right:12px}
@@ -599,72 +567,169 @@ footer{background:linear-gradient(180deg,rgba(242,113,28,.22) 0,rgba(242,113,28,
 @media (prefers-reduced-motion:reduce){.side-link svg{transition:none}}
 
 /* ==== Home: multipage additions ==== */
-/* 4 · Projecten: "Voor & na" teaser under the viewer (one pair, leads to projecten.html).
-   Heading, a full-width diptych joined by an orange arrow badge, then caption + actions.
-   The 'Na' photo wipes in left to right (a roller stroke) when it scrolls into view. */
-.vn{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"head head" "pair pair" "cap actions";align-items:center;column-gap:40px;margin-top:120px;padding-top:44px;border-top:1px solid var(--rule-strong)}
-.vn::before{content:"";position:absolute;left:0;top:-1px;width:64px;height:2px;background:var(--signal)}
-.vn-h{grid-area:head;font-size:clamp(1.9rem,3.2vw,2.8rem);line-height:1.02;letter-spacing:-.03em}
-.vn-pair{grid-area:pair;position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;margin-top:32px}
-.vn-shot{position:relative;margin:0;overflow:hidden;aspect-ratio:3/2;background:var(--pv-stage)}
-.vn-shot img{width:100%;height:100%;object-fit:cover}
-.vn-voor img{object-position:50% 56%}
-.vn-na img{object-position:55% 64%}
-.vn-chip{position:absolute;z-index:2;top:16px;left:16px;padding:8px 12px 7px;border-radius:2px;font:700 .75rem/1 var(--display);letter-spacing:.16em;text-transform:uppercase;background:rgba(14,15,16,.9);color:#fff}
-.vn-chip-na{background:var(--signal);color:var(--on-signal)}
-.vn-go{position:absolute;z-index:3;left:50%;top:50%;width:60px;height:60px;margin:-30px 0 0 -30px;border-radius:50%;display:grid;place-items:center;background:var(--signal);color:var(--on-signal);box-shadow:0 0 0 7px var(--umber);transition:transform .5s var(--ease) .95s,opacity .3s ease .95s}
-.vn-go svg{width:24px;height:24px}
-/* the pair (not the clipped photo: a fully clipped element never reports as intersecting) triggers the wipe */
-.vn .vn-pair.reveal{opacity:1;transform:none}
-.vn .vn-na{clip-path:inset(0 100% 0 0);transition:clip-path 1.1s cubic-bezier(.65,0,.25,1) .2s}
-.vn .vn-pair.in .vn-na{clip-path:inset(0 0 0 0)}
-.vn-pair:not(.in) .vn-go{opacity:0;transform:scale(.4)}
-.vn-cap{grid-area:cap;display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin-top:26px}
-.vn-tag{display:inline-flex;align-items:center;gap:10px;font:600 .75rem/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--wm)}
-.vn-tag::before{content:"";width:7px;height:7px;background:var(--signal);box-shadow:0 0 4px var(--glow)}
-.vn-t{font:600 1.2rem/1.3 var(--display);letter-spacing:-.01em;color:var(--wt)}
-.vn-actions{grid-area:actions;display:flex;flex-wrap:wrap;align-items:center;gap:8px 28px;margin-top:26px}
-.vn-actions .vn-link{margin-top:0}
+/* 4 · Projecten: editorial preview of projecten.html. The same top 3 (numbering, labels, lead photos):
+   one large + two smaller (>=1025: the large one spans both rows, its photo stretches to the column height),
+   then the other seven as a slim index. Every item is one link (the title link stretches over the item).
+   The 'Na' photo wipes in like a roller stroke and the '81' rises when the item scrolls into view. */
+.hp-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);grid-template-rows:auto auto;gap:44px 48px}
+.hp{position:relative;display:flex;flex-direction:column;min-width:0}
+.hp-1{grid-row:1 / span 2}
+.hp-media{order:-1;position:relative;overflow:hidden;background:var(--pv-stage)}
+.hp-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.hp-media::after{content:"";position:absolute;z-index:4;left:0;right:0;bottom:0;height:3px;background:var(--signal);transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.hp-1 .hp-media{flex:1 1 auto;min-height:420px}
+/* >=1025: flat 5:2 tiles on the right, so the large pair (which takes the column height) stays within one screen */
+.hp-2 .hp-media,.hp-3 .hp-media{aspect-ratio:5/2}
+/* >=1025 with subgrid: four shared rows, so the large photo ends exactly where the galerij photo ends and both captions start on one line */
+@supports (grid-template-rows:subgrid){
+  @media (min-width:1025px){
+    .hp-grid{grid-template-rows:repeat(4,auto);row-gap:0}
+    .hp{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:subgrid}
+    .hp-1{grid-row:1 / 5}
+    .hp-1 .hp-media{grid-row:1 / 4}
+    .hp-1 .hp-cap{grid-row:4}
+    .hp-2{grid-row:1 / 3}
+    .hp-3{grid-row:3 / 5}
+    .hp-2 .hp-media,.hp-3 .hp-media{grid-row:1}
+    .hp-2 .hp-cap,.hp-3 .hp-cap{grid-row:2}
+    .hp-2 .hp-cap{padding-bottom:26px}
+    #projecten .h2-solo{margin-bottom:34px}
+    .hp-fig{font-size:clamp(3.4rem,4.8vw,4.6rem)}
+  }
+}
+/* before/after pair: two photos joined by the orange seam badge (as on projecten.html) */
+.hp-vn{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:4px;background:none}
+.hp-half{position:relative;overflow:hidden;background:var(--pv-stage)}
+.hp-half img{position:absolute;inset:0}
+.hp-chip{position:absolute;z-index:2;top:14px;left:14px;padding:7px 10px 6px;border-radius:2px;font:700 .75rem/1 var(--display);letter-spacing:.16em;text-transform:uppercase;background:rgba(14,15,16,.9);color:#fff;pointer-events:none}
+.hp-chip.is-na{background:var(--signal);color:var(--on-signal)}
+.hp-seam{position:absolute;z-index:3;left:50%;top:50%;width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;display:grid;place-items:center;background:var(--signal);color:var(--on-signal);box-shadow:0 0 0 5px var(--umber);pointer-events:none}
+.hp-seam svg{width:20px;height:20px}
+.hp-3 .hp-seam{width:40px;height:40px;margin:-20px 0 0 -20px;box-shadow:0 0 0 4px var(--umber)}
+.hp-3 .hp-seam svg{width:17px;height:17px}
+/* key figure on the photo */
+.hp-2 .hp-media::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(24deg,rgba(14,15,16,.8) 0%,rgba(14,15,16,.4) 30%,rgba(14,15,16,0) 56%);pointer-events:none}
+.hp-fig{position:absolute;z-index:2;left:20px;bottom:16px;overflow:hidden;padding:.02em .06em .08em;margin:0 -.06em;font:700 clamp(4rem,6vw,5.6rem)/.86 var(--display);letter-spacing:-.05em;color:#fff;font-variant-numeric:tabular-nums}
+.hp-fig span{display:block;padding-bottom:.1em;border-bottom:4px solid var(--signal)}
+/* caption: number, type (+ location tag), title; the arrow sits at the end of the meta line */
+.hp-cap{padding-top:20px}
+.hp-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font:600 .75rem/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--wm)}
+.hp-meta::after{content:"";width:20px;height:20px;margin-left:auto;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F2711C' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/20px no-repeat;transition:transform .3s var(--ease)}
+.hp-n{font:700 .95rem/1 var(--display);letter-spacing:.02em;color:var(--signal);font-variant-numeric:tabular-nums}
+/* the two Schilderwerk jobs: the location is the lighter second half of the title, after a tagline square */
+.hp-loc{color:var(--wm);white-space:nowrap}
+.hp-loc::before{content:"";display:inline-block;width:.28em;height:.28em;margin:0 .4em 0 .08em;vertical-align:.24em;background:var(--signal)}
+.hp-t{margin-top:12px;font-size:clamp(1.15rem,1.5vw,1.35rem);line-height:1.2;letter-spacing:-.02em;text-wrap:balance;transition:color .2s}
+.hp-1 .hp-t{font-size:clamp(1.5rem,2.2vw,2rem);line-height:1.08}
+.hp-t a::after{content:"";position:absolute;inset:0;z-index:5}
+.hp-t a:focus-visible{outline:none}
+.hp-t a:focus-visible::after{outline:2px solid var(--signal);outline-offset:6px}
+@media (hover:hover){
+  .hp:hover .hp-media img{transform:scale(1.035)}
+  .hp:hover .hp-t{color:var(--signal)}
+  .hp:hover .hp-meta::after{transform:translateX(5px)}
+  .hp:hover .hp-media::after{transform:scaleX(1)}
+}
+.hp:focus-within .hp-media::after{transform:scaleX(1)}
+/* first view */
+.hp.reveal .hp-na{clip-path:inset(0 100% 0 0);transition:clip-path 1.1s cubic-bezier(.65,0,.25,1) .25s}
+.hp.reveal.in .hp-na{clip-path:inset(0 0 0 0)}
+.hp.reveal .hp-seam{transition:transform .5s var(--ease) 1.05s,opacity .3s ease 1.05s}
+.hp.reveal:not(.in) .hp-seam{opacity:0;transform:scale(.4)}
+.hp.reveal .hp-fig span{transform:translateY(110%);transition:transform .9s var(--ease) .3s}
+.hp.reveal.in .hp-fig span{transform:none}
+
+/* the other seven: a two-column index in reading order (04 05 / 06 07 / ...), 'Alle projecten' in the eighth cell.
+   The heading links to the Meer projecten part of projecten.html. */
+.hp-more{margin-top:48px}
+.hp-more-h{margin-bottom:12px;font-size:clamp(1.5rem,2.2vw,1.9rem);letter-spacing:-.025em}
+.hp-more-h a{display:inline-flex;align-items:center;gap:14px;min-height:44px;transition:color .2s}
+.hp-more-h svg{width:22px;height:22px;color:var(--signal);transition:transform .3s var(--ease)}
+.hp-more-h a:hover{color:var(--signal)}
+.hp-more-h a:hover svg{transform:translateX(5px)}
+.hp-more-h a:focus-visible{outline:2px solid var(--signal);outline-offset:4px}
+.hp-all{margin-top:28px}
+.hp-list{list-style:none;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:56px;border-top:1px solid var(--rule-strong)}
+@supports (grid-template-rows:subgrid){
+  @media (min-width:601px){
+    .hp-more{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-rows:auto repeat(4,auto);column-gap:56px}
+    .hp-more-h{grid-column:1 / -1}
+    .hp-list{grid-column:1 / -1;grid-row:2 / span 4;grid-template-columns:subgrid;grid-template-rows:subgrid}
+    .hp-all{grid-column:2;grid-row:5;align-self:center;justify-self:end;margin:0}
+  }
+}
+.hp-list li{display:flex}
+.hp-list a{position:relative;display:grid;grid-template-columns:40px minmax(0,1fr) auto 18px;align-items:center;column-gap:16px;width:100%;min-height:52px;padding:11px 0;border-bottom:1px solid var(--rule);color:var(--wt)}
+.hp-list a::before{content:"";position:absolute;left:0;bottom:-1px;width:0;height:1px;background:var(--signal);transition:width .5s var(--ease)}
+.hp-list a::after{content:"";width:18px;height:18px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23F2711C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/18px no-repeat;transition:transform .25s var(--ease)}
+.hp-list .hp-n{font-size:.85rem}
+.hp-lt{font:600 1.02rem/1.3 var(--display);letter-spacing:-.01em;transition:color .2s}
+.hp-list .hp-type{font:600 .75rem/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--wm);white-space:nowrap}
+.hp-list a:hover .hp-lt{color:var(--signal)}
+.hp-list a:hover::before{width:100%}
+.hp-list a:hover::after{transform:translateX(4px)}
+.hp-list a:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
 
 /* 6 · Werken bij: rows lead to the vacancies on werken-bij.html.
    Two-column panel (>=1025): "Werkvoorbereider" + "Bekijk vacature" no longer fit on one line, so the label sits under the title */
-.jobs-side .jobs-all{margin-top:18px}
+/* "Alle vacatures": the same primary button as "Alle projecten" (each teaser ends on its own page) */
+.jobs-side .jobs-all{margin-top:32px}
 @media (min-width:1025px){
   .jobs-panel .job{grid-template-columns:minmax(0,1fr);gap:14px;padding:28px 0}
   .jobs-panel .job-go{justify-self:start}
 }
 
-@media (max-width:860px){
-  .vn{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "pair" "cap" "actions";margin-top:88px;padding-top:36px}
-  .vn-actions{margin-top:28px}
+@media (max-width:1024px){
+  .hp-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px 24px}
+  .hp-1{grid-row:auto;grid-column:1 / -1}
+  .hp-1 .hp-media{flex:none;min-height:0;aspect-ratio:16/9}
+  .hp-2 .hp-media,.hp-3 .hp-media{aspect-ratio:4/3}
+  .hp-more,.hp-list{column-gap:32px}
+  .hp-list .hp-type{display:none}
+  .hp-list a{grid-template-columns:36px minmax(0,1fr) 18px;column-gap:12px}
 }
 @media (max-width:600px){
-  .vn{margin-top:64px;padding-top:30px}
-  .vn-h{font-size:1.9rem}
-  .vn-pair{grid-template-columns:minmax(0,1fr);gap:12px;margin-top:24px}
-  .vn-shot{aspect-ratio:4/3}
-  .vn-voor img{object-position:50% 50%}
-  .vn-na img{object-position:56% 60%}
-  .vn-chip{top:12px;left:12px}
-  .vn-go{width:50px;height:50px;margin:-25px 0 0 -25px;box-shadow:0 0 0 6px var(--umber)}
-  .vn-go svg{width:20px;height:20px;transform:rotate(90deg)}
-  .vn-cap{margin-top:20px}
-  .vn-t{font-size:1.08rem}
-  .vn-actions{flex-direction:column;align-items:stretch;gap:4px;margin-top:24px}
-  .vn-actions .btn{min-height:54px;justify-content:space-between}
-  .vn-actions .vn-link{align-self:flex-start}
-  .jobs-side .jobs-all{margin-top:12px}
+  /* phone: the large pair full width, the other two side by side (the galerij pair stacks: voor above na) */
+  .hp-grid{gap:30px 14px}
+  .hp-1 .hp-media{aspect-ratio:4/3}
+  .hp-2 .hp-media,.hp-3 .hp-media{aspect-ratio:3/4}
+  .hp-3 .hp-vn{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:3px}
+  .hp-3.reveal .hp-na{clip-path:inset(0 0 100% 0)}
+  .hp-3.reveal.in .hp-na{clip-path:inset(0 0 0 0)}
+  .hp-3 .hp-seam{width:34px;height:34px;margin:-17px 0 0 -17px}
+  .hp-3 .hp-seam svg{width:15px;height:15px;transform:rotate(90deg)}
+  .hp-seam{width:42px;height:42px;margin:-21px 0 0 -21px}
+  .hp-seam svg{width:18px;height:18px}
+  .hp-chip{top:10px;left:10px;padding:6px 8px 5px;letter-spacing:.14em}
+  .hp-fig{left:12px;bottom:12px;font-size:3.4rem}
+  .hp-fig span{border-bottom-width:3px}
+  .hp-cap{padding-top:14px}
+  .hp-meta{gap:6px 12px}
+  .hp-2 .hp-meta::after,.hp-3 .hp-meta::after{display:none}
+  .hp-t{margin-top:9px;font-size:1.02rem;line-height:1.25}
+  .hp-1 .hp-t{font-size:1.5rem}
+
+  .hp-more{margin-top:48px}
+  .hp-more-h{margin-bottom:10px;font-size:1.4rem}
+  .hp-list{grid-template-columns:minmax(0,1fr)}
+  .hp-list a{grid-template-columns:32px minmax(0,1fr) 18px;min-height:54px;padding:12px 0}
+  .hp-lt{font-size:.98rem}
+  .hp-all{display:flex;width:100%;min-height:54px;justify-content:space-between;margin:28px 0 0}
+  .jobs-side .jobs-all{width:100%;min-height:54px;justify-content:space-between;margin-top:28px}
 }
 @media (prefers-reduced-motion:reduce){
-  .vn .vn-na,.vn .vn-pair.in .vn-na{clip-path:none;transition:none}
-  .vn-go,.vn-pair:not(.in) .vn-go{opacity:1;transform:none;transition:none}
+  .hp.reveal .hp-na,.hp.reveal.in .hp-na{clip-path:none;transition:none}
+  .hp.reveal .hp-seam,.hp.reveal:not(.in) .hp-seam{opacity:1;transform:none;transition:none}
+  .hp.reveal .hp-fig span{transform:none;transition:none}
+  .hp-media img,.hp-media::after,.hp-meta::after,.hp-list a::before,.hp-list a::after,.hp-more-h svg{transition:none}
 }
 
 /* ==== No JavaScript (all pages): everything that normally waits for site.js is simply shown ==== */
 @media (scripting:none){
   .reveal{opacity:1;transform:none;transition:none}
-  .vn .vn-na{clip-path:none;transition:none}
-  .vn-pair:not(.in) .vn-go{opacity:1;transform:none}
+  .hp.reveal .hp-na,.hp-3.reveal .hp-na{clip-path:none;transition:none}
+  .hp.reveal:not(.in) .hp-seam{opacity:1;transform:none}
+  .hp.reveal .hp-fig span{transform:none}
   .foot-mark{--mk-a:#CDCDCF;--mk-o:var(--signal)}
   /* plain #links then scroll natively on the targets' own scroll-margin: no extra padding on top of it */
   html{scroll-padding-top:0}
