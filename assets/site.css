@@ -759,3 +759,14 @@ footer>.wrap{display:grid;grid-template-columns:minmax(0,1fr);grid-template-area
 
 /* Hero with the slogan only (client's wish, 2026-10-01): no trailing gap under the swoosh */
 .hero-copy > h1:last-child{margin-bottom:.3em}
+
+/* ==== Navy (client 2026-10-01): black, grey and the logo's navy blue as section tones, gold stays the highlight ====
+   Add .blue next to .cool/.warm; every component inside re-reads the surface tokens, so cards, fields and chips turn navy too. */
+:root{--navy:#0B2540;--navy-raise:#13314F;--navy-deep:#081C31}
+.blue{background:var(--navy);color:#CFD7E2;
+  --bg:var(--navy);--umber:var(--navy);--bg-raise:var(--navy-raise);--umber-raise:#1A3A5C;
+  --field:var(--navy-deep);--field-border:#5B7395;--led-off:#2B4463;--pv-stage:var(--navy-deep);
+  --tb:#CFD7E2;--tm:#A3B2C6;--wb:#CFD7E2;--wm:#A3B2C6;
+  --rule:rgba(255,255,255,.14);--rule-strong:rgba(255,255,255,.3)}
+.blue h2,.blue h3,.blue h4{color:var(--t)}
+.blue .sec-top{color:var(--tm)}
