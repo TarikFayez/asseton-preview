@@ -762,11 +762,13 @@ footer>.wrap{display:grid;grid-template-columns:minmax(0,1fr);grid-template-area
 
 /* ==== Navy (client 2026-10-01): black, grey and the logo's navy blue as section tones, gold stays the highlight ====
    Add .blue next to .cool/.warm; every component inside re-reads the surface tokens, so cards, fields and chips turn navy too. */
-:root{--navy:#0B2540;--navy-raise:#13314F;--navy-deep:#081C31}
+:root{--navy:#071425;--navy-raise:#0D1E35;--navy-deep:#040C17}
 .blue{background:var(--navy);color:#CFD7E2;
-  --bg:var(--navy);--umber:var(--navy);--bg-raise:var(--navy-raise);--umber-raise:#1A3A5C;
-  --field:var(--navy-deep);--field-border:#5B7395;--led-off:#2B4463;--pv-stage:var(--navy-deep);
+  --bg:var(--navy);--umber:var(--navy);--bg-raise:var(--navy-raise);--umber-raise:#14294A;
+  --field:var(--navy-deep);--field-border:#56698A;--led-off:#22344F;--pv-stage:var(--navy-deep);
   --tb:#CFD7E2;--tm:#A3B2C6;--wb:#CFD7E2;--wm:#A3B2C6;
   --rule:rgba(255,255,255,.14);--rule-strong:rgba(255,255,255,.3)}
 .blue h2,.blue h3,.blue h4{color:var(--t)}
 .blue .sec-top{color:var(--tm)}
+/* soften the switch to blue: each navy section fades in from black at the top instead of starting with a hard colour change */
+.blue{background:linear-gradient(180deg,var(--ink) 0,var(--navy) min(360px,45%),var(--navy) 100%)}
