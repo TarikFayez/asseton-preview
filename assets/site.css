@@ -756,3 +756,6 @@ footer>.wrap{display:grid;grid-template-columns:minmax(0,1fr);grid-template-area
   /* plain #links then scroll natively on the targets' own scroll-margin: no extra padding on top of it */
   html{scroll-padding-top:0}
 }
+
+/* Hero with the slogan only (client's wish, 2026-10-01): no trailing gap under the swoosh */
+.hero-copy > h1:last-child{margin-bottom:.3em}
