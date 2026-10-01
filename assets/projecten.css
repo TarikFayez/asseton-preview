@@ -49,8 +49,10 @@
 .pjx-tag{font:600 .75rem/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:#C4C4CA}
 .pjx-t{margin-top:12px;font:600 clamp(1rem,1.35vw,1.15rem)/1.25 var(--display);letter-spacing:-.015em;text-wrap:balance;text-shadow:0 1px 10px rgba(0,0,0,.5);transition:color .2s}
 .pjx-t svg{display:inline-block;width:17px;height:17px;margin-left:8px;vertical-align:-2px;color:var(--signal);transition:transform .3s var(--ease)}
-.pjx-list a:hover .pjx-t{color:var(--signal)}
-.pjx-list a:hover .pjx-t svg{transform:translateX(4px)}
+@media (hover:hover){ /* (touch screens: no sticky hover after a tap) */
+  .pjx-list a:hover .pjx-t{color:var(--signal)}
+  .pjx-list a:hover .pjx-t svg{transform:translateX(4px)}
+}
 .pjx-list a:focus-visible{outline:2px solid var(--signal);outline-offset:4px}
 /* pause / play (same control as the home hero video) */
 .pj-toggle{z-index:6}
@@ -206,7 +208,7 @@ html.lb-open{overflow:hidden}
 .lb.is-single .lb-count,.lb.is-single .lb-nav{visibility:hidden}
 .lb-close{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 14px 0 16px;border:1px solid var(--rule-strong);border-radius:2px;background:none;color:var(--t);font:600 .75rem/1 var(--display);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:border-color .15s}
 .lb-close svg{width:20px;height:20px}
-.lb-close:hover{border-color:var(--signal)}
+@media (hover:hover){.lb-close:hover{border-color:var(--signal)}}
 .lb-close:focus-visible,.lb-nav:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
 .lb-stage{position:relative;min-height:0;margin:0 96px;touch-action:pan-y pinch-zoom}
 .lb-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity .18s ease,transform .25s var(--ease);-webkit-user-drag:none;user-select:none}
@@ -214,7 +216,7 @@ html.lb-open{overflow:hidden}
 .lb-img.is-drag{transition:none}
 .lb-nav{position:absolute;top:50%;z-index:2;width:56px;height:56px;margin-top:-28px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.28);background:rgba(21,22,23,.75);color:#fff;cursor:pointer;transition:border-color .15s,background .15s}
 .lb-nav svg{width:24px;height:24px}
-.lb-nav:hover{border-color:var(--signal);background:rgba(21,22,23,.95)}
+@media (hover:hover){.lb-nav:hover{border-color:var(--signal);background:rgba(21,22,23,.95)}}
 .lb-prev{left:-80px}
 .lb-next{right:-80px}
 .lb-cap{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px 14px;min-height:72px;padding:16px 24px 22px;padding-bottom:max(22px,env(safe-area-inset-bottom));text-align:center}
@@ -237,7 +239,7 @@ html.lb-open{overflow:hidden}
 .mp-filter{display:inline-flex;gap:2px;padding:3px;border:1px solid var(--rule-strong);border-radius:2px}
 .mp-filter button{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:0 12px 0 16px;background:none;border:0;border-radius:1px;color:var(--wm);font:600 .75rem/1 var(--display);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:color .2s,background .25s}
 .mp-filter button::before{content:"";width:6px;height:6px;flex-shrink:0;background:var(--led-off);transition:background .3s,box-shadow .3s}
-.mp-filter button:hover{color:var(--wt)}
+@media (hover:hover){.mp-filter button:hover{color:var(--wt)}}
 .mp-filter button[aria-pressed="true"]{background:var(--umber-raise);color:var(--wt)}
 .mp-filter button[aria-pressed="true"]::before{background:var(--signal);box-shadow:0 0 4px var(--glow)}
 .mp-filter button:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
@@ -257,8 +259,11 @@ html.lb-open{overflow:hidden}
 .mp-img{grid-area:img;position:relative;display:block;width:100%;aspect-ratio:4/3;align-self:start;padding:0;border:0;border-radius:0;background:var(--pv-stage);color:inherit;overflow:hidden;cursor:zoom-in}
 .mp-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
 .mp-img::after{content:"";position:absolute;z-index:3;left:0;right:0;bottom:0;height:3px;background:var(--signal);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
-.mp-img:hover img{transform:scale(1.045)}
-.mp-img:hover::after,.mp-img:focus-visible::after{transform:scaleX(1)}
+@media (hover:hover){
+  .mp-img:hover img{transform:scale(1.045)}
+  .mp-img:hover::after{transform:scaleX(1)}
+}
+.mp-img:focus-visible::after{transform:scaleX(1)}
 .mp-img:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
 .mp-img--split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:3px}
 .mp-half{position:relative;display:block;min-width:0;overflow:hidden}
@@ -331,9 +336,28 @@ html.lb-open{overflow:hidden}
   /* upright screens: the photo keeps the top, the text sits on the dense lower part */
   .pj-shade{background:linear-gradient(180deg,rgba(14,15,16,.52) 0%,rgba(14,15,16,.3) 14%,rgba(14,15,16,.6) 36%,rgba(14,15,16,.86) 58%,rgba(14,15,16,.95) 100%)}
 }
+/* Tap mode (phones, small tablets, touch tablets; the same query as projecten.js): a tap on a photo opens it full screen,
+   so the view switch, the "Volledig scherm" button and the per-photo zoom hints go; the round arrow badges between
+   Voor / Tijdens / Na become a slim orange tick in the gap (decoration only). Desktop (>=1025) never matches. */
+@media (max-width:860px),(hover:none) and (pointer:coarse) and (max-width:1024px){
+  .cmp-bar,.cmp-zoom{display:none}
+  .cmp-pane:focus-visible{z-index:4;outline:2px solid var(--signal);outline-offset:3px}
+  .cmp-seam{width:var(--sl-w,2px);height:var(--sl-h,40px);margin:calc(var(--sl-h,40px) / -2) 0 0 calc(var(--sl-w,2px) / -2);border-radius:0;background:var(--signal);box-shadow:none}
+  .cmp-seam svg{display:none}
+  .cmp--col{--sl-w:40px;--sl-h:2px}
+}
+/* phones and small tablets: the meta is one short line (number + tag; the Voor / Na chips already say what kind of
+   project it is) and the service links go (they looked like buttons and quietly left for the home page) */
+@media (max-width:860px){
+  .case-of,.case-tag~.case-type,.case-svc,.mp-svc,.mp-type{display:none}
+  .case-of+.case-type{display:inline-flex;align-items:center;gap:10px;margin-left:8px;padding-left:0;color:var(--tb)}
+  .case-of+.case-type::before{content:"";width:7px;height:7px;background:var(--signal);box-shadow:0 0 4px var(--glow)}
+  .case-tag{margin-left:8px}
+}
+
 /* phone landscape and other short screens: the Galerij pair sits side by side, so Voor and Na are both in view */
 @media (min-width:601px) and (max-height:560px) and (orientation:landscape){
-  .cmp--col{flex-direction:row}
+  .cmp--col{flex-direction:row;--sl-w:2px;--sl-h:40px} /* --sl-*: the slim seam of tap mode (below) */
   .cmp--col .cmp-seam{left:-3px;top:50%}
   .cmp--col .cmp-seam svg{transform:none}
   .cmp--col.reveal:not(.in) .cmp-pane~.cmp-pane .cmp-img{clip-path:inset(0 100% 0 0)}
@@ -371,16 +395,13 @@ html.lb-open{overflow:hidden}
   .case-tag{margin-left:8px}
   #uitgelicht .case-t{order:2;font-size:1.9rem;margin:20px 0 20px}
   .case .cmp{order:3}
-  .case .cmp-bar{order:4}
-  .case-body{order:5;margin-top:14px}
+  .case-body{order:5;margin-top:24px}
   .case-p{font-size:1rem}
-  .case-svc{margin-top:20px}
   /* 02: title with the figure, the lead photo, the text, then the roof and the curb pair */
   .case--vent .vt-lead{order:3;aspect-ratio:16/10}
   .case--vent .case-body{order:4;margin-top:18px}
   .case--vent .vt-roof{order:5;margin-top:32px;aspect-ratio:1/1}
   .case--vent .cmp{order:6;margin-top:5px}
-  .case--vent .cmp-bar{order:7}
   #uitgelicht .vt-t{margin:22px 0 22px}
   .vt-pre{font-size:1.3rem}
   .vt-fig{font-size:clamp(6.8rem,34vw,8.6rem)}
@@ -390,17 +411,11 @@ html.lb-open{overflow:hidden}
   .cmp-pane,.cmp-pane.is-mini,.cmp.has-focus .cmp-pane,.cmp.has-focus .cmp-pane.is-focus{flex:none;aspect-ratio:var(--ar,4/3);cursor:zoom-in}
   .cmp--portrait{flex-direction:row}
   .cmp--portrait .cmp-pane,.cmp--portrait.has-focus .cmp-pane{flex:1 1 0%}
-  .cmp-seam{width:44px;height:44px;margin:-22px 0 0 -22px;box-shadow:0 0 0 5px var(--bg)}
-  .cmp-seam svg{width:20px;height:20px}
+  .cmp:not(.cmp--portrait){--sl-w:40px;--sl-h:2px}
   .cmp:not(.cmp--portrait) .cmp-seam{left:50%;top:-2.5px}
-  .cmp:not(.cmp--portrait) .cmp-seam svg{transform:rotate(90deg)}
   .cmp--portrait .cmp-seam{left:-2.5px}
   .cmp.reveal:not(.in):not(.cmp--portrait) .cmp-pane~.cmp-pane .cmp-img{clip-path:inset(0 0 100% 0)}
   .cmp-chip{top:12px;left:12px}
-  .cmp-zoom{top:8px;right:8px;width:36px;height:36px;opacity:1;transform:none}
-  .cmp-zoom svg{width:16px;height:16px}
-  .cmp-seg{display:none}
-  .cmp-bar{margin-top:6px}
 
   .lb-top{padding:10px 12px;padding-top:max(10px,env(safe-area-inset-top))}
   .lb-stage{margin:0}
@@ -411,25 +426,24 @@ html.lb-open{overflow:hidden}
   .lb-cap{min-height:76px;padding:14px 72px 20px;padding-bottom:max(20px,env(safe-area-inset-bottom));text-align:center}
   .lb-title{font-size:1rem}
 
-  /* Meer projecten: filter full width, rows = square photo + number/title, then text and service below */
+  /* Meer projecten: filter full width; each row = a full-width photo (Voor & na as a split with readable chips),
+     then number + title on one line, then the text (long ones clamp with "Lees meer"). A tap on the photo opens them all. */
   .mp-head{gap:22px;margin-bottom:28px}
   .mp-filter{display:flex;width:100%;min-width:0}
   .mp-filter button{flex:1 1 auto;min-width:0;justify-content:center;gap:6px;padding:0 6px;letter-spacing:.08em;white-space:nowrap}
   .mp-filter button[data-filter="alle"]{flex-grow:0;padding:0 12px}
   .mp-filter button::before{display:none}
-  .mp-item{grid-template-columns:128px minmax(0,1fr);grid-template-rows:auto 1fr auto auto;grid-template-areas:"img meta" "img t" "txt txt" "svc svc";column-gap:16px;padding:22px 0 16px;scroll-margin-top:80px}
-  .mp-img{aspect-ratio:1/1}
-  .mp-img--split{gap:2px}
-  .mp-chip{top:5px;left:5px;padding:4px 5px 3px;letter-spacing:.06em}
-  .mp-count{top:5px;right:5px;padding:4px 6px;gap:4px}
-  .mp-count svg{width:13px;height:13px}
-  .mp-meta{align-self:start;padding-top:2px}
-  .mp-t{margin:10px 0 0;font-size:1.12rem;line-height:1.2;overflow-wrap:anywhere}
-  .mp-txt{margin-top:16px}
-  .mp-p{font-size:.98rem}
-  .mp-p.is-clamp:not(.is-open){display:block;-webkit-line-clamp:none;line-clamp:none;overflow:visible}
+  .mp-item{grid-template-columns:auto minmax(0,1fr);grid-template-rows:auto auto auto;grid-template-areas:"img img" "meta t" "txt txt";column-gap:14px;padding:24px 0 22px;scroll-margin-top:80px}
+  .mp-img{aspect-ratio:16/10;margin-bottom:18px}
+  .mp-img--split{gap:4px}
+  #renovatie .mp-img img{object-position:50% 30%!important} /* the wide crop keeps the pendant and the wall light in view */
+  .mp-chip{top:12px;left:12px;padding:8px 12px 7px;letter-spacing:.16em}
+  .mp-count{top:12px;right:12px;padding:7px 10px;gap:7px}
+  .mp-meta{align-self:start;padding-top:.3rem}
+  .mp-t{margin:0;font-size:1.25rem;line-height:1.22;overflow-wrap:break-word}
+  .mp-txt{margin-top:12px}
+  .mp-p{--lines:4;font-size:.98rem}
   .mp-toggle{margin-top:0}
-  .mp-svc{margin-top:0}
 
   .pj-close{padding:64px 0 72px}
   .pj-close-in{gap:24px;padding-top:28px}

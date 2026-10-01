@@ -7,7 +7,8 @@ const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
 const mm = q => (window.matchMedia ? window.matchMedia(q) : { matches: false });
 const onMQ = (mq, fn) => { if (mq.addEventListener) mq.addEventListener('change', fn); else if (mq.addListener) mq.addListener(fn); };
 const reducedMQ = mm('(prefers-reduced-motion: reduce)');
-const phone = mm('(max-width: 600px)');
+// tap mode (phones, small tablets, touch tablets; the same query as projecten.css): a tap on a photo opens it full screen
+const tapMode = mm('(max-width: 860px), (hover: none) and (pointer: coarse) and (max-width: 1024px)');
 const wait = ms => new Promise(r => setTimeout(r, ms));
 
 // ---- Photo sets: one per project ([data-lb-set]); items in DOM order (visible <img> or a hidden <span> extra)
@@ -122,7 +123,8 @@ function openLb(host, start, trigger, viaPointer) {
   if (viaPointer) { lbClose.blur(); try { lbClose.focus({ focusVisible: false }); } catch (_) { lbClose.focus(); } }
   else lbClose.focus();
 }
-function closeLb() {
+// viaPointer: closed by a click or tap; focus goes back to the photo without a keyboard focus ring
+function closeLb(viaPointer) {
   if (!lb || !isOpen) return;
   isOpen = false;
   seq++;
@@ -130,11 +132,13 @@ function closeLb() {
   lockScroll(false);
   const back = returnTo;
   returnTo = null;
-  if (back && back.isConnected && typeof back.focus === 'function') back.focus({ preventScroll: true });
+  if (back && back.isConnected && typeof back.focus === 'function') {
+    try { back.focus(viaPointer ? { preventScroll: true, focusVisible: false } : { preventScroll: true }); } catch (_) { back.focus({ preventScroll: true }); }
+  }
 }
 
 if (lb && lbImg && lbStage) {
-  lbClose.addEventListener('click', closeLb);
+  lbClose.addEventListener('click', e => closeLb(e.detail > 0));
   lbPrev.addEventListener('click', () => show(idx - 1, -1));
   lbNext.addEventListener('click', () => show(idx + 1, 1));
   // Escape: the dialog's own cancel, routed through closeLb (scroll unlock + focus return)
@@ -254,8 +258,9 @@ if (hero) {
   start();
 }
 
-// ---- Compare frames: pick a side (click/tap it, or the view switch) to enlarge it; click the enlarged side for full screen.
-// Phones: the photos stack, a tap opens full screen straight away.
+// ---- Compare frames: pick a side (click it, or the view switch) to enlarge it; click the enlarged side for full screen.
+// Tap mode: no view switch and no full-screen button (CSS); a tap on a photo opens it full screen straight away, and each
+// photo is then a button itself (focusable, named by its Voor / Tijdens / Na label and its alt text).
 $$('[data-cmp]').forEach(cmp => {
   const host = cmp.closest('[data-lb-set]');
   const panes = $$('.cmp-pane', cmp);
@@ -279,10 +284,27 @@ $$('[data-cmp]').forEach(cmp => {
     const img = pane && $('img[data-lb]', pane);
     return Math.max(0, itemsOf(host).findIndex(it => it.node === img));
   };
-  panes.forEach(p => p.addEventListener('click', e => {
-    if (phone.matches || view === p.dataset.pane) openLb(host, indexOf(p), full, e.detail > 0);
-    else setView(p.dataset.pane);
-  }));
+  panes.forEach(p => {
+    p.addEventListener('click', e => {
+      if (tapMode.matches) openLb(host, indexOf(p), p, e.detail > 0);
+      else if (view === p.dataset.pane) openLb(host, indexOf(p), full, e.detail > 0);
+      else setView(p.dataset.pane);
+    });
+    p.addEventListener('keydown', e => {
+      if (!tapMode.matches || e.target !== p || (e.key !== 'Enter' && e.key !== ' ')) return;
+      e.preventDefault();
+      openLb(host, indexOf(p), p, false);
+    });
+  });
+  const paneButtons = on => panes.forEach(p => {
+    if (!on) { ['tabindex', 'role', 'aria-haspopup', 'aria-label'].forEach(a => p.removeAttribute(a)); return; }
+    const img = $('img[data-lb]', p);
+    const name = img ? [img.dataset.lbLabel, img.getAttribute('alt')].filter(Boolean).join(': ') : '';
+    p.tabIndex = 0;
+    p.setAttribute('role', 'button');
+    p.setAttribute('aria-haspopup', 'dialog');
+    if (name) p.setAttribute('aria-label', name);
+  });
   radios.forEach((r, i) => {
     r.addEventListener('click', () => setView(r.dataset.view));
     r.addEventListener('keydown', e => {
@@ -302,8 +324,10 @@ $$('[data-cmp]').forEach(cmp => {
     const p = panes.find(x => x.dataset.pane === view) || panes[0];
     openLb(host, indexOf(p), full, e.detail > 0);
   });
-  // entering the phone layout (photos stacked): back to the neutral view
-  onMQ(phone, e => { if (e.matches) setView('alle'); });
+  // entering tap mode: back to the neutral view, the photos become buttons; leaving it: plain panes again
+  const applyMode = () => { if (tapMode.matches) setView('alle'); paneButtons(tapMode.matches); };
+  applyMode();
+  onMQ(tapMode, applyMode);
 });
 
 // ---- Photo buttons (single photos, Meer projecten thumbnails): open that project's photos at the photo that was hit.

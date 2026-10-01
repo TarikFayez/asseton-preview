@@ -13,10 +13,12 @@ const sosBtn = $('#sosBtn');
 const sosPanel = $('#sosPanel');
 let contactOnScreen = false;
 let footOnScreen = false;
-// phones, subpages: the first screen is the page's hero/intro, and the pill would cover its text or buttons.
-// It slides in once the visitor scrolls (the home hero keeps room for it in its bottom padding).
+// The full label ("Storing melden") shows while the pill sits on the page's first screen (the home hero, a subpage's
+// intro); once the visitor scrolls on, it tucks into the round e-stop so it never sits on the text (site.css).
+// >=861px: home hero only (as before). <=860px (phones, tablets): every page.
 const isHome = document.body.dataset.page === 'home';
-const heroEl = isHome ? document.querySelector('main > .hero') : null;
+const mqPhone = mm('(max-width: 860px)');
+const heroEl = document.querySelector('main > .hero') || document.querySelector('main > [data-hero]') || document.querySelector('main > section');
 function sosHasFocus() {
   const a = document.activeElement;
   // a link inside the just-closed (display:none) panel does not count as focus
@@ -26,8 +28,10 @@ function syncSos() {
   if (!sos || !sosPanel) return;
   // "Storing melden" must be pressable everywhere (Tarik): it only steps aside where the page itself shows the phone number
   sos.classList.toggle('is-away', (contactOnScreen || footOnScreen) && sosPanel.hidden && !sosHasFocus());
-  // home: the full label while the pill sits on the hero (empty corner); elsewhere it tucks into the round e-stop (site.css)
-  sos.classList.toggle('is-wide', !!heroEl && heroEl.getBoundingClientRect().bottom > innerHeight - 110);
+  // the full label while the pill sits on the first screen; elsewhere it tucks into the round e-stop (site.css)
+  const phone = mqPhone.matches;
+  const first = (isHome || phone) && heroEl;
+  sos.classList.toggle('is-wide', !!first && ((phone && scrollY < 24) || heroEl.getBoundingClientRect().bottom > innerHeight - 110));
 }
 function setSos(open) {
   if (!sos || !sosBtn || !sosPanel) return;

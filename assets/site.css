@@ -271,16 +271,24 @@ form .btn{width:100%;min-height:54px;justify-content:space-between;margin-top:8p
 .sos-form:hover{border-color:var(--signal)}
 .sos-form svg{width:16px;height:16px}
 .sos-call:focus-visible,.sos-form:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
-/* 601-1719px: the 238px pill is wider than the page gutter and would sit on the text column, so it tucks into the
+/* 861-1719px: the 238px pill is wider than the page gutter and would sit on the text column, so it tucks into the
    round e-stop (78px, fits the gutter from ~1400px). The label slides out on hover, on keyboard focus, while the panel
    is open and over the home hero (.is-wide, site.js). It stays in the accessibility tree (no display:none). */
 .sos-label{max-width:220px;white-space:nowrap}
-@media (min-width:601px) and (max-width:1719px){
+@media (max-width:1719px){
   .sos-btn{transition:transform .15s,box-shadow .15s,padding .35s var(--ease),gap .35s var(--ease)}
   .sos-label{overflow:hidden;transition:max-width .35s var(--ease),opacity .25s ease}
   .sos-label>*{max-width:inherit;overflow:hidden}
+}
+@media (min-width:861px) and (max-width:1719px){
   .sos:not(.is-wide) .sos-btn:not(:hover):not(:focus-visible):not([aria-expanded="true"]){padding:8px;gap:0}
   .sos:not(.is-wide) .sos-btn:not(:hover):not(:focus-visible):not([aria-expanded="true"]) .sos-label{max-width:0;opacity:0}
+}
+/* <=860 (phones, tablets): the full pill only on the first screen of every page (.is-wide, site.js), then the round
+   e-stop in the same corner. No hover state here: on a touch screen :hover sticks after a tap. */
+@media (max-width:860px){
+  .sos:not(.is-wide) .sos-btn:not(:focus-visible):not([aria-expanded="true"]){padding:8px;gap:0}
+  .sos:not(.is-wide) .sos-btn:not(:focus-visible):not([aria-expanded="true"]) .sos-label{max-width:0;opacity:0}
 }
 
 /* Footer: backlit orange top edge; a compact brand column (logo + tagline, powers on in view) beside Menu and Contact,
@@ -442,6 +450,8 @@ footer>.wrap{display:grid;grid-template-columns:minmax(0,1fr);grid-template-area
 
   .sos{right:max(12px,env(safe-area-inset-right));bottom:calc(12px + env(safe-area-inset-bottom))}
   .sos-btn{padding:5px 16px 5px 5px;gap:10px}
+  /* collapsed: a 58px round button (46px e-stop in a 5px rim) */
+  .sos:not(.is-wide) .sos-btn:not(:focus-visible):not([aria-expanded="true"]){padding:5px}
   .sos-estop{width:46px;height:46px}
   .sos-dome{width:28px;height:28px}
   .sos-label strong{font-size:.95rem;white-space:nowrap}
@@ -688,33 +698,45 @@ footer>.wrap{display:grid;grid-template-columns:minmax(0,1fr);grid-template-area
   .hp-list .hp-type{display:none}
   .hp-list a{grid-template-columns:36px minmax(0,1fr) 18px;column-gap:12px}
 }
-@media (max-width:600px){
-  /* phone: the large pair full width, the other two side by side (the galerij pair stacks: voor above na) */
-  .hp-grid{gap:30px 14px}
-  .hp-1 .hp-media{aspect-ratio:4/3}
-  .hp-2 .hp-media,.hp-3 .hp-media{aspect-ratio:3/4}
-  .hp-3 .hp-vn{grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) minmax(0,1fr);gap:3px}
-  .hp-3.reveal .hp-na{clip-path:inset(0 0 100% 0)}
-  .hp-3.reveal.in .hp-na{clip-path:inset(0 0 0 0)}
-  .hp-3 .hp-seam{width:34px;height:34px;margin:-17px 0 0 -17px}
-  .hp-3 .hp-seam svg{width:15px;height:15px;transform:rotate(90deg)}
-  .hp-seam{width:42px;height:42px;margin:-21px 0 0 -21px}
-  .hp-seam svg{width:18px;height:18px}
-  .hp-chip{top:10px;left:10px;padding:6px 8px 5px;letter-spacing:.14em}
-  .hp-fig{left:12px;bottom:12px;font-size:3.4rem}
-  .hp-fig span{border-bottom-width:3px}
-  .hp-cap{padding-top:14px}
-  .hp-meta{gap:6px 12px}
-  .hp-2 .hp-meta::after,.hp-3 .hp-meta::after{display:none}
-  .hp-t{margin-top:9px;font-size:1.02rem;line-height:1.25}
-  .hp-1 .hp-t{font-size:1.5rem}
+/* <=860 (phones, tablets): three full-width cards stacked, each one link: the photo(s), then a caption bar with the
+   number, the title, a small tag (Dakopbouw / Techniek / Galerij) and the arrow. The before/after pairs keep their
+   Voor/Na chips; the round seam badge (it looked like a button) gives way to a slim gap. The seven-row index
+   stays on larger screens; here one 'Alle projecten' button leads to the projects page. */
+@media (max-width:860px){
+  .hp-grid{grid-template-columns:minmax(0,1fr);gap:20px}
+  .hp-1{grid-row:auto;grid-column:auto}
+  .hp{background:var(--bg-raise);border:1px solid var(--rule)}
+  .hp-1 .hp-media,.hp-2 .hp-media,.hp-3 .hp-media{flex:none;min-height:0;aspect-ratio:16/9}
+  .hp-vn{gap:2px;background:var(--ink)}
+  .hp-seam{display:none}
+  .hp-cap{display:grid;grid-template-columns:28px minmax(0,1fr) 20px;grid-template-areas:"n t go" "n tag go";column-gap:12px;align-items:first baseline;padding:16px 18px 18px}
+  .hp-meta{display:contents}
+  .hp-meta .hp-n{grid-area:n}
+  .hp-meta .hp-type{display:none}
+  .hp-2 .hp-meta .hp-type{display:block;grid-area:tag;margin-top:8px}
+  .hp-meta::after{grid-area:go;align-self:center;margin:0}
+  .hp-t,.hp-1 .hp-t{grid-area:t;margin:0;font-size:1.15rem;line-height:1.25}
+  .hp-loc{display:block;margin-top:8px;font:600 .75rem/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--wm)}
+  .hp-loc::before{display:none}
+  .hp-t a:active{color:var(--signal)}
 
-  .hp-more{margin-top:48px}
-  .hp-more-h{margin-bottom:10px;font-size:1.4rem}
-  .hp-list{grid-template-columns:minmax(0,1fr)}
-  .hp-list a{grid-template-columns:32px minmax(0,1fr) 18px;min-height:54px;padding:12px 0}
-  .hp-lt{font-size:.98rem}
-  .hp-all{display:flex;width:100%;min-height:54px;justify-content:space-between;margin:28px 0 0}
+  .hp-more{display:block;margin-top:28px}
+  .hp-more-h,.hp-list{display:none}
+  .hp-all{margin:0}
+  /* Diensten: the intro's contact link sat between 'Techniek & beheer' and its own list; the hero, the menu
+     and "Storing melden" already lead to Contact. The group text now leads straight into its list. */
+  .side-link{display:none}
+  .split{row-gap:32px}
+}
+@media (max-width:600px){
+  .hp-1 .hp-media,.hp-2 .hp-media,.hp-3 .hp-media{aspect-ratio:4/3}
+  .hp-chip{top:10px;left:10px;padding:6px 8px 5px;letter-spacing:.14em}
+  .hp-fig{left:14px;bottom:12px;font-size:3.4rem}
+  .hp-fig span{border-bottom-width:3px}
+  .hp-cap{column-gap:10px;padding:15px 16px 17px}
+  .hp-t,.hp-1 .hp-t{font-size:1.08rem}
+
+  .hp-all{display:flex;width:100%;min-height:54px;justify-content:space-between}
   .jobs-side .jobs-all{width:100%;min-height:54px;justify-content:space-between;margin-top:28px}
 }
 @media (prefers-reduced-motion:reduce){
