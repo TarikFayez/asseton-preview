@@ -830,12 +830,8 @@ header{background:rgba(255,255,255,.96);border-bottom:1px solid var(--rule);box-
 
 /* the wavy line: thin navy + gold, at the top of the first section under each hero, above the footer, and under
    "Nieuwe naam." (instead of the brush swoosh) */
-.wave-top{padding-top:calc(112px + clamp(28px,4vw,56px))}
-.wave-top::before{content:"";position:absolute;left:0;right:0;top:clamp(10px,1.6vw,22px);height:clamp(36px,6vw,86px);background:url(wave.svg) center/100% 100% no-repeat;pointer-events:none}
-@media (max-width:600px){.wave-top{padding-top:calc(72px + 28px)}}
 .m-big::after{left:8%;right:8%;bottom:-.06em;height:.3em;background:url(wave.svg) center/100% 100% no-repeat}
-footer{position:relative;background:var(--foot);border-top:0;padding-top:clamp(96px,10vw,132px)}
-footer::before{content:"";position:absolute;left:0;right:0;top:clamp(16px,2vw,28px);height:clamp(34px,5vw,70px);background:url(wave-light.svg) center/100% 100% no-repeat;pointer-events:none}
+footer{position:relative;background:var(--foot);border-top:0;padding-top:calc(var(--wave-h) + 56px)}
 .foot a:hover{color:#fff}
 .foot-mark{--mk-a:#123E68;--mk-o:#123E68;--mk-knock:var(--foot)}
 .foot-mark.on{--mk-a:#FFFFFF;--mk-o:var(--signal)}
@@ -869,3 +865,22 @@ form{border:1px solid var(--rule);box-shadow:var(--shadow)}
 @media (max-width:860px){.hp{background:#FFFFFF;box-shadow:0 10px 28px -16px rgba(7,40,69,.3)}.hp-vn{background:#FFFFFF}}
 /* subpage heroes: the wavy line below replaces their gold edge glow too */
 .pj-hero::after,.wbh::after{display:none}
+
+/* the wavy line IS the bottom edge of every hero (and the top edge of the footer): the light page fills up to the
+   curve, navy line on the edge, gold line beside it. Replaces the separate line in the section below. */
+:root{--wave-h:clamp(44px,5.5vw,84px)}
+.hero::after,body .pj-hero::after,body .wbh::after{display:block;content:"";position:absolute;left:0;right:0;bottom:-1px;top:auto;height:var(--wave-h);background:url(wave-edge.svg) center/100% 100% no-repeat;mix-blend-mode:normal;pointer-events:none}
+.hero::after{z-index:3}
+body .wbh::after{background-image:url(wave-edge-grey.svg)}
+body .pj-hero-in{padding-bottom:calc(80px + var(--wave-h) * .6)}
+body .wbh-in{padding-bottom:calc(116px + var(--wave-h) * .4)}
+footer::before{content:"";position:absolute;left:0;right:0;top:-1px;height:var(--wave-h);background:url(wave-foot.svg) center/100% 100% no-repeat;pointer-events:none}
+@media (max-width:600px){
+  body .pj-hero-in{padding-bottom:calc(40px + var(--wave-h) * .7)}
+  body .wbh-in{padding-bottom:calc(88px + var(--wave-h) * .3)}
+}
+
+/* home hero (client, 2026-10-07): the video in colour, no gradient over it; the slogan keeps a soft shadow to stay readable */
+.hero::before,.hero-video{filter:none}
+.hero-shade{display:none}
+.hero h1{text-shadow:0 2px 6px rgba(0,0,0,.45),0 4px 30px rgba(0,0,0,.55)}
