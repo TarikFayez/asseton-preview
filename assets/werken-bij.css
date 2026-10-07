@@ -6,7 +6,7 @@
    (the monteur), so the marks and the slogan stay on the photo at every screen size and the far-left loading dock stays out of frame.
    >=861: copy over the photo. <=860: the photo leads, the copy overlaps its faded bottom edge. ---------- */
 .wbh{position:relative;isolation:isolate;display:flex;flex-direction:column;justify-content:flex-end;min-height:max(600px,min(88svh,820px));padding:0;background:var(--ink);color:var(--tb);overflow:hidden}
-.wbh::after{content:"";position:absolute;z-index:1;left:0;right:0;bottom:0;height:56px;background:linear-gradient(0deg,var(--signal-hi) 0 2px,rgba(230,176,74,.5) 2px,rgba(217,159,43,.26) 7px,rgba(217,159,43,.1) 20px,rgba(217,159,43,.03) 38px,rgba(217,159,43,0) 100%);mix-blend-mode:screen;pointer-events:none}
+.wbh::after{content:"";position:absolute;z-index:1;left:0;right:0;bottom:0;height:56px;background:linear-gradient(0deg,var(--signal-hi) 0 2px,rgba(242,180,82,.5) 2px,rgba(233,159,43,.26) 7px,rgba(233,159,43,.1) 20px,rgba(233,159,43,.03) 38px,rgba(233,159,43,0) 100%);mix-blend-mode:screen;pointer-events:none}
 .wbh-media{position:absolute;inset:0;z-index:-2;overflow:hidden;background:var(--ink)}
 /* the query container is absolutely positioned inside the media box, so its size is final when the canvas resolves cqw/cqh
    (a flex-grown size container hands its children a height of 0) */
@@ -130,7 +130,7 @@
 .vac-checks{list-style:none;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 32px}
 .vac-checks li{position:relative;padding:18px 0 18px 42px;border-top:1px solid var(--rule);font-size:1rem;line-height:1.6;color:var(--t)}
 .vac-checks li:last-child:nth-child(odd){grid-column:1/-1}
-.vac-checks li::before{content:"";position:absolute;left:0;top:19px;width:24px;height:24px;border:1.5px solid var(--signal);border-radius:2px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D99F2B' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12.5 4 4 8-9'/%3E%3C/svg%3E") center/17px no-repeat}
+.vac-checks li::before{content:"";position:absolute;left:0;top:19px;width:24px;height:24px;border:1.5px solid var(--signal);border-radius:2px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23E99F2B' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12.5 4 4 8-9'/%3E%3C/svg%3E") center/17px no-repeat}
 
 /* 03 offer: benefit tiles; each LED switches on as the tile comes into view */
 .vac-tiles{list-style:none;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;margin-top:30px}

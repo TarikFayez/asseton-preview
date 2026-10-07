@@ -17,17 +17,17 @@
   --tag:#B4B5B9;          /* tagline grey (sign) */
   --lead:#DADADF;         /* hero lead */
   /* brand orange: only at full strength, or as a tight glow around a full-strength element */
-  --signal:#D99F2B;       /* Asseton gold: the ON colour of the new logo (client 2026-10-01) */
-  --signal-hi:#E6B04A;    /* hover */
-  --signal-deep:#BF8722;  /* pressed */
+  --signal:#E99F2B;       /* Asseton gold: the ON colour of the new logo (client 2026-10-01) */
+  --signal-hi:#F2B24C;    /* hover */
+  --signal-deep:#C9831A;  /* pressed */
   --on-signal:#151617;    /* text + icons on orange (white fails: 2.94:1) */
-  --glow:rgba(230,176,74,.55);
+  --glow:rgba(242,180,82,.55);
   /* lines */
   --rule:rgba(255,255,255,.12); --rule-strong:rgba(255,255,255,.28);
   --field-border:#6B6D73;
   --led-off:#3A3B3E;
   /* logo colours, inherited into <use> */
-  --mk-a:#E8E8EA; --mk-o:#D99F2B; --mk-knock:#0E0F10; /* neutral brand white (no lilac cast) */
+  --mk-a:#E8E8EA; --mk-o:#E99F2B; --mk-knock:#0E0F10; /* neutral brand white (no lilac cast) */
   /* functional red: SOS only */
   --sos-red:#E3261B; --sos-call:#C8190F; --sos-call-hover:#A8140C;
   --wrap:1240px;
@@ -35,7 +35,7 @@
   --ease:cubic-bezier(.2,.7,.2,1);
 }
 @property --mk-a{syntax:'<color>';inherits:true;initial-value:#E8E8EA}
-@property --mk-o{syntax:'<color>';inherits:true;initial-value:#D99F2B}
+@property --mk-o{syntax:'<color>';inherits:true;initial-value:#E99F2B}
 /* scroll-padding: anything scrolled into view by focus (Tab / Shift+Tab, form validation) stays clear of the
    sticky header and the fixed "Storing melden" pill. The site's own anchor jumps use scrollTo + scroll-margin, unaffected. */
 html{scroll-behavior:smooth;scroll-padding-top:90px;scroll-padding-bottom:112px}
@@ -70,7 +70,7 @@ img,svg{display:block}
 .btn-ghost:hover svg{transform:none}
 
 /* Header */
-header{position:sticky;top:0;z-index:50;background:rgba(14,15,16,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(217,159,43,.34);box-shadow:0 2px 14px -6px rgba(217,159,43,.28)}
+header{position:sticky;top:0;z-index:50;background:rgba(14,15,16,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(233,159,43,.34);box-shadow:0 2px 14px -6px rgba(233,159,43,.28)}
 .nav{position:relative;display:flex;align-items:center;justify-content:space-between;height:74px}
 .logo{display:flex;align-items:center;min-height:44px;color:#fff}
 .logo:focus-visible{outline:2px solid var(--signal);outline-offset:4px}
@@ -115,7 +115,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(14,15,16,.94);backdrop-f
 .hero{position:relative;background:var(--ink);color:#fff;overflow:hidden;min-height:max(560px,min(calc(100svh - 75px),900px));display:flex;align-items:flex-end}
 .hero::before{content:"";position:absolute;inset:0;background:url(../images/hero-video-poster.jpg) center/cover no-repeat;filter:saturate(0) contrast(1.05)}
 /* backlit edge: 2px lit strip + light spill fading up ~56px (screen = adds light, never darkens; static) */
-.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:56px;background:linear-gradient(0deg,var(--signal-hi) 0 2px,rgba(230,176,74,.5) 2px,rgba(217,159,43,.26) 7px,rgba(217,159,43,.1) 20px,rgba(217,159,43,.03) 38px,rgba(217,159,43,0) 100%);mix-blend-mode:screen;pointer-events:none}
+.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:56px;background:linear-gradient(0deg,var(--signal-hi) 0 2px,rgba(242,180,82,.5) 2px,rgba(233,159,43,.26) 7px,rgba(233,159,43,.1) 20px,rgba(233,159,43,.03) 38px,rgba(233,159,43,0) 100%);mix-blend-mode:screen;pointer-events:none}
 .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;filter:saturate(0) contrast(1.05);transition:opacity 1.2s ease}
 .hero-video.ready{opacity:1}
 .hero-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,15,16,.85) 0%,rgba(14,15,16,.45) 22%,rgba(14,15,16,0) 40%),linear-gradient(90deg,rgba(14,15,16,.94) 0%,rgba(14,15,16,.84) 50%,rgba(14,15,16,.22) 78%,rgba(14,15,16,.1) 100%),linear-gradient(0deg,rgba(14,15,16,.92) 0%,rgba(14,15,16,0) 45%)}
@@ -123,7 +123,7 @@ header{position:sticky;top:0;z-index:50;background:rgba(14,15,16,.94);backdrop-f
 .hero-copy{max-width:820px}
 .hero h1{position:relative;display:inline-block;font-family:'Kaushan Script','Segoe Script','Brush Script MT',cursive;font-weight:400;font-size:clamp(3.3rem,8vw,7rem);line-height:1.08;letter-spacing:0;color:#fff;margin-bottom:44px;padding-right:.15em;text-shadow:0 2px 24px rgba(0,0,0,.55)}
 /* brush underline swoosh (SVG path): thickest at a third, fine points, flick up at the right; under "doet er toe!" (no descenders) */
-.hero h1::after,.slogan-panel .big::after{content:"";position:absolute;left:14%;right:2%;bottom:-.3em;height:.36em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 48' preserveAspectRatio='none'%3E%3Cpath fill='%23D99F2B' d='M6%2038%2015.5%2035%2025.3%2033.5%2035.3%2032.2%2045.6%2031.1%2055.9%2030.1%2066.5%2029.3%2077.2%2028.5%2088.1%2027.7%2099.1%2027.1%20110.2%2026.5%20121.4%2026.3%20132.7%2026.1%20144.1%2025.8%20155.6%2025.5%20167.1%2025.2%20178.6%2024.8%20190.2%2024.4%20201.8%2023.9%20213.3%2023.4%20224.9%2022.8%20236.4%2022.2%20247.9%2021.5%20259.3%2020.8%20270.6%2020.1%20281.9%2019.2%20293%2018.3%20304%2017.4%20314.9%2016.4%20325.7%2015.4%20336.3%2014.2%20346.8%2013.1%20357%2011.8%20367.1%2010.5%20377%209.1%20386.6%207.6%20396%206%20386.7%207.9%20377.1%209.8%20367.3%2011.6%20357.3%2013.4%20347.1%2015.2%20336.7%2016.9%20326.1%2018.6%20315.4%2020.3%20304.5%2021.9%20293.6%2023.5%20282.4%2025%20271.2%2026.5%20259.9%2028%20248.6%2029.4%20237.1%2030.8%20225.6%2032.1%20214.1%2033.4%20202.6%2034.7%20191%2035.9%20179.4%2037.1%20167.9%2038.2%20156.4%2039.4%20145%2040.5%20133.6%2041.5%20122.2%2042.5%20111%2043.5%2099.8%2044%2088.8%2044.2%2077.9%2044.4%2067.1%2044.3%2056.4%2044.1%2046%2043.8%2035.7%2043.2%2025.6%2042.3%2015.7%2041.1Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;pointer-events:none}
+.hero h1::after,.slogan-panel .big::after{content:"";position:absolute;left:14%;right:2%;bottom:-.3em;height:.36em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 48' preserveAspectRatio='none'%3E%3Cpath fill='%23E99F2B' d='M6%2038%2015.5%2035%2025.3%2033.5%2035.3%2032.2%2045.6%2031.1%2055.9%2030.1%2066.5%2029.3%2077.2%2028.5%2088.1%2027.7%2099.1%2027.1%20110.2%2026.5%20121.4%2026.3%20132.7%2026.1%20144.1%2025.8%20155.6%2025.5%20167.1%2025.2%20178.6%2024.8%20190.2%2024.4%20201.8%2023.9%20213.3%2023.4%20224.9%2022.8%20236.4%2022.2%20247.9%2021.5%20259.3%2020.8%20270.6%2020.1%20281.9%2019.2%20293%2018.3%20304%2017.4%20314.9%2016.4%20325.7%2015.4%20336.3%2014.2%20346.8%2013.1%20357%2011.8%20367.1%2010.5%20377%209.1%20386.6%207.6%20396%206%20386.7%207.9%20377.1%209.8%20367.3%2011.6%20357.3%2013.4%20347.1%2015.2%20336.7%2016.9%20326.1%2018.6%20315.4%2020.3%20304.5%2021.9%20293.6%2023.5%20282.4%2025%20271.2%2026.5%20259.9%2028%20248.6%2029.4%20237.1%2030.8%20225.6%2032.1%20214.1%2033.4%20202.6%2034.7%20191%2035.9%20179.4%2037.1%20167.9%2038.2%20156.4%2039.4%20145%2040.5%20133.6%2041.5%20122.2%2042.5%20111%2043.5%2099.8%2044%2088.8%2044.2%2077.9%2044.4%2067.1%2044.3%2056.4%2044.1%2046%2043.8%2035.7%2043.2%2025.6%2042.3%2015.7%2041.1Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;pointer-events:none}
 .slogan-panel .big::after{left:49%;right:1%;bottom:-.34em}
 .hero p.lead{font-size:1.15rem;color:var(--lead);max-width:540px;padding-left:18px;border-left:2px solid var(--signal);text-shadow:0 1px 12px rgba(0,0,0,.6)}
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
@@ -220,7 +220,7 @@ section{position:relative;padding:112px 0;scroll-margin-top:74px}
 .cline{position:relative;display:grid;grid-template-columns:130px minmax(0,1fr);gap:16px;align-items:center;min-height:64px;padding:14px 36px 14px 0;border-bottom:1px solid var(--rule)}
 .cline small{color:var(--tm)}
 .cline span{font-size:1.08rem;font-weight:500;color:var(--t);transition:color .15s}
-a.cline::after{content:"";position:absolute;right:0;top:50%;width:18px;height:18px;margin-top:-9px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D99F2B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/18px no-repeat;transition:transform .25s var(--ease)}
+a.cline::after{content:"";position:absolute;right:0;top:50%;width:18px;height:18px;margin-top:-9px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23E99F2B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/18px no-repeat;transition:transform .25s var(--ease)}
 a.cline:hover span{color:var(--signal)}
 a.cline:hover::after{transform:translateX(3px)}
 a.cline:focus-visible{outline:2px solid var(--signal);outline-offset:2px}
@@ -234,7 +234,7 @@ input:focus,select:focus,textarea:focus{outline:none;border-color:var(--signal);
 /* browser autofill: keep the anthracite field (Chrome's dark autofill fill is blue-grey) */
 input:-webkit-autofill,textarea:-webkit-autofill,select:-webkit-autofill{-webkit-text-fill-color:var(--t);caret-color:var(--t);-webkit-box-shadow:0 0 0 1000px var(--field) inset;transition:background-color 9999s}
 input:-webkit-autofill:focus,textarea:-webkit-autofill:focus{-webkit-box-shadow:0 0 0 1000px var(--field) inset,0 0 0 1px var(--signal)}
-select{appearance:none;-webkit-appearance:none;padding-right:40px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D99F2B' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:16px;cursor:pointer}
+select{appearance:none;-webkit-appearance:none;padding-right:40px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23E99F2B' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:16px;cursor:pointer}
 select option{color:#151617;background:#fff}
 select:invalid{color:var(--tm)}
 textarea{resize:vertical;min-height:120px;line-height:1.5}
@@ -247,7 +247,7 @@ form .btn{width:100%;min-height:54px;justify-content:space-between;margin-top:8p
 .sos-btn:hover{transform:translateY(-2px);box-shadow:0 18px 46px rgba(0,0,0,.5),0 2px 6px rgba(0,0,0,.3)}
 .sos-btn:focus-visible{outline:3px solid var(--signal);outline-offset:3px}
 .sos-estop{position:relative;width:60px;height:60px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;
-  background:radial-gradient(circle at 50% 30%,#F3D08C 0%,#E5B048 40%,#D99F2B 72%,#A87419 100%);box-shadow:0 0 0 2px var(--ink),0 0 0 3px rgba(255,255,255,.16),inset 0 -2px 4px rgba(0,0,0,.2)}
+  background:radial-gradient(circle at 50% 30%,#F8D69A 0%,#F0B04A 40%,#E99F2B 72%,#B5770F 100%);box-shadow:0 0 0 2px var(--ink),0 0 0 3px rgba(255,255,255,.16),inset 0 -2px 4px rgba(0,0,0,.2)}
 .sos-estop::before{content:"";position:absolute;inset:-7px;border-radius:50%;border:2px solid var(--sos-red);opacity:0;animation:sosPulse 2.2s ease-out infinite}
 /* dark ring separates the red dome from the orange housing (red on orange is only 1.83:1) */
 .sos-dome{width:36px;height:36px;border-radius:50%;
@@ -294,7 +294,7 @@ form .btn{width:100%;min-height:54px;justify-content:space-between;margin-top:8p
 /* Footer: backlit orange top edge; a compact brand column (logo + tagline, powers on in view) beside Menu and Contact,
    the legal line underneath. The page's big moment is its hero at the top, so the footer stays a footer.
    Same markup on every page: the brand block is last in the DOM and placed first by grid areas. */
-footer{background:linear-gradient(180deg,rgba(217,159,43,.22) 0,rgba(217,159,43,.07) 6px,rgba(217,159,43,0) 20px),var(--foot);color:var(--tm);padding:72px 0 16px;font-size:.92rem;overflow:hidden;border-top:1px solid var(--signal)}
+footer{background:linear-gradient(180deg,rgba(233,159,43,.22) 0,rgba(233,159,43,.07) 6px,rgba(233,159,43,0) 20px),var(--foot);color:var(--tm);padding:72px 0 16px;font-size:.92rem;overflow:hidden;border-top:1px solid var(--signal)}
 footer>.wrap{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"brand" "foot" "bottom"}
 .foot-brand{grid-area:brand}
 .foot{grid-area:foot}
@@ -468,7 +468,7 @@ footer>.wrap{display:grid;grid-template-columns:minmax(0,1fr);grid-template-area
 }
 
 /* ================= v5 · one composition per section ================= */
-:root{--swoosh:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 48' preserveAspectRatio='none'%3E%3Cpath fill='%23D99F2B' d='M6%2038%2015.5%2035%2025.3%2033.5%2035.3%2032.2%2045.6%2031.1%2055.9%2030.1%2066.5%2029.3%2077.2%2028.5%2088.1%2027.7%2099.1%2027.1%20110.2%2026.5%20121.4%2026.3%20132.7%2026.1%20144.1%2025.8%20155.6%2025.5%20167.1%2025.2%20178.6%2024.8%20190.2%2024.4%20201.8%2023.9%20213.3%2023.4%20224.9%2022.8%20236.4%2022.2%20247.9%2021.5%20259.3%2020.8%20270.6%2020.1%20281.9%2019.2%20293%2018.3%20304%2017.4%20314.9%2016.4%20325.7%2015.4%20336.3%2014.2%20346.8%2013.1%20357%2011.8%20367.1%2010.5%20377%209.1%20386.6%207.6%20396%206%20386.7%207.9%20377.1%209.8%20367.3%2011.6%20357.3%2013.4%20347.1%2015.2%20336.7%2016.9%20326.1%2018.6%20315.4%2020.3%20304.5%2021.9%20293.6%2023.5%20282.4%2025%20271.2%2026.5%20259.9%2028%20248.6%2029.4%20237.1%2030.8%20225.6%2032.1%20214.1%2033.4%20202.6%2034.7%20191%2035.9%20179.4%2037.1%20167.9%2038.2%20156.4%2039.4%20145%2040.5%20133.6%2041.5%20122.2%2042.5%20111%2043.5%2099.8%2044%2088.8%2044.2%2077.9%2044.4%2067.1%2044.3%2056.4%2044.1%2046%2043.8%2035.7%2043.2%2025.6%2042.3%2015.7%2041.1Z'/%3E%3C/svg%3E")}
+:root{--swoosh:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 48' preserveAspectRatio='none'%3E%3Cpath fill='%23E99F2B' d='M6%2038%2015.5%2035%2025.3%2033.5%2035.3%2032.2%2045.6%2031.1%2055.9%2030.1%2066.5%2029.3%2077.2%2028.5%2088.1%2027.7%2099.1%2027.1%20110.2%2026.5%20121.4%2026.3%20132.7%2026.1%20144.1%2025.8%20155.6%2025.5%20167.1%2025.2%20178.6%2024.8%20190.2%2024.4%20201.8%2023.9%20213.3%2023.4%20224.9%2022.8%20236.4%2022.2%20247.9%2021.5%20259.3%2020.8%20270.6%2020.1%20281.9%2019.2%20293%2018.3%20304%2017.4%20314.9%2016.4%20325.7%2015.4%20336.3%2014.2%20346.8%2013.1%20357%2011.8%20367.1%2010.5%20377%209.1%20386.6%207.6%20396%206%20386.7%207.9%20377.1%209.8%20367.3%2011.6%20357.3%2013.4%20347.1%2015.2%20336.7%2016.9%20326.1%2018.6%20315.4%2020.3%20304.5%2021.9%20293.6%2023.5%20282.4%2025%20271.2%2026.5%20259.9%2028%20248.6%2029.4%20237.1%2030.8%20225.6%2032.1%20214.1%2033.4%20202.6%2034.7%20191%2035.9%20179.4%2037.1%20167.9%2038.2%20156.4%2039.4%20145%2040.5%20133.6%2041.5%20122.2%2042.5%20111%2043.5%2099.8%2044%2088.8%2044.2%2077.9%2044.4%2067.1%2044.3%2056.4%2044.1%2046%2043.8%2035.7%2043.2%2025.6%2042.3%2015.7%2041.1Z'/%3E%3C/svg%3E")}
 /* 1 · Manifest: centred, the news big, the reassurance smaller */
 .manifest{padding:136px 0 128px;text-align:center}
 .manifest-in{max-width:1000px}
@@ -624,7 +624,7 @@ footer>.wrap{display:grid;grid-template-columns:minmax(0,1fr);grid-template-area
 /* caption: number, type (+ location tag), title; the arrow sits at the end of the meta line */
 .hp-cap{padding-top:20px}
 .hp-meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font:600 .75rem/1 var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--wm)}
-.hp-meta::after{content:"";width:20px;height:20px;margin-left:auto;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D99F2B' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/20px no-repeat;transition:transform .3s var(--ease)}
+.hp-meta::after{content:"";width:20px;height:20px;margin-left:auto;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23E99F2B' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/20px no-repeat;transition:transform .3s var(--ease)}
 .hp-n{font:700 .95rem/1 var(--display);letter-spacing:.02em;color:var(--signal);font-variant-numeric:tabular-nums}
 /* the two Schilderwerk jobs: the location is the lighter second half of the title, after a tagline square */
 .hp-loc{color:var(--wm);white-space:nowrap}
@@ -671,7 +671,7 @@ footer>.wrap{display:grid;grid-template-columns:minmax(0,1fr);grid-template-area
 .hp-list li{display:flex}
 .hp-list a{position:relative;display:grid;grid-template-columns:40px minmax(0,1fr) auto 18px;align-items:center;column-gap:16px;width:100%;min-height:52px;padding:11px 0;border-bottom:1px solid var(--rule);color:var(--wt)}
 .hp-list a::before{content:"";position:absolute;left:0;bottom:-1px;width:0;height:1px;background:var(--signal);transition:width .5s var(--ease)}
-.hp-list a::after{content:"";width:18px;height:18px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23D99F2B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/18px no-repeat;transition:transform .25s var(--ease)}
+.hp-list a::after{content:"";width:18px;height:18px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23E99F2B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center/18px no-repeat;transition:transform .25s var(--ease)}
 .hp-list .hp-n{font-size:.85rem}
 .hp-lt{font:600 1.02rem/1.3 var(--display);letter-spacing:-.01em;transition:color .2s}
 .hp-list .hp-type{font:600 .75rem/1 var(--display);letter-spacing:.14em;text-transform:uppercase;color:var(--wm);white-space:nowrap}
@@ -760,15 +760,112 @@ footer>.wrap{display:grid;grid-template-columns:minmax(0,1fr);grid-template-area
 /* Hero with the slogan only (client's wish, 2026-10-01): no trailing gap under the swoosh */
 .hero-copy > h1:last-child{margin-bottom:.3em}
 
-/* ==== Navy (client 2026-10-01): black, grey and the logo's navy blue as section tones, gold stays the highlight ====
-   Add .blue next to .cool/.warm; every component inside re-reads the surface tokens, so cards, fields and chips turn navy too. */
-:root{--navy:#071425;--navy-raise:#0D1E35;--navy-deep:#040C17}
-.blue{background:var(--navy);color:#CFD7E2;
-  --bg:var(--navy);--umber:var(--navy);--bg-raise:var(--navy-raise);--umber-raise:#14294A;
-  --field:var(--navy-deep);--field-border:#56698A;--led-off:#22344F;--pv-stage:var(--navy-deep);
-  --tb:#CFD7E2;--tm:#A3B2C6;--wb:#CFD7E2;--wm:#A3B2C6;
-  --rule:rgba(255,255,255,.14);--rule-strong:rgba(255,255,255,.3)}
-.blue h2,.blue h3,.blue h4{color:var(--t)}
-.blue .sec-top{color:var(--tm)}
-/* soften the switch to blue: each navy section fades in from black at the top instead of starting with a hard colour change */
-.blue{background:linear-gradient(180deg,var(--ink) 0,var(--navy) min(360px,45%),var(--navy) 100%)}
+/* =====================================================================================================
+   LIGHT THEME (client, 2026-10-07): "frisser, met meer wit als achtergrond, zodat de twee huisstijlkleuren
+   mooi naar voren komen". White + light grey surfaces, logo navy #072845 and gold #E99F2B as the brand
+   colours, plus a thin wavy navy+gold line that returns in a few places. Photo/video heroes, the footer,
+   the Werken bij panel and the lightbox stay dark (navy) for contrast.
+   ===================================================================================================== */
+:root{
+  color-scheme:light;
+  --navy:#072845; --navy-deep:#051D33; --navy-2:#0D3358;
+  --ink:#051D33; --foot:#072845; --pv-stage:#E6EBF1;
+  --bg:#FFFFFF; --umber:#F2F5F8; --bg-raise:#F6F8FB; --umber-raise:#E6ECF3; --field:#FFFFFF;
+  --t:#0B2340; --tb:#3B4859; --tm:#5D6979; --wt:#0B2340; --wb:#3B4859; --wm:#5D6979;
+  --tag:#072845; --on-signal:#072845;
+  --signal:#E99F2B; --signal-hi:#F2B24C; --signal-deep:#C9831A; --glow:rgba(233,159,43,.45);
+  --rule:rgba(7,40,69,.12); --rule-strong:rgba(7,40,69,.24);
+  --field-border:#7D8A9B; --led-off:#C9D2DD;
+  --mk-a:#072845; --mk-o:#E99F2B; --mk-knock:#FFFFFF;
+  --shadow:0 18px 48px -18px rgba(7,40,69,.22);
+}
+body{background:var(--bg)}
+a,button,select{-webkit-tap-highlight-color:rgba(7,40,69,.08)}
+.skip:focus{outline-color:var(--navy)}
+/* surfaces: white + light grey; .warm cards sit white on the grey */
+.cool{background:var(--bg)}
+.warm{background:var(--umber);--bg-raise:#FFFFFF}
+/* dark contexts keep light text on navy */
+.hero,.pj-hero,.wbh,footer,.lb,.navy,.jobs-panel{
+  --t:#F4F6F9;--tb:#D3DAE3;--tm:#A9B5C4;--wt:#F4F6F9;--wb:#D3DAE3;--wm:#A9B5C4;
+  --rule:rgba(255,255,255,.14);--rule-strong:rgba(255,255,255,.3);
+  --bg-raise:var(--navy-2);--umber-raise:#123E68;--field:var(--navy-deep);--field-border:#6F84A3;--led-off:#2B4463;
+  --tag:#C9D3DF;--mk-a:#FFFFFF;--mk-knock:var(--navy);--pv-stage:var(--navy-deep)}
+.navy{background:var(--navy);color:var(--tb)}
+.navy h2,.navy h3,.navy h4{color:var(--t)}
+.navy .sec-top{color:var(--tm)}
+
+/* header: white bar, navy logo + links, gold CTA */
+header{background:rgba(255,255,255,.96);border-bottom:1px solid var(--rule);box-shadow:0 6px 24px -14px rgba(7,40,69,.28)}
+.logo,.nav-toggle{color:var(--navy)}
+.nav-links a{color:var(--tb)}
+.nav-links a:not(.nav-cta):hover,.nav-links a.is-active{color:var(--t)}
+.nav-links a.is-active::before{box-shadow:none}
+.nav-scrim{background:rgba(5,29,51,.42)}
+@media (max-width:860px){
+  .nav-links{background:#FFFFFF;box-shadow:0 28px 48px -20px rgba(7,40,69,.3)}
+  .nav-links a.is-active{color:var(--t)}
+}
+/* tagline: navy words, thin gold bars (as in the new logo) */
+.tagline i,.foot-tag i{width:max(1.5px,.13em);height:1.15em;background:var(--signal)}
+
+/* small numbers/labels: navy text; gold stays for lines, LEDs, icons and buttons (gold text on white is too faint) */
+.sec-top .n,.svc-btn .n,.hp-n{color:var(--t)}
+.sec-top.lit .led{box-shadow:none}
+.svc-btn .ico{color:var(--signal)}
+.job-go,.side-link{color:var(--t)}
+.job-go svg,.side-link svg{color:var(--signal)}
+.job:hover h3,.svc:hover .svc-h,.hp:hover .hp-t,.hp-list a:hover .hp-lt,a.cline:hover span,.hp-more-h a:hover{color:var(--navy-2)}
+.jobs-note a:hover{color:var(--t)}
+
+/* buttons */
+.btn-ghost{border-color:rgba(7,40,69,.35);color:var(--t)}
+.btn-ghost:hover{border-color:var(--navy);background:rgba(7,40,69,.04)}
+.hero .btn-ghost,.pj-hero .btn-ghost,.wbh .btn-ghost,.navy .btn-ghost,.jobs-panel .btn-ghost{border-color:rgba(255,255,255,.4);color:#fff}
+
+/* home hero: navy-tinted shade over the black & white video; the wave below replaces the gold edge glow */
+.hero::after{display:none}
+.hero-shade{background:linear-gradient(180deg,rgba(5,29,51,.8) 0%,rgba(5,29,51,.4) 22%,rgba(5,29,51,0) 40%),linear-gradient(90deg,rgba(5,29,51,.92) 0%,rgba(5,29,51,.78) 50%,rgba(5,29,51,.2) 78%,rgba(5,29,51,.08) 100%),linear-gradient(0deg,rgba(5,29,51,.9) 0%,rgba(5,29,51,0) 45%)}
+@media (max-width:600px){.hero-shade{background:linear-gradient(180deg,rgba(5,29,51,.6) 0%,rgba(5,29,51,.76) 50%,rgba(5,29,51,.94) 100%)}}
+
+/* the wavy line: thin navy + gold, at the top of the first section under each hero, above the footer, and under
+   "Nieuwe naam." (instead of the brush swoosh) */
+.wave-top{padding-top:calc(112px + clamp(28px,4vw,56px))}
+.wave-top::before{content:"";position:absolute;left:0;right:0;top:clamp(10px,1.6vw,22px);height:clamp(36px,6vw,86px);background:url(wave.svg) center/100% 100% no-repeat;pointer-events:none}
+@media (max-width:600px){.wave-top{padding-top:calc(72px + 28px)}}
+.m-big::after{left:8%;right:8%;bottom:-.06em;height:.3em;background:url(wave.svg) center/100% 100% no-repeat}
+footer{position:relative;background:var(--foot);border-top:0;padding-top:clamp(96px,10vw,132px)}
+footer::before{content:"";position:absolute;left:0;right:0;top:clamp(16px,2vw,28px);height:clamp(34px,5vw,70px);background:url(wave-light.svg) center/100% 100% no-repeat;pointer-events:none}
+.foot a:hover{color:#fff}
+.foot-mark{--mk-a:#123E68;--mk-o:#123E68;--mk-knock:var(--foot)}
+.foot-mark.on{--mk-a:#FFFFFF;--mk-o:var(--signal)}
+@media (scripting:none){.foot-mark{--mk-a:#FFFFFF;--mk-o:var(--signal)}}
+
+/* cards, panels and the form: white/light cards with a hairline and a soft navy shadow */
+.svc-cards .svc{box-shadow:none}
+.slogan-panel .big{color:var(--t)}
+form{border:1px solid var(--rule);box-shadow:var(--shadow)}
+.sos-btn{background:#FFFFFF;color:var(--t);border:1px solid var(--rule);box-shadow:0 14px 34px -10px rgba(7,40,69,.35),0 2px 6px rgba(7,40,69,.12)}
+.sos-btn:hover{box-shadow:0 18px 40px -10px rgba(7,40,69,.42),0 2px 6px rgba(7,40,69,.14)}
+.sos-label small{color:var(--tm)}
+.sos-estop{box-shadow:0 0 0 2px #FFFFFF,0 0 0 3px rgba(7,40,69,.18),inset 0 -2px 4px rgba(0,0,0,.18)}
+.sos-panel{background:#FFFFFF;box-shadow:0 24px 60px -16px rgba(7,40,69,.4)}
+.sos-form{border-color:rgba(7,40,69,.25)}
+.about2-media{background:var(--pv-stage)}
+.about2-media::after{background:linear-gradient(90deg,rgba(255,255,255,0) 62%,var(--bg) 100%)}
+@media (max-width:1024px){.about2-media::after{background:linear-gradient(180deg,rgba(255,255,255,0) 62%,var(--bg) 100%)}}
+
+/* Werken bij teaser: one navy panel on the light section (the strongest brand block on the page) */
+.jobs-panel{background:var(--navy);border-color:var(--navy);color:var(--tb);box-shadow:var(--shadow)}
+.jobs-panel h2,.jobs-panel h3{color:var(--t)}
+.jobs-panel .sec-top{color:var(--tm)}
+.jobs-panel .sec-top .n,.jobs-panel .job-go{color:#fff}
+.jobs-panel .job:hover h3{color:var(--signal)}
+.jobs-panel .jobs-note a:hover{color:var(--signal)}
+
+/* home projects: chips/figures on photos stay dark; the seam ring follows the section colour */
+.hp-chip{background:rgba(5,29,51,.88)}
+.hp-2 .hp-media::before{background:linear-gradient(24deg,rgba(5,29,51,.82) 0%,rgba(5,29,51,.4) 30%,rgba(5,29,51,0) 56%)}
+@media (max-width:860px){.hp{background:#FFFFFF;box-shadow:0 10px 28px -16px rgba(7,40,69,.3)}.hp-vn{background:#FFFFFF}}
+/* subpage heroes: the wavy line below replaces their gold edge glow too */
+.pj-hero::after,.wbh::after{display:none}
