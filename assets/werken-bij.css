@@ -345,3 +345,6 @@
   .vac-tab,.vt-n .led,.vt-t,.vt-go,.vac-toc a,.vac-toc a::before,.vac-tiles li::before,.vac-rail-cta{transition:none}
   .vac-tab[aria-selected="true"]::after,.vac-doc.vac-in{animation:none}
 }
+/* one facts group left (client removed the servicemonteur "10 opdrachten" line) */
+.wbf-groups{grid-template-columns:minmax(0,1fr)}
+.wbf-group{max-width:560px}

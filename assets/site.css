@@ -884,3 +884,35 @@ footer::before{content:"";position:absolute;left:0;right:0;top:-1px;height:var(-
 .hero::before,.hero-video{filter:none}
 .hero-shade{display:none}
 .hero h1{text-shadow:0 2px 6px rgba(0,0,0,.45),0 4px 30px rgba(0,0,0,.55)}
+
+/* ==== Client update 2026-10-14 ==== */
+/* "Nieuwe naam." intro: the announcement (client copy) as a lead, the explanation below, a link to the news page */
+.m-lead{max-width:860px;margin:0 auto;font:600 clamp(1.2rem,2vw,1.6rem)/1.45 var(--display);letter-spacing:-.015em;color:var(--t);text-wrap:balance}
+.manifest-p{max-width:700px;margin-top:28px;color:var(--tb)}
+.m-link{margin-top:28px}
+
+/* Diensten: "Techniek & beheer" is now a full heading with tiles, like "Bouwkundig onderhoud" */
+#diensten .head2{margin-bottom:56px}
+@media (min-width:1101px){.svc-cards-6{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* Home projects: the 81 sits on the large card now; the two smaller cards are plain photos */
+.hp-2 .hp-media::before{content:none}
+.hp-figbox::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(24deg,rgba(5,29,51,.8) 0%,rgba(5,29,51,.4) 30%,rgba(5,29,51,0) 56%);pointer-events:none}
+.hp-1 .hp-fig{left:28px;bottom:24px;font-size:clamp(5rem,9vw,8.5rem)}
+@supports (grid-template-rows:subgrid){@media (min-width:1025px){.hp-1 .hp-fig{font-size:clamp(5rem,9vw,8.5rem)}}}
+.hp-list .hp-lt .hp-loc{color:var(--wm)}
+@media (max-width:860px){
+  .hp .hp-meta .hp-type{display:block;grid-area:tag;margin-top:8px}
+  .hp-1 .hp-fig{left:14px;bottom:12px;font-size:3.4rem}
+}
+
+/* Footer: certifications row (text + line icons until the official logos arrive) */
+.foot-certs{grid-area:certs;list-style:none;display:flex;flex-wrap:wrap;gap:12px;padding:0 0 32px}
+.foot-certs li{display:flex;align-items:center;gap:12px;padding:12px 18px 12px 14px;border:1px solid rgba(255,255,255,.18);border-radius:2px;color:#fff;font:600 .9rem/1.2 var(--display);letter-spacing:.01em}
+.foot-certs svg{width:26px;height:26px;flex-shrink:0;fill:none;stroke:var(--signal);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+footer>.wrap{grid-template-areas:"brand" "foot" "certs" "bottom"}
+@media (min-width:861px){footer>.wrap{grid-template-areas:"brand foot" "certs certs" "bottom bottom"}}
+@media (max-width:600px){.foot-certs{flex-direction:column;gap:8px}.foot-certs li{width:100%}}
+
+/* header with five links: tighter between 861 and 1180 */
+@media (min-width:861px) and (max-width:1180px){.nav-links{gap:22px}.nav-links a.nav-cta{padding:11px 14px}}
