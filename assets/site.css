@@ -762,48 +762,48 @@ footer>.wrap{display:grid;grid-template-columns:minmax(0,1fr);grid-template-area
 
 /* =====================================================================================================
    LIGHT THEME (client, 2026-10-07): "frisser, met meer wit als achtergrond, zodat de twee huisstijlkleuren
-   mooi naar voren komen". White + light grey surfaces, logo navy #072845 and gold #E99F2B as the brand
+   mooi naar voren komen". White + light grey surfaces, logo navy #2E4B62 and gold #E99F2B as the brand
    colours, plus a thin wavy navy+gold line that returns in a few places. Photo/video heroes, the footer,
    the Werken bij panel and the lightbox stay dark (navy) for contrast.
    ===================================================================================================== */
 :root{
   color-scheme:light;
-  --navy:#072845; --navy-deep:#051D33; --navy-2:#0D3358;
-  --ink:#051D33; --foot:#072845; --pv-stage:#E6EBF1;
+  --navy:#2E4B62; --navy-deep:#1F3343; --navy-2:#3A5A73;
+  --ink:#1F3343; --foot:#2E4B62; --pv-stage:#E6EBF1;
   --bg:#FFFFFF; --umber:#F2F5F8; --bg-raise:#F6F8FB; --umber-raise:#E6ECF3; --field:#FFFFFF;
-  --t:#0B2340; --tb:#3B4859; --tm:#5D6979; --wt:#0B2340; --wb:#3B4859; --wm:#5D6979;
-  --tag:#072845; --on-signal:#072845;
+  --t:#2E4B62; --tb:#3B4859; --tm:#5D6979; --wt:#2E4B62; --wb:#3B4859; --wm:#5D6979;
+  --tag:#2E4B62; --on-signal:#2E4B62;
   --signal:#E99F2B; --signal-hi:#F2B24C; --signal-deep:#C9831A; --glow:rgba(233,159,43,.45);
-  --rule:rgba(7,40,69,.12); --rule-strong:rgba(7,40,69,.24);
+  --rule:rgba(46,75,98,.12); --rule-strong:rgba(46,75,98,.24);
   --field-border:#7D8A9B; --led-off:#C9D2DD;
-  --mk-a:#072845; --mk-o:#E99F2B; --mk-knock:#FFFFFF;
-  --shadow:0 18px 48px -18px rgba(7,40,69,.22);
+  --mk-a:#2E4B62; --mk-o:#E99F2B; --mk-knock:#FFFFFF;
+  --shadow:0 18px 48px -18px rgba(46,75,98,.22);
 }
 body{background:var(--bg)}
-a,button,select{-webkit-tap-highlight-color:rgba(7,40,69,.08)}
+a,button,select{-webkit-tap-highlight-color:rgba(46,75,98,.08)}
 .skip:focus{outline-color:var(--navy)}
 /* surfaces: white + light grey; .warm cards sit white on the grey */
 .cool{background:var(--bg)}
 .warm{background:var(--umber);--bg-raise:#FFFFFF}
 /* dark contexts keep light text on navy */
 .hero,.pj-hero,.wbh,footer,.lb,.navy,.jobs-panel{
-  --t:#F4F6F9;--tb:#D3DAE3;--tm:#A9B5C4;--wt:#F4F6F9;--wb:#D3DAE3;--wm:#A9B5C4;
+  --t:#F4F6F9;--tb:#D3DAE3;--tm:#BAC6D3;--wt:#F4F6F9;--wb:#D3DAE3;--wm:#BAC6D3;
   --rule:rgba(255,255,255,.14);--rule-strong:rgba(255,255,255,.3);
-  --bg-raise:var(--navy-2);--umber-raise:#123E68;--field:var(--navy-deep);--field-border:#6F84A3;--led-off:#2B4463;
+  --bg-raise:var(--navy-2);--umber-raise:#456A86;--field:var(--navy-deep);--field-border:#8296AE;--led-off:#4A6680;
   --tag:#C9D3DF;--mk-a:#FFFFFF;--mk-knock:var(--navy);--pv-stage:var(--navy-deep)}
 .navy{background:var(--navy);color:var(--tb)}
 .navy h2,.navy h3,.navy h4{color:var(--t)}
 .navy .sec-top{color:var(--tm)}
 
 /* header: white bar, navy logo + links, gold CTA */
-header{background:rgba(255,255,255,.96);border-bottom:1px solid var(--rule);box-shadow:0 6px 24px -14px rgba(7,40,69,.28)}
+header{background:rgba(255,255,255,.96);border-bottom:1px solid var(--rule);box-shadow:0 6px 24px -14px rgba(46,75,98,.28)}
 .logo,.nav-toggle{color:var(--navy)}
 .nav-links a{color:var(--tb)}
 .nav-links a:not(.nav-cta):hover,.nav-links a.is-active{color:var(--t)}
 .nav-links a.is-active::before{box-shadow:none}
-.nav-scrim{background:rgba(5,29,51,.42)}
+.nav-scrim{background:rgba(31,51,67,.42)}
 @media (max-width:860px){
-  .nav-links{background:#FFFFFF;box-shadow:0 28px 48px -20px rgba(7,40,69,.3)}
+  .nav-links{background:#FFFFFF;box-shadow:0 28px 48px -20px rgba(46,75,98,.3)}
   .nav-links a.is-active{color:var(--t)}
 }
 /* tagline: navy words, thin gold bars (as in the new logo) */
@@ -819,21 +819,21 @@ header{background:rgba(255,255,255,.96);border-bottom:1px solid var(--rule);box-
 .jobs-note a:hover{color:var(--t)}
 
 /* buttons */
-.btn-ghost{border-color:rgba(7,40,69,.35);color:var(--t)}
-.btn-ghost:hover{border-color:var(--navy);background:rgba(7,40,69,.04)}
+.btn-ghost{border-color:rgba(46,75,98,.35);color:var(--t)}
+.btn-ghost:hover{border-color:var(--navy);background:rgba(46,75,98,.04)}
 .hero .btn-ghost,.pj-hero .btn-ghost,.wbh .btn-ghost,.navy .btn-ghost,.jobs-panel .btn-ghost{border-color:rgba(255,255,255,.4);color:#fff}
 
 /* home hero: navy-tinted shade over the black & white video; the wave below replaces the gold edge glow */
 .hero::after{display:none}
-.hero-shade{background:linear-gradient(180deg,rgba(5,29,51,.8) 0%,rgba(5,29,51,.4) 22%,rgba(5,29,51,0) 40%),linear-gradient(90deg,rgba(5,29,51,.92) 0%,rgba(5,29,51,.78) 50%,rgba(5,29,51,.2) 78%,rgba(5,29,51,.08) 100%),linear-gradient(0deg,rgba(5,29,51,.9) 0%,rgba(5,29,51,0) 45%)}
-@media (max-width:600px){.hero-shade{background:linear-gradient(180deg,rgba(5,29,51,.6) 0%,rgba(5,29,51,.76) 50%,rgba(5,29,51,.94) 100%)}}
+.hero-shade{background:linear-gradient(180deg,rgba(31,51,67,.8) 0%,rgba(31,51,67,.4) 22%,rgba(31,51,67,0) 40%),linear-gradient(90deg,rgba(31,51,67,.92) 0%,rgba(31,51,67,.78) 50%,rgba(31,51,67,.2) 78%,rgba(31,51,67,.08) 100%),linear-gradient(0deg,rgba(31,51,67,.9) 0%,rgba(31,51,67,0) 45%)}
+@media (max-width:600px){.hero-shade{background:linear-gradient(180deg,rgba(31,51,67,.6) 0%,rgba(31,51,67,.76) 50%,rgba(31,51,67,.94) 100%)}}
 
 /* the wavy line: thin navy + gold, at the top of the first section under each hero, above the footer, and under
    "Nieuwe naam." (instead of the brush swoosh) */
 .m-big::after{left:8%;right:8%;bottom:-.06em;height:.3em;background:url(wave.svg) center/100% 100% no-repeat}
 footer{position:relative;background:var(--foot);border-top:0;padding-top:calc(var(--wave-h) + 56px)}
 .foot a:hover{color:#fff}
-.foot-mark{--mk-a:#123E68;--mk-o:#123E68;--mk-knock:var(--foot)}
+.foot-mark{--mk-a:#456A86;--mk-o:#456A86;--mk-knock:var(--foot)}
 .foot-mark.on{--mk-a:#FFFFFF;--mk-o:var(--signal)}
 @media (scripting:none){.foot-mark{--mk-a:#FFFFFF;--mk-o:var(--signal)}}
 
@@ -841,12 +841,12 @@ footer{position:relative;background:var(--foot);border-top:0;padding-top:calc(va
 .svc-cards .svc{box-shadow:none}
 .slogan-panel .big{color:var(--t)}
 form{border:1px solid var(--rule);box-shadow:var(--shadow)}
-.sos-btn{background:#FFFFFF;color:var(--t);border:1px solid var(--rule);box-shadow:0 14px 34px -10px rgba(7,40,69,.35),0 2px 6px rgba(7,40,69,.12)}
-.sos-btn:hover{box-shadow:0 18px 40px -10px rgba(7,40,69,.42),0 2px 6px rgba(7,40,69,.14)}
+.sos-btn{background:#FFFFFF;color:var(--t);border:1px solid var(--rule);box-shadow:0 14px 34px -10px rgba(46,75,98,.35),0 2px 6px rgba(46,75,98,.12)}
+.sos-btn:hover{box-shadow:0 18px 40px -10px rgba(46,75,98,.42),0 2px 6px rgba(46,75,98,.14)}
 .sos-label small{color:var(--tm)}
-.sos-estop{box-shadow:0 0 0 2px #FFFFFF,0 0 0 3px rgba(7,40,69,.18),inset 0 -2px 4px rgba(0,0,0,.18)}
-.sos-panel{background:#FFFFFF;box-shadow:0 24px 60px -16px rgba(7,40,69,.4)}
-.sos-form{border-color:rgba(7,40,69,.25)}
+.sos-estop{box-shadow:0 0 0 2px #FFFFFF,0 0 0 3px rgba(46,75,98,.18),inset 0 -2px 4px rgba(0,0,0,.18)}
+.sos-panel{background:#FFFFFF;box-shadow:0 24px 60px -16px rgba(46,75,98,.4)}
+.sos-form{border-color:rgba(46,75,98,.25)}
 .about2-media{background:var(--pv-stage)}
 .about2-media::after{background:linear-gradient(90deg,rgba(255,255,255,0) 62%,var(--bg) 100%)}
 @media (max-width:1024px){.about2-media::after{background:linear-gradient(180deg,rgba(255,255,255,0) 62%,var(--bg) 100%)}}
@@ -860,9 +860,9 @@ form{border:1px solid var(--rule);box-shadow:var(--shadow)}
 .jobs-panel .jobs-note a:hover{color:var(--signal)}
 
 /* home projects: chips/figures on photos stay dark; the seam ring follows the section colour */
-.hp-chip{background:rgba(5,29,51,.88)}
-.hp-2 .hp-media::before{background:linear-gradient(24deg,rgba(5,29,51,.82) 0%,rgba(5,29,51,.4) 30%,rgba(5,29,51,0) 56%)}
-@media (max-width:860px){.hp{background:#FFFFFF;box-shadow:0 10px 28px -16px rgba(7,40,69,.3)}.hp-vn{background:#FFFFFF}}
+.hp-chip{background:rgba(31,51,67,.88)}
+.hp-2 .hp-media::before{background:linear-gradient(24deg,rgba(31,51,67,.82) 0%,rgba(31,51,67,.4) 30%,rgba(31,51,67,0) 56%)}
+@media (max-width:860px){.hp{background:#FFFFFF;box-shadow:0 10px 28px -16px rgba(46,75,98,.3)}.hp-vn{background:#FFFFFF}}
 /* subpage heroes: the wavy line below replaces their gold edge glow too */
 .pj-hero::after,.wbh::after{display:none}
 
@@ -897,7 +897,7 @@ footer::before{content:"";position:absolute;left:0;right:0;top:-1px;height:var(-
 
 /* Home projects: the 81 sits on the large card now; the two smaller cards are plain photos */
 .hp-2 .hp-media::before{content:none}
-.hp-figbox::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(24deg,rgba(5,29,51,.8) 0%,rgba(5,29,51,.4) 30%,rgba(5,29,51,0) 56%);pointer-events:none}
+.hp-figbox::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(24deg,rgba(31,51,67,.8) 0%,rgba(31,51,67,.4) 30%,rgba(31,51,67,0) 56%);pointer-events:none}
 .hp-1 .hp-fig{left:28px;bottom:24px;font-size:clamp(5rem,9vw,8.5rem)}
 @supports (grid-template-rows:subgrid){@media (min-width:1025px){.hp-1 .hp-fig{font-size:clamp(5rem,9vw,8.5rem)}}}
 .hp-list .hp-lt .hp-loc{color:var(--wm)}
@@ -921,3 +921,7 @@ footer>.wrap{grid-template-areas:"brand" "foot" "certs" "bottom"}
 .logo-img{display:block;height:52px;width:auto}
 .foot-mark img{display:block;width:100%;height:auto}
 @media (max-width:600px){.logo-img{height:44px}}
+
+/* Brand blue = the logo's slate blue #2E4B62 (client, 2026-10-14). Text on the gold buttons stays a deeper
+   shade of it: #2E4B62 on gold is only 4.1:1, #1F3343 is 5.8:1. */
+:root{--on-signal:#1F3343}
