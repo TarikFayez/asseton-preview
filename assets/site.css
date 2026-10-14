@@ -916,3 +916,8 @@ footer>.wrap{grid-template-areas:"brand" "foot" "certs" "bottom"}
 
 /* header with five links: tighter between 861 and 1180 */
 @media (min-width:861px) and (max-width:1180px){.nav-links{gap:22px}.nav-links a.nav-cta{padding:11px 14px}}
+
+/* Logo: the client's own file (2026-10-14), cut out of its white background; white-letter version on navy */
+.logo-img{display:block;height:52px;width:auto}
+.foot-mark img{display:block;width:100%;height:auto}
+@media (max-width:600px){.logo-img{height:44px}}

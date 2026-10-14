@@ -54,3 +54,4 @@ body .nw-hero::after{display:block;content:"";position:absolute;left:0;right:0;b
   .nw-callout .nw-big{font-size:3.6rem}
   .nw-actions .btn{width:100%;min-height:54px;justify-content:space-between}
 }
+.nw-mark img{display:block;width:100%;height:auto}
